@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
+@theme {
+  --color-black: #1A1A1A;
+  --color-forest: #2E4A3B;
+  --color-forest-green: #2E4A3B;
+  --color-forest-hover: #243B2F;
+  --color-brown: #6B4F3B;
+  --color-earth: #6B4F3B;
+  --color-warm-taupe: #8B7A6B;
+  --color-taupe: #B7ACA0;
+  --color-soft-taupe: #B7ACA0;
+  --color-light-taupe: #E7E2DC;
+  --color-canvas: #FBF9F5;
+  --color-cream: #FBF9F5;
+  --color-sand: #F4EFEA;
+  --color-gold: #C5A059;
+
+  --font-serif: var(--font-the-seasons), "The Seasons", Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FBF9F5;
+  --foreground: #1A1A1A;
+  --font-the-seasons: "The Seasons", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base resets & typography */
+html {
+  background-color: #FBF9F5;
+  color: #1A1A1A;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FBF9F5;
+  color: #1A1A1A;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Selection styling */
+::selection {
+  background: #8B7A6B;
+  color: #FBF9F5;
+}
+
+/* Lenis Recommended CSS */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FBF9F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B7ACA0;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B7A6B;
+}
+
+/* Film Grain Texture Animation */
+@keyframes grainAnimation {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-3%, -6%);
+  }
+
+  20% {
+    transform: translate(-8%, 4%);
+  }
+
+  30% {
+    transform: translate(5%, -10%);
+  }
+
+  40% {
+    transform: translate(-4%, 12%);
+  }
+
+  50% {
+    transform: translate(-10%, 6%);
+  }
+
+  60% {
+    transform: translate(8%, 10%);
+  }
+
+  70% {
+    transform: translate(0%, 14%);
+  }
+
+  80% {
+    transform: translate(-3%, 8%);
+  }
+
+  90% {
+    transform: translate(9%, 3%);
+  }
+}
+
+.cinematic-grain {
+  animation: grainAnimation 6s steps(8) infinite;
+}
+
+/* Editorial ligatures & The Seasons Light default weight */
+.font-serif {
+  font-family: var(--font-serif);
+  font-weight: 300;
+}
+
+.font-editorial {
+  font-feature-settings: "liga" 1, "dlig" 1;
+  letter-spacing: -0.015em;
+  font-weight: 300;
+}
+
+/* Explicit weight modifiers for .font-serif (e.g. Logo regular/semibold) */
+.font-serif.font-light {
+  font-weight: 300;
+}
+
+.font-serif.font-normal {
+  font-weight: 400;
+}
+
+.font-serif.font-medium {
+  font-weight: 500;
+}
+
+.font-serif.font-semibold {
+  font-weight: 600;
+}
+
+.font-serif.font-bold {
+  font-weight: 700;
+}
+
+/* 3D Perspective Card Tilt helper */
+.preserve-3d {
+  transform-style: preserve-3d;
 }

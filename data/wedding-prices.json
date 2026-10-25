@@ -1,0 +1,463 @@
+{
+  "currency": "IDR",
+  "catalogs": [
+    {
+      "id": "daisy-all-in",
+      "title": "All-In Package ByDaisy",
+      "filename": "ALL-IN-PACKAGE-DAISYPLANNER.pdf",
+      "url": "/assets/ALL-IN-PACKAGE-DAISYPLANNER.pdf",
+      "description": "Katalog paket lengkap All-In (300, 500, 1000 tamu) beserta paket dekorasi panggung 10m-19m.",
+      "size": "21 MB"
+    },
+    {
+      "id": "sribudaya-2026",
+      "title": "Sribudaya Resort Wedding 2026",
+      "filename": "SRIBUDAYA-2026.pdf",
+      "url": "/assets/SRIBUDAYA-2026.pdf",
+      "description": "Paket eksklusif All-In Sribudaya Resort Lampeuneurut (300-2000 tamu) include sewa venue & menginap di resort.",
+      "size": "25 MB"
+    },
+    {
+      "id": "vandys-garden",
+      "title": "Vandys Event Package 2026",
+      "filename": "VANDYS-EVENT-PACKAGE.pdf",
+      "url": "/assets/VANDYS-EVENT-PACKAGE.pdf",
+      "description": "Paket All-In Intimate Garden 500 pax di @vandysgarden Banda Aceh lengkap dengan photobooth & hand bouquet.",
+      "size": "4 MB"
+    },
+    {
+      "id": "company-profile",
+      "title": "ByDaisy Company Profile",
+      "filename": "ByDaisy-Company-Profile.pdf",
+      "url": "/assets/ByDaisy-Company-Profile.pdf",
+      "description": "Profil studio, legalitas, portofolio hingga 14.000 tamu, serta panduan alokasi anggaran pernikahan.",
+      "size": "35 MB"
+    }
+  ],
+  "categories": [
+    {
+      "id": "all-in-daisy",
+      "title": "All-In Package ByDaisy",
+      "subtitle": "Paket Terpadu Dekorasi, Catering, MUA, Dokumentasi, & WO",
+      "description": "Solusi pernikahan tanpa repot. Seluruh elemen inti telah dipadukan dalam satu koordinasi harmonis di bawah kepemimpinan ByDaisy.",
+      "packages": [
+        {
+          "id": "daisy-basic-intimate-300",
+          "name": "Basic Intimate (300 Pax)",
+          "tag": "Intimate Best Deal",
+          "price": 92500000,
+          "capacity": "300 Tamu",
+          "features": [
+            "Dekorasi Backdrop Pelaminan 8m (Non Customize) & Panggung 8x4m",
+            "Set Meja Akad & Taman Depan Pelaminan",
+            "Photobooth 1 Set, Dekorasi Lorong 16m, Photo Gallery 4 Set",
+            "Welcome Sign, Mirror Sign, Kotak Angpao + Meja Kado",
+            "Perlengkapan: Meja VIP 4 set, Tenda 5x12 3 set, Kursi Plastik 300 pcs, Kipas Uap 4 pcs",
+            "Wedding Organizer Standby di Hari H 8 personil (Stage Manager, Stopper, Acara, Usher VIP & Reguler, Bride Assistant, Runner, Checker, PIC Catering)",
+            "Master of Ceremony (MC) & Sound System Profesional",
+            "Adat: Alat Peusijuek + Payung, Tarian Ranup Lampuan",
+            "Prasmanan Catering 300 Pax (Nasi putih, Kuah Beulangong, Soup Kimlo, Daging, Ayam, Keumamah / Ikan Suwir Kecap, Sambal Goreng Kentang, Tahu Goreng / Salad Sayur, Kerupuk, Air Mineral)",
+            "Bonus Pondokan: Juice, Rujak Aceh, Buah Potong, Mie Bakso, Aneka Kue (Tape/Cenil, Serabi, Pie, Timphan, Puding, Risol)",
+            "Makan Besan Hidang 30 Pax Lengkap (17 menu masakan khas Aceh)"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya tertarik dengan paket Basic Intimate 300 Pax (Rp 92.500.000). Mohon info ketersediaan tanggal."
+        },
+        {
+          "id": "daisy-platinum-intimate-300",
+          "name": "Platinum Intimate (300 Pax)",
+          "tag": "★ Best Value All-In",
+          "price": 110000000,
+          "capacity": "300 Tamu",
+          "highlight": true,
+          "features": [
+            "Dekorasi Backdrop Pelaminan 10m & Panggung 10x4m",
+            "Set Meja Akad & Taman Depan Pelaminan, Photobooth 1 Set",
+            "Dekorasi Lorong 16m, Photo Gallery 4 Set, Welcome & Mirror Sign, Kotak Angpao",
+            "Perlengkapan: Meja VIP 4 set, Tenda 5x12 3 set, Kursi Plastik 300 pcs, Kursi Tiffani 30 pcs, Kipas Uap 4 pcs",
+            "Fotografer & Videografer Resepsi Lengkap",
+            "MUA Profesional + Baju Adat Aceh Sepasang",
+            "Henna Resepsi Eksklusif Pengantin",
+            "Wedding Organizer Standby 8 personil, technical meeting seluruh vendor H-30",
+            "MC, Alat Peusijuek + 2 Payung, 1 Sirih Hias + 2 Batee Ranup, Tari Ranup Lampuan, Sound System",
+            "Prasmanan Catering 300 Pax + Makan Besan Hidang 30 Pax + Aneka Stall Bonus"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya tertarik dengan paket Platinum Intimate 300 Pax (Rp 110.000.000) All-In. Mohon rincian jadwal konsultasi."
+        },
+        {
+          "id": "daisy-gold-intimate-500",
+          "name": "Gold Intimate (500 Pax)",
+          "tag": "Populer 500 Tamu",
+          "price": 115000000,
+          "capacity": "500 Tamu",
+          "features": [
+            "Dekorasi Backdrop Pelaminan 10m & Panggung 10x5m",
+            "Taman Pelaminan, Photobooth 1 Set, Lorong 16m, Photo Gallery 4 Set",
+            "Gapura Utama 6x6m, Welcome Sign, Mirror Sign, Kotak Angpao",
+            "Perlengkapan: Meja VIP 4 set, Tenda 5x12 3 set, Kursi Plastik 400 pcs, Kipas Uap 4 pcs",
+            "Wedding Organizer Standby 8 personil H-30 persiapan & technical meeting",
+            "Master of Ceremony, Sound System, Alat Peusijuek + Payung, Tari Ranup Lampuan",
+            "Prasmanan Catering 500 Pax (Kuah Beulangong, Daging, Ayam, Keumamah, Sup Kimlo, Salad, dll)",
+            "Bonus Pondokan: Juice, Rujak Aceh, Buah Segar, Mie Bakso, Aneka Kue Basah Tradisional",
+            "Makan Besan Hidang 30 Pax (17 Macam Sajian Adat)"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya tertarik dengan paket Gold Intimate 500 Pax (Rp 115.000.000). Mohon info ketersediaan tanggal."
+        },
+        {
+          "id": "daisy-gold-1000",
+          "name": "Gold Grand Package (1000 Pax)",
+          "tag": "Grand Ballroom / Gedung",
+          "price": 155000000,
+          "capacity": "1000 Tamu",
+          "features": [
+            "Dekorasi Backdrop Pelaminan 14m & Panggung 14x5m",
+            "Taman Pelaminan, Photobooth 1 Set, Lorong 16m, Photo Gallery 4 Set",
+            "Gapura Utama 6x6m, Welcome Sign, Mirror Sign, Kotak Angpao",
+            "Perlengkapan: Meja VIP 6 set, Tenda 5x12 2 set, Kursi Plastik 400 pcs, Kipas Uap 4 pcs",
+            "MUA Profesional Pengantin",
+            "Dokumentasi Foto & Video Resepsi",
+            "BP Projectbooth 300 Lembar Foto Instan Tamu",
+            "Wedding Organizer Standby 8 personil dengan radio komunikasi HT frekuensi tertutup",
+            "MC, Alat Peusijuek + Payung, Tarian Ranup Lampuan, Sound System",
+            "Prasmanan Catering 1000 Pax + Makan Besan Hidang 30 Pax + Seluruh Bonus Pondokan"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Gold Grand 1000 Pax (Rp 155.000.000) All-In ByDaisy."
+        }
+      ]
+    },
+    {
+      "id": "sribudaya-resort",
+      "title": "Paket Eksklusif Sribudaya Resort 2026",
+      "subtitle": "Jl. Soekarno - Hatta, Lampeuneurut, Aceh Besar • SUDAH TERMASUK Sewa Venue & Penginapan",
+      "description": "Kolaborasi resmi ByDaisy x Sribudaya Resort. Venue asri dengan fasilitas outdoor/semi-outdoor megah, genset berdaya tinggi, kamar menginap keluarga, dan jamuan prasmanan otentik.",
+      "packages": [
+        {
+          "id": "sribudaya-300",
+          "name": "Outdoor Intimate Best Deal (300 Pax)",
+          "tag": "Include Sewa Venue Sribudaya",
+          "price": 95000000,
+          "capacity": "300 Tamu",
+          "features": [
+            "SUDAH TERMASUK Biaya Sewa Venue Sribudaya Resort",
+            "Dekorasi Backdrop Pelaminan 8m, Panggung 8x4m, Set Meja Akad",
+            "Taman Depan Pelaminan, Photobooth 1 Set, Lorong 16m, Photo Gallery 4 Set",
+            "Perlengkapan: Meja VIP 4 set, Tenda 5x12 3 set, Kursi Plastik 300 pcs, Kipas Uap 4 pcs, Kursi Tiffani 30 pcs, Kursi Outdoor 100 pcs, Genset 50.000 KVA",
+            "Wedding Organizer Standby 8 personil H-30",
+            "MC, Sound System, Peusijuek + 2 Payung, 1 Sirih Hias + 2 Batee Ranup, Tari Ranup Lampuan",
+            "Prasmanan 300 Pax (Kuah Beulangong, Daging Sie Reboh 30%, Ayam, Keumamah, Sup Kimlo, Salad/Gado-gado) + Makan Besan Hidang 30 Pax",
+            "Bonus: Juice, Rujak Aceh, Buah Potong, Mie Bakso/Mie Kocok, Aneka Kue Basah"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya tertarik dengan paket Sribudaya Resort 300 Pax (Rp 95.000.000). Mohon info tanggal yang tersedia."
+        },
+        {
+          "id": "sribudaya-500",
+          "name": "Platinum Intimate Outdoor (500 Pax)",
+          "tag": "All-In + Foto + MUA + Venue",
+          "price": 125000000,
+          "capacity": "500 Tamu",
+          "features": [
+            "SUDAH TERMASUK Biaya Sewa Venue Sribudaya Resort",
+            "Fotografer & Videografer Resepsi Lengkap",
+            "MUA Profesional + Baju Adat Aceh Sepasang",
+            "Henna Resepsi Pengantin",
+            "Dekorasi Pelaminan 8m, Photobooth, Lorong 16m, Photo Gallery 4 Set",
+            "Perlengkapan: Meja VIP 4 set, Tenda 5x12 3 set, Kursi Plastik 300 pcs, Kipas Uap 4 pcs, Kursi Tiffani 30 pcs, Kursi Outdoor 100 pcs, Genset 50.000 KVA",
+            "WO Standby 8 personil, MC, Sound System, Peusijuek + 2 Payung, Sirih Hias + 2 Batee Ranup, Tari Ranup Lampuan",
+            "Prasmanan 500 Pax (Sie Reboh 30%, Kuah Beulangong, dll) + Makan Besan Hidang 30 Pax + All Bonus Stalls"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Platinum Intimate Sribudaya 500 Pax (Rp 125.000.000)."
+        },
+        {
+          "id": "sribudaya-silver-1000",
+          "name": "Silver Package (1000 Pax)",
+          "tag": "Include 1 Night Stay Resort",
+          "price": 155000000,
+          "capacity": "1000 Tamu",
+          "features": [
+            "SUDAH TERMASUK Biaya Sewa Venue Sribudaya Resort",
+            "FREE 1 Night Stay at Sribudaya Resort",
+            "Dekorasi Backdrop Pelaminan 14m, Panggung 14x5m, Taman, Photobooth 1 Set, Lorong 16m, Gallery 4 Set, Gapura 6x6m",
+            "Perlengkapan: Meja VIP 6 set, Tenda 5x12 5 set, Kursi Plastik 400 pcs, Kipas Uap 6 pcs, AC Standing 5 Unit, Kursi Outdoor 100 pcs, Genset 50.000 KVA",
+            "Wedding Organizer Standby 8 personil H-30",
+            "MC, Sound System, Alat Peusijuek + Payung, Tarian Ranup Lampuan",
+            "Prasmanan 1000 Pax + Makan Besan Hidang 30 Pax + All Bonus Stalls"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya tertarik dengan paket Silver Sribudaya 1000 Pax (Rp 155.000.000). Mohon detailnya."
+        },
+        {
+          "id": "sribudaya-platinum-1000",
+          "name": "Platinum Best Deal (1000 Pax)",
+          "tag": "★ Sribudaya Most Popular",
+          "price": 175000000,
+          "capacity": "1000 Tamu",
+          "highlight": true,
+          "features": [
+            "SUDAH TERMASUK Biaya Sewa Venue Sribudaya Resort",
+            "FREE 1 Night Stay at Sribudaya Resort",
+            "Fotografer & Videografer Resepsi",
+            "MUA + Baju Adat Aceh Sepasang & Henna Resepsi",
+            "BP Projectbooth 300 Lembar Foto Instan + Buku Tamu 2 Set",
+            "Dekorasi Pelaminan 14m, Panggung 14x5m, Lorong 16m, Gapura 6x6m",
+            "Perlengkapan: Meja VIP 6 set, Tenda 5x12 5 set, Kursi 400 pcs, Kipas Uap 6 pcs, AC Standing 5 Unit, Kursi Outdoor 100 pcs, Genset 50.000 KVA",
+            "Wedding Organizer Standby 8 personil H-30",
+            "MC, Alat Peusijuek + Payung, Tarian Ranup Lampuan, Sound System",
+            "Prasmanan 1000 Pax + Makan Besan Hidang 30 Pax + All Bonus Stalls"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Platinum Best Deal Sribudaya 1000 Pax (Rp 175.000.000)."
+        },
+        {
+          "id": "sribudaya-gold-1500",
+          "name": "Gold Package (1500 Pax)",
+          "tag": "12 Kru WO + MUA + Foto + Band",
+          "price": 200000000,
+          "capacity": "1500 Tamu",
+          "features": [
+            "SUDAH TERMASUK Biaya Sewa Venue Sribudaya Resort",
+            "FREE Deluxe Room 1 Night Stay at Resort",
+            "Fotografer & Videografer Resepsi",
+            "MUA + Baju Adat Aceh Sepasang & Henna Resepsi",
+            "BP Projectbooth 300 Lembar + Buku Tamu 2 Set",
+            "Dekorasi Pelaminan 14m, Gapura 6x6m, Lorong 16m, Gallery 4 Set",
+            "Perlengkapan: Meja VIP 8 set, Tenda 5x12 6 set, Kursi 500 pcs, Kipas Uap 6 pcs, AC Standing 5 Unit, Kursi Outdoor 100 pcs, Genset 50.000 KVA",
+            "Wedding Organizer Standby 12 personil di Hari H",
+            "MC, Peusijuek, Tari Ranup Lampuan, Sound System",
+            "Prasmanan 1500 Pax + Makan Besan Hidang 30 Pax + All Bonus Stalls"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Gold Sribudaya 1500 Pax (Rp 200.000.000)."
+        },
+        {
+          "id": "sribudaya-royal-2000",
+          "name": "Royal Package (2000 Pax)",
+          "tag": "Grand Royal + Live Acoustic Band",
+          "price": 235000000,
+          "capacity": "2000 Tamu",
+          "features": [
+            "SUDAH TERMASUK Biaya Sewa Venue Sribudaya Resort",
+            "FREE 1 Night Stay at Sribudaya Resort",
+            "Acoustic Band Live Performance Sepanjang Acara",
+            "Fotografer & Videografer Resepsi",
+            "MUA + Baju Adat Aceh Sepasang & Henna Resepsi",
+            "BP Projectbooth 300 Lembar + Buku Tamu 2 Set",
+            "Dekorasi Pelaminan 14m, Gapura 6x6m, Lorong 16m, Gallery 4 Set",
+            "Perlengkapan: Meja VIP 10 set, Tenda 5x12 6 set, Kursi 600 pcs, Kipas Uap 8 pcs, AC Standing 5 Unit, Kursi Outdoor 100 pcs, Genset 50.000 KVA",
+            "Wedding Organizer Standby 12–15 personil di Hari H",
+            "MC, Alat Peusijuek + Payung, Tarian Ranup Lampuan, Sound System",
+            "Prasmanan 2000 Pax (Sie Reboh, Kuah Beulangong, Daging, dll) + Makan Besan Hidang 30 Pax"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin reservasi paket Royal Sribudaya 2000 Pax (Rp 235.000.000)."
+        }
+      ]
+    },
+    {
+      "id": "vandys-garden",
+      "title": "Paket Eksklusif Vandys Garden 2026",
+      "subtitle": "@vandysgarden Banda Aceh • Intimate Garden Wedding",
+      "description": "Konsep garden party modern dan teduh di Vandys Garden. Paket all-in praktis berkapasitas 500 tamu dilengkapi sewa tempat, fotobooth @bp.projectbooth, dan hand bouquet @hs_floralstudio.",
+      "packages": [
+        {
+          "id": "vandys-all-in-500",
+          "name": "All In Package @VandysGarden (500 Pax)",
+          "tag": "Only Rp 85.000.000",
+          "price": 85000000,
+          "capacity": "500 Tamu",
+          "highlight": true,
+          "features": [
+            "INCLUDE Sewa Tempat @VandysGarden, Biaya Keamanan & Parkir, Listrik, dan Kebersihan",
+            "Dekorasi Pelaminan 8m, Photobooth, Welcome Sign dan Gapura, Dekorasi Lorong, Backdrop Besan",
+            "Tenda 5x10 2 set, Tenda Mini Hall 1 set, Kursi 200 pcs, Misty Fan 2 pcs, Round Table 2 set",
+            "Buffet Prasmanan 500 Pax, Makan Besan Hidang 30 Pax, Jajanan 2 Jenis",
+            "Wedding Organizer Tim ByDaisy Standby Penuh",
+            "Master of Ceremony (MC) & Sound System Profesional",
+            "Photobooth Eksklusif by @bp.projectbooth",
+            "Hand Bouquet Cantik by @hs_floralstudio"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya berminat dengan paket All In Wedding di Vandys Garden 500 Pax (Rp 85.000.000). Mohon cek tanggal."
+        }
+      ]
+    },
+    {
+      "id": "decoration-only",
+      "title": "Paket Dekorasi Pelaminan Saja",
+      "subtitle": "Bespoke Spatial Design & Floristry",
+      "description": "Bagi Anda yang telah memiliki tim catering & WO mandiri dan membutuhkan arsitektur dekorasi pelaminan megah khas ByDaisy berdimensi 10 meter hingga 19 meter.",
+      "packages": [
+        {
+          "id": "decor-10m",
+          "name": "Dekorasi Pelaminan 10 Meter",
+          "tag": "Intimate & Medium Hall",
+          "price": 40000000,
+          "capacity": "Gedung / Outdoor",
+          "features": [
+            "Backdrop Pelaminan 10m (Non Customize) & Panggung Pelaminan 10x4m",
+            "Taman Depan Pelaminan",
+            "Photobooth 1 Set",
+            "Dekorasi Lorong 15m",
+            "Photo Gallery 4 Set",
+            "Gapura Utama 4x4m",
+            "Welcome Sign & Mirror Sign",
+            "Kotak Angpao + Meja Kado"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Dekorasi Pelaminan 10M (Rp 40.000.000)."
+        },
+        {
+          "id": "decor-15m",
+          "name": "Dekorasi Pelaminan 15 Meter",
+          "tag": "Customized 4M + Full Lighting",
+          "price": 60000000,
+          "capacity": "Grand Ballroom",
+          "features": [
+            "Backdrop Pelaminan 15m (Customized Backdrop 4m) & Panggung 15x4m",
+            "Taman Depan Pelaminan Rimbun",
+            "Photobooth 2 Set",
+            "Dekorasi Lorong 20m & Photo Gallery 4 Set",
+            "Gapura Utama 5x5m & Welcome Gate",
+            "Welcome Sign & Mirror Sign, Kotak Angpao + Meja Kado",
+            "Lighting Setup: 6 Par LED, 2 Moving Beam, 4 Fresnel, 15 Lampu Sorot",
+            "Efek Asap Panggung Dry Ice"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Dekorasi Pelaminan 15M (Rp 60.000.000)."
+        },
+        {
+          "id": "decor-18m",
+          "name": "Dekorasi Pelaminan 15-18 Meter",
+          "tag": "Customized 6M + Fresh Flowers",
+          "price": 70000000,
+          "capacity": "Luxury Grand Ballroom",
+          "features": [
+            "Backdrop Pelaminan 15-18m (Customized Backdrop 6m) & Panggung 15-18x5m",
+            "Taman Depan Pelaminan Mewah",
+            "Photobooth 2 Set",
+            "Dekorasi Lorong 20m Dipadu Bunga Segar (Fresh Flowers)",
+            "Photo Gallery 4 Set & Gapura Utama 6x8m",
+            "Welcome Gate, Welcome Sign, Mirror Sign, Kotak Angpao",
+            "Lighting Setup: 6 Par LED, 4 Moving Beam, 4 Fresnel, 15 Lampu Sorot",
+            "Efek Asap Panggung Dry Ice"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Dekorasi Pelaminan 15-18M Fresh Flowers (Rp 70.000.000)."
+        },
+        {
+          "id": "decor-19m-royal",
+          "name": "Dekorasi Pelaminan Royal 16-19 Meter",
+          "tag": "Full Custom + Tiffani Table Set",
+          "price": 100000000,
+          "capacity": "Mega Royal Ballroom / Hall",
+          "highlight": true,
+          "features": [
+            "Backdrop Pelaminan 16-19m (Full Customized Backdrop All Area) & Panggung 16-19x4m",
+            "Taman Depan Pelaminan Bunga Segar Spektakuler",
+            "Photobooth 2 Set Eksklusif",
+            "Dekorasi Lorong 20m Bunga Segar Penuh (Fresh Flowers)",
+            "Photo Gallery 4 Set & Gapura Utama Megah 8x10m",
+            "Welcome Gate, Welcome Sign, Mirror Sign, Kotak Angpao",
+            "Lighting Setup: 6 Par LED, 2 Moving Beam, 4 Fresnel, 15 Lampu Sorot & Dry Ice",
+            "Termasuk 6 Set Round Table & 30 Pcs Kursi Tiffani VIP"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Dekorasi Royal Pelaminan 16-19M (Rp 100.000.000)."
+        }
+      ]
+    },
+    {
+      "id": "planner-organizer-only",
+      "title": "Paket Wedding Planner & WO Saja",
+      "subtitle": "Manajemen Waktu, Kurasi Vendor, & Eksekusi Hari H",
+      "description": "Layanan murni manajemen perencanaan dan operasional untuk Anda yang telah memiliki rekanan dekorasi dan catering sendiri.",
+      "packages": [
+        {
+          "id": "wo-only-15",
+          "name": "Wedding Organizer (WO)",
+          "tag": "H-30 Pendampingan",
+          "price": 15000000,
+          "capacity": "1 Hari Acara",
+          "features": [
+            "Pendampingan intensif H-30 hari sebelum acara",
+            "Penyusunan rundown detail menit ke menit & kurasi selected celebration",
+            "Pendampingan bridesmaids (penyebaran info acara & briefing teknis)",
+            "Pendampingan ke seluruh vendor & technical meeting all vendor",
+            "Pendampingan instalasi vendor H-1 acara & gladi bersih di venue",
+            "Pendampingan pengantin pria & wanita di hari H (makeup, busana, venue)",
+            "Crew di Hari H: 8-10 orang berseragam resmi dan HT frekuensi tertutup"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Wedding Organizer (Rp 15.000.000)."
+        },
+        {
+          "id": "wp-standard-20",
+          "name": "Wedding Planner Standard",
+          "tag": "Pendampingan 3 Bulan",
+          "price": 20000000,
+          "capacity": "3 Bulan Persiapan",
+          "features": [
+            "Pendampingan 3-6 bulan sebelum acara",
+            "Free Digital Guestbook monitoring traffic tamu real-time",
+            "Pengurusan perizinan venue, aparat keamanan, dan los listrik",
+            "Daftar referensi vendor & pemilihan final vendor sesuai budget",
+            "Layout dan konsep pelaminan bersama vendor dekorasi",
+            "Follow up progres vendor pra-acara (undangan, souvenir, dekor)",
+            "Pendampingan fitting pengantin & keluarga (maksimal 2 kali)",
+            "Pendampingan test food & pemilihan menu catering",
+            "Briefing keluarga 2x + Technical meeting all vendor + Gladi bersih H-1",
+            "Crew di Hari H: 10 orang berseragam resmi dan HT frekuensi tertutup"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Wedding Planner Standard (Rp 20.000.000)."
+        },
+        {
+          "id": "wp-platinum-25",
+          "name": "Wedding Planner Platinum",
+          "tag": "★ Paripurna 3-12 Bulan",
+          "price": 25000000,
+          "capacity": "3-12 Bulan Persiapan",
+          "highlight": true,
+          "features": [
+            "Pendampingan menyeluruh 3 hingga 12 bulan sebelum acara",
+            "Free Digital Guestbook VIP & reguler",
+            "Pengurusan dokumen pernikahan & bimbingan nikah KUA",
+            "Pengurusan perizinan venue, kepolisian, dan los listrik",
+            "Penyusunan anggaran komprehensif (RAB & budget optimization)",
+            "Styling konsep pernikahan (moodboard estetika & design schematic)",
+            "Layout 3D panggung pelaminan bersama vendor dekorasi",
+            "Follow up progres produksi pra-acara secara berkala",
+            "Pendampingan fitting (2x) & pendampingan test food catering",
+            "Pendampingan khusus keluarga pria (hantaran & seserahan)",
+            "Briefing keluarga 2x, Technical Meeting H-14, Gladi Bersih H-1",
+            "Crew di Hari H: 10-12 orang kru eksekutif berseragam resmi"
+          ],
+          "whatsappMsg": "Halo ByDaisy, saya ingin konsultasi paket Wedding Planner Platinum (Rp 25.000.000)."
+        }
+      ]
+    }
+  ],
+  "addOns": [
+    { "id": "t-33", "category": "Tenda & Panggung", "name": "Tenda 3x3", "price": 500000, "unit": "unit" },
+    { "id": "t-55", "category": "Tenda & Panggung", "name": "Tenda 5x5", "price": 600000, "unit": "unit" },
+    { "id": "t-56", "category": "Tenda & Panggung", "name": "Tenda 5x6", "price": 700000, "unit": "unit" },
+    { "id": "t-512", "category": "Tenda & Panggung", "name": "Tenda 5x12", "price": 850000, "unit": "unit" },
+    { "id": "r-mini", "category": "Tenda & Panggung", "name": "Rouder Mini 6x10", "price": 1700000, "unit": "unit" },
+    { "id": "t-trans", "category": "Tenda & Panggung", "name": "Tenda Transparan 5x10", "price": 4500000, "unit": "unit" },
+    { "id": "tirai", "category": "Tenda & Panggung", "name": "Tutup Kain 1 Sisi Tirai", "price": 250000, "unit": "sisi" },
+    { "id": "flooring", "category": "Tenda & Panggung", "name": "Flooring Area Acara", "price": 50000, "unit": "m²" },
+    { "id": "panggung", "category": "Tenda & Panggung", "name": "Panggung Utama", "price": 50000, "unit": "m²" },
+    
+    { "id": "mb-chitose", "category": "Meja & Kursi", "name": "Meja Bulat + 6 Kursi Chitose", "price": 250000, "unit": "set" },
+    { "id": "mb-tiffani", "category": "Meja & Kursi", "name": "Meja Bulat + 6 Kursi Tiffani", "price": 500000, "unit": "set" },
+    { "id": "m-petak", "category": "Meja & Kursi", "name": "Meja Petak VIP", "price": 150000, "unit": "unit" },
+    { "id": "k-tiffani", "category": "Meja & Kursi", "name": "Kursi Tiffani / Olive / Cross", "price": 50000, "unit": "pcs" },
+    { "id": "k-sarung", "category": "Meja & Kursi", "name": "Kursi Plastik Bersarung", "price": 5000, "unit": "pcs" },
+    { "id": "k-chitose", "category": "Meja & Kursi", "name": "Kursi Chitose", "price": 12000, "unit": "pcs" },
+    
+    { "id": "kipas-uap", "category": "Pendingin & Elektronik", "name": "Kipas Uap (Misty Fan)", "price": 250000, "unit": "unit" },
+    { "id": "led-screen", "category": "Pendingin & Elektronik", "name": "Videotron LED Screen P3", "price": 1000000, "unit": "m²" },
+    
+    { "id": "cat-reg", "category": "Catering & Jamuan", "name": "Catering Prasmanan Tambahan", "price": 45000, "unit": "pax" },
+    { "id": "cat-besan", "category": "Catering & Jamuan", "name": "Makan Besan Hidang Khas Aceh (17 Menu)", "price": 100000, "unit": "pax" },
+    { "id": "cat-snack", "category": "Catering & Jamuan", "name": "Pondokan Jajanan Tambahan (Dimsum, Sate, Mie Aceh, dll)", "price": 1000000, "unit": "stall (start)" },
+    
+    { "id": "ent-band", "category": "Entertainment & Tradisi", "name": "Acoustic Band Performance", "price": 3500000, "unit": "sesi" },
+    { "id": "ent-booth", "category": "Entertainment & Tradisi", "name": "BP Projectbooth (300 Lembar Foto Instan)", "price": 2000000, "unit": "paket" },
+    { "id": "ent-seumapa", "category": "Entertainment & Tradisi", "name": "Adat Seumapa (Sambut Tamu Besan)", "price": 1500000, "unit": "prosesi" },
+    { "id": "ent-tarian", "category": "Entertainment & Tradisi", "name": "Tarian Kreasi / Ranup Lampuan Lengkap", "price": 2000000, "unit": "penampilan" },
+    
+    { "id": "up-wp", "category": "Layanan Tambahan ByDaisy", "name": "Upgrade Paket WO ke Wedding Planner", "price": 10000000, "unit": "paket" },
+    { "id": "up-crew", "category": "Layanan Tambahan ByDaisy", "name": "Penambahan Crew Lapangan Hari H", "price": 350000, "unit": "orang" },
+    { "id": "up-guestbook", "category": "Layanan Tambahan ByDaisy", "name": "Digital Guestbook Tambahan System", "price": 2000000, "unit": "acara" },
+    { "id": "pa-khusus", "category": "Layanan Tambahan ByDaisy", "name": "Personal Assistant (PA) Khusus Calon Pengantin (1-3 Bulan)", "price": 5000000, "unit": "paket" },
+    { "id": "acara-adat-terpisah", "category": "Layanan Tambahan ByDaisy", "name": "Penambahan Acara Adat / Akad Nikah (Mulai 300 Tamu)", "price": 5000000, "unit": "acara" }
+  ]
+}
