@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import SmoothScrollProvider from "@/components/providers/smooth-scroll";
 import CustomCursor from "@/components/cinematic/custom-cursor";
 import GrainOverlay from "@/components/cinematic/grain-overlay";
@@ -9,17 +9,50 @@ import "./globals.css";
 const theSeasons = localFont({
   src: [
     {
-      path: "../public/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff2",
-      weight: "300 700",
+      path: "../public/assets/fonts/The_Seasons_Light.woff2",
+      weight: "300",
       style: "normal",
     },
     {
-      path: "../public/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff",
-      weight: "300 700",
+      path: "../public/assets/fonts/The_Seasons_Light_Italic.woff2",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../public/assets/fonts/The_Seasons_Regular.woff2",
+      weight: "400",
       style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/The_Seasons_Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/assets/fonts/The_Seasons_Regular.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/The_Seasons_Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/The_Seasons_Bold_Italic.woff2",
+      weight: "700",
+      style: "italic",
     },
   ],
   variable: "--font-the-seasons",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -136,7 +169,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${theSeasons.variable} ${jakarta.variable} scroll-smooth`}
+      className={`${theSeasons.variable} ${cormorant.variable} ${jakarta.variable} scroll-smooth`}
     >
       <head>
         <script
