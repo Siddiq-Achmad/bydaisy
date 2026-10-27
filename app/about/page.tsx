@@ -22,15 +22,18 @@ export default function AboutPage() {
   const values = [
     {
       title: "Quiet Luxury & Emotional Poise",
-      desc: "Kami percaya kemewahan sejati lahir dari ketenangan, keanggunan tanpa kebisingan, dan penghormatan pada sakralitas janji suci.",
+      desc: "Ketenangan dan keanggunan tanpa kebisingan, menjaga sakralitas janji suci dan kenyamanan kedua mempelai serta keluarga besar.",
+      icon: Heart,
     },
     {
       title: "Pemberdayaan Adat & Modernitas",
-      desc: "Menjaga keagungan pakem adat Nusantara (Batak, Melayu, Jawa, Minang, dll.) dalam bingkai eksekusi tata panggung dan pencahayaan kontemporer.",
+      desc: "Menjaga pakem adat (Aceh Darussalam, Gayo, Melayu Deli, Minangkabau, dan Nusantara) dalam tata artistik panggung yang bersih dan elegan.",
+      icon: Award,
     },
     {
       title: "Operational Precision",
-      desc: "Manajemen waktu menit per menit yang teruji sejak 2019, memastikan seluruh vendor dan keluarga bergerak dalam satu frekuensi harmonis.",
+      desc: "Manajemen waktu menit per menit yang teruji sejak 2019, memastikan seluruh vendor dan keluarga bergerak selaras tanpa kepanikan.",
+      icon: Clock,
     },
   ];
 
@@ -66,7 +69,7 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-base md:text-lg text-black/75 font-light leading-relaxed max-w-3xl">
-              Didirikan pada tahun 2019 di Aceh, ByDaisy Planner adalah penyedia layanan Wedding Planner dan Organizer yang berfokus menciptakan pengalaman pernikahan yang tak terlupakan. Kami berkomitmen memberikan layanan personal dan profesional, tanggap, dan terpercaya sesuai karakter dari masing-masing calon pengantin.
+              Didirikan pada tahun 2019 di Banda Aceh, ByDaisy Planner mendampingi calon pengantin dan keluarga merancang pernikahan yang tertib, hangat, dan berkesan. Berbekal pengalaman mengawal ratusan pesta pernikahan di Aceh dan Sumatra, kami memadukan pemahaman mendalam tentang adat istiadat setempat dengan manajemen panggung yang presisi.
             </p>
           </div>
 
@@ -75,7 +78,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7">
               <div className="relative rounded-3xl overflow-hidden aspect-[16/10] shadow-2xl bg-sand border border-taupe/40">
                 <Image
-                  src="/assets/images/service-outdoor-ensemble.jpg"
+                  src="/assets/images/img41.jpg"
                   alt="ByDaisy certified wedding crew on stage"
                   fill
                   priority
@@ -142,24 +145,27 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {values.map((val, idx) => (
-                <div
-                  key={idx}
-                  className="p-8 rounded-3xl bg-sand/50 border border-taupe/35 shadow-sm flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="w-10 h-10 rounded-full bg-forest-green/10 text-forest-green flex items-center justify-center mb-6">
-                      <Sparkles className="w-5 h-5" />
+              {values.map((val, idx) => {
+                const IconComponent = val.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-8 rounded-3xl bg-sand/50 border border-taupe/35 shadow-sm flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="w-10 h-10 rounded-full bg-forest-green/10 text-forest-green flex items-center justify-center mb-6">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
+                      <h3 className="font-serif text-2xl text-black mb-3">
+                        {val.title}
+                      </h3>
+                      <p className="text-sm text-black/70 font-light leading-relaxed">
+                        {val.desc}
+                      </p>
                     </div>
-                    <h3 className="font-serif text-2xl text-black mb-3">
-                      {val.title}
-                    </h3>
-                    <p className="text-sm text-black/70 font-light leading-relaxed">
-                      {val.desc}
-                    </p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

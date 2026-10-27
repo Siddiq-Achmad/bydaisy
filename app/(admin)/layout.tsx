@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Calendar,
@@ -25,6 +25,9 @@ import {
   ArrowUpRight,
   ShieldCheck,
   CheckCircle2,
+  LogOut,
+  ChevronDown,
+  User,
 } from "lucide-react";
 
 interface NavGroup {
@@ -44,8 +47,49 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<{
+    name: string;
+    email: string;
+    role: string;
+  }>({
+    name: "Daisy Iskandar",
+    email: "concierge@bydaisy.com",
+    role: "Enterprise Owner & Lead Planner",
+  });
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  useEffect(() => {
+    async function checkSession() {
+      try {
+        const res = await fetch("/api/auth/me");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.authenticated && data.user) {
+            setCurrentUser(data.user);
+          }
+        }
+      } catch (err) {
+        // Continue with default profile
+      }
+    }
+    checkSession();
+  }, []);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch (err) {
+      // Continue anyway
+    } finally {
+      setIsLoggingOut(false);
+      router.push("/login");
+    }
+  };
 
   const navigationGroups: NavGroup[] = [
     {
@@ -188,7 +232,7 @@ export default function AdminLayout({
 
           <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/80 border border-taupe/30 shadow-xs">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-forest-green animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-forest-green"></span>
               <span className="text-xs font-medium text-black">System Online</span>
             </div>
             <span className="text-[9px] uppercase font-bold tracking-wider text-forest-green bg-forest-green/10 px-2 py-0.5 rounded-full">
@@ -308,16 +352,90 @@ export default function AdminLayout({
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-forest-green ring-2 ring-white"></span>
             </Link>
 
-            <div className="flex items-center gap-2.5 pl-2 border-l border-taupe/30">
-              <div className="w-8 h-8 rounded-full bg-forest-green text-white font-serif font-bold text-xs flex items-center justify-center">
-                BD
-              </div>
-              <div className="hidden md:flex flex-col text-left">
-                <span className="text-xs font-semibold text-black leading-tight">
-                  Daisy Admin
-                </span>
-                <span className="text-[10px] text-warm-taupe">Lead Planner</span>
-              </div>
+            {/* User Profile & LUXIMA SSO Session Dropdown */}
+            <div className="relative pl-2 border-l border-taupe/30">
+              <button
+                type="button"
+                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                className="flex items-center gap-2.5 p-1 rounded-xl hover:bg-white transition-all text-left group"
+              >
+                <div className="w-8 h-8 rounded-full bg-forest-green text-white font-serif font-bold text-xs flex items-center justify-center ring-2 ring-forest-green/20">
+                  {currentUser.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase() || "BD"}
+                </div>
+                <div className="hidden md:flex flex-col text-left">
+                  <span className="text-xs font-semibold text-black leading-tight group-hover:text-forest-green transition-colors">
+                    {currentUser.name}
+                  </span>
+                  <span className="text-[10px] text-warm-taupe truncate max-w-[120px]">
+                    {currentUser.role}
+                  </span>
+                </div>
+                <ChevronDown className="w-3.5 h-3.5 text-warm-taupe group-hover:text-black transition-transform duration-200" />
+              </button>
+
+              {/* Profile Dropdown Menu */}
+              {isProfileMenuOpen && (
+                <>
+                  <div
+                    onClick={() => setIsProfileMenuOpen(false)}
+                    className="fixed inset-0 z-40"
+                  />
+                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-taupe/30 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="p-3 border-b border-taupe/20 bg-sand/30 rounded-xl mb-1">
+                      <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-wider text-forest-green mb-1">
+                        <ShieldCheck className="w-3.5 h-3.5 text-forest-green" />
+                        <span>LUXIMA SSO Active</span>
+                      </div>
+                      <p className="text-xs font-semibold text-black truncate">
+                        {currentUser.name}
+                      </p>
+                      <p className="text-[11px] text-warm-taupe truncate">
+                        {currentUser.email}
+                      </p>
+                      <p className="text-[10px] text-brown font-medium mt-1">
+                        {currentUser.role}
+                      </p>
+                    </div>
+
+                    <div className="space-y-0.5">
+                      <Link
+                        href="/dashboard/settings"
+                        onClick={() => setIsProfileMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-black/80 hover:bg-sand hover:text-black transition-colors"
+                      >
+                        <Settings className="w-4 h-4 text-warm-taupe" />
+                        <span>Pengaturan Studio</span>
+                      </Link>
+
+                      <Link
+                        href="/dashboard/developer"
+                        onClick={() => setIsProfileMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-black/80 hover:bg-sand hover:text-black transition-colors"
+                      >
+                        <Cpu className="w-4 h-4 text-warm-taupe" />
+                        <span>Developer & API Hub</span>
+                      </Link>
+
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        disabled={isLoggingOut}
+                        className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-red-700 hover:bg-red-50 transition-colors text-left disabled:opacity-50 cursor-pointer"
+                      >
+                        <LogOut className="w-4 h-4 text-red-600" />
+                        <span>
+                          {isLoggingOut ? "Mengakhiri Sesi..." : "Keluar (Logout)"}
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </header>

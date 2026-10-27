@@ -31,9 +31,10 @@ export async function POST(request: NextRequest) {
     });
 
     // Set secure HTTP-only cookie for session persistence
+    const isLocalhost = request.headers.get("host")?.includes("localhost") || false;
     response.cookies.set("luxima_auth_token", authResult.data.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "production" && !isLocalhost,
       sameSite: "lax",
       maxAge: 60 * 60 * 24 * 7, // 7 days
       path: "/",

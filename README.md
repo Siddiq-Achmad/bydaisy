@@ -1,4 +1,4 @@
-# 🌸 ByDaisy Luxury Wedding Experience — Next.js 16 Production
+# 🌸 ByDaisy Luxury Wedding Experience - Next.js 16 Production
 
 [![Next.js 16.4.3](https://img.shields.io/badge/Next.js-16.4.3-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-blue?style=flat&logo=react)](https://react.dev/)
@@ -91,7 +91,7 @@ Aplikasi terdiri dari 17 rute produksi yang dioptimalkan:
 | `/` | **Landing Page Sinematik**: Hero SplitText, Bento 3D Tilt Card, Pinned Horizontal Scroll Portfolio, Brand Marquee, & Parallax Gallery. | Production Ready |
 | `/about` | **Tentang ByDaisy**: Cerita dedikasi sejak 2019, 3 Pilar Filosofi Editorial, Rekam Jejak 14.000 Tamu, dan Profil Lead Directors. | Production Ready |
 | `/services` | **Layanan Eksklusif**: 3 Pilar Spesialisasi (Wedding Planner, Wedding Organizer, & Dekorasi Spatial). | Production Ready |
-| `/services/wedding-planner` | **Detail Layanan Paripurna**: Cakupan kerja 3 fase, Formasi 12 Kru Lapangan, dan Matriks Transparansi Mandat. | Production Ready |
+| `/services/wedding-planner` | **Detail Layanan Terpadu**: Cakupan kerja 3 fase, Formasi 12 Kru Lapangan, dan Matriks Transparansi Mandat. | Production Ready |
 | `/pricelist` | **Investasi & Paket**: Tab interaktif All-In ByDaisy, Sribudaya Resort 2026, Vandys Garden, WP/WO, Dekorasi, Add-on, serta Pusat Unduhan 4 PDF. | Production Ready |
 | `/gallery` | **Galeri Dokumentasi**: Kurasi visual berfilter (Semua, Pelaminan Tradisi, Resepsi Modern, Detail Busana). | Production Ready |
 | `/vendors` | **The Curated Circle**: Direktori vendor terverifikasi dengan jaminan 0% markup. | Production Ready |
@@ -99,37 +99,57 @@ Aplikasi terdiri dari 17 rute produksi yang dioptimalkan:
 | `/reviews` | **Love Letters & Ulasan**: 140+ ulasan terverifikasi, rating 4.98 bintang, dan cover story pengantin. | Production Ready |
 | `/journal` | **Jurnal & Inspirasi**: Artikel editorial, tips anggaran, dan tren resepsi 2026. | Production Ready |
 | `/contact` | **Kontak & Studio**: Hotline 1 (`+62 822-7709-4277`), Hotline 2 (`+62 821-6222-1468`), Studio Jl. Batee Suasa, Lambhuk, Banda Aceh, Instagram `@bydaisyplanner`. | Production Ready |
-| `/dashboard` | **Studio CMS Portal**: Dedicated admin layout dengan 12 submodul operasional (`/calendar`, `/pages`, `/packages`, `/leads`, `/consultations`, `/real-weddings`, `/journal`, `/reviews`, `/vendors`, `/media`, `/developer`, `/settings`), dengan auto-redirect dari `/admin`. | Production Ready |
+| `/login` | **Enterprise Login Gateway**: Gerbang masuk aman Single Sign-On (SSO) LUXIMA - AWEDZ dengan verifikasi token HTTP-only cookie. | Production Ready |
+| `/dashboard` | **Studio CMS Portal**: Dedicated admin layout dengan 13 submodul operasional (`/calendar`, `/pages`, `/packages`, `/leads`, `/consultations`, `/real-weddings`, `/journal`, `/reviews`, `/vendors`, `/media`, `/developer`, `/settings`), dengan auto-redirect dari `/admin`. | Production Ready |
 | `/_not-found` | **Custom 404 Page**: Desain editorial 404 yang elegan selaras dengan tema ByDaisy. | Production Ready |
 | `/sitemap.xml` | **Dynamic XML Sitemap**: Otomasi SEO Google untuk seluruh rute kanonikal. | Production Ready |
 | `/robots.txt` | **Robots Configuration**: Pengaturan crawler search engine dan proteksi rute admin. | Production Ready |
 
 ---
 
-## 🎨 Creative Dev & Teknologi Animasi
+## 🏛️ Arsitektur Enterprise LUXIMA & AWEDZ (Headless API-First)
+
+ByDaisy beroperasi sebagai **Autonomous Enterprise Tenant** di bawah ekosistem holding **LUXIMA & AWEDZ**:
+
+1. **Otonomi Domain & Edge Proxy (`proxy.ts`)**: Mendukung custom domain mandiri (`bydaisy.com`, `bydaisy.id`) melalui Next.js 16 Edge Proxy yang secara otomatis menyuntikkan header multi-tenant (`x-tenant-id: bydaisy`, `x-enterprise-domain`).
+2. **Headless LUXIMA-API SDK (`lib/luxima-api.ts`)**: Akses data 100% tidak terhubung langsung ke database SQL server, melainkan melalui REST API terpadu `https://api.luxima.id` dengan ketahanan otomatis (*zero downtime fallback*) ke snapshot lokal.
+3. **LUXIMA Single Sign-On (SSO)**: Autentikasi enterprise terpusat via `/api/auth/login`, `/api/auth/me`, dan `/api/auth/logout`.
+4. **Sinkronisasi Dua Arah (2-Way Sync)**:
+   - Prospek baru otomatis dikirim ke LUXIMA CRM via `syncLeadToLuxima()`.
+   - Webhook inbound receiver `/api/integrations/luxima-sync` (update status deal dari LUXIMA HQ).
+   - Webhook inbound receiver `/api/integrations/awedz-sync` (update jadwal dan kru panggung dari AWEDZ Platform).
+5. **Dokumentasi Lengkap**:
+   - [Dokumentasi Arsitektur Enterprise](docs/ENTERPRISE_ARCHITECTURE_LUXIMA_AWEDZ.md)
+   - [Rencana Implementasi Integrasi (Roadmap & RACI)](docs/INTEGRATION_IMPLEMENTATION_PLAN.md)
+   - [Standar Creative Dev: Motion, Aksesibilitas & Copywriting Anti-Slop](docs/MOTION_PERFORMANCE_AND_COPYWRITING_STANDARDS.md)
+
+---
+
+## 🎨 Creative Dev, Motion & Standar Copywriting Anti-Slop
 
 1. **Lenis Smooth Scroll & GSAP Sync (`components/providers/smooth-scroll.tsx`)**:
-   - Lenis instance tersinkronisasi langsung dengan `gsap.ticker.add((time) => lenis.raf(time * 1000))`.
-   - `ScrollTrigger.update()` dibind ke event gulir Lenis.
-   - `gsap.ticker.lagSmoothing(0)` mencegah lonjakan frame saat transisi berat.
+   - Instance tersinkronisasi langsung dengan `gsap.ticker.add((time) => lenis.raf(time * 1000))` dan `lagSmoothing(0)`.
+   - Mendukung aksesibilitas `prefers-reduced-motion` untuk mencegah *vestibular motion sickness*.
+   - Mode `syncTouch: false` menjamin gulir layar sentuh pada perangkat mobile tetap responsif dan natif.
 
 2. **Cinematic Grain Overlay (`components/cinematic/grain-overlay.tsx`)**:
-   - Noise canvas procedural berjalan pada 18fps dengan mode `mix-blend-overlay` dan `pointer-events-none`.
+   - Noise canvas procedural dengan integrasi *Page Visibility API* (`document.hidden`): otomatis jeda saat tab non-aktif untuk efisiensi CPU dan baterai.
+   - Menghasilkan satu pattern noise statis tanpa loop jika pengguna mengaktifkan mode *reduced motion*.
 
-3. **Magnetic Custom Cursor (`components/cinematic/custom-cursor.tsx`)**:
-   - Kursor magnetik dengan pelacakan fisika pegas (*spring interpolation*) dan label interaktif saat hover tautan/tombol.
+3. **High-Performance Custom Cursor (`components/cinematic/custom-cursor.tsx`)**:
+   - Menggunakan `gsap.quickTo` untuk pelacakan koordinat berkecepatan tinggi tanpa lonjakan memori (*zero garbage collection spikes*).
+   - Deteksi batas jendela (`document.mouseleave`) untuk fade-out kursor yang rapi saat mouse meninggalkan browser.
 
 4. **Curtain Wipe Page Transitions (`app/template.tsx`)**:
-   - Transisi layer kain halus (*taupe & canvas layers*) berbasis Framer Motion pada setiap perpindahan halaman.
+   - Durasi tirai dioptimalkan menjadi 0,45s-0,52s dengan transisi konten instan (0,12s delay) dan bypass instan pada *reduced motion*.
 
-5. **5-Item Editorial Navigation & Mega Menu (`components/navigation/navbar.tsx`)**:
-   - 5 kategori utama (*About, Services & Pricing, Portfolio, Journal & Tradisi, Contact*).
-   - Mega Menu interaktif 2 kolom + featured promo card dengan proteksi hover intent delay (150ms).
-   - *Click-outside listener*, penanganan tombol *Escape*, dan *body scroll lock* pada tampilan mobile.
+5. **Responsif Horizontal Portfolio (`components/sections/horizontal-portfolio.tsx`)**:
+   - Menggunakan `gsap.matchMedia`: *pinned scrub* di desktop (`min-width: 768px`) dan *native swipe flow* di ponsel (`max-width: 767px`) agar tidak mengunci scroll vertikal layar sentuh.
 
-6. **Interactive Consultation Sheet (`components/modals/consultation-sheet.tsx`)**:
-   - Multi-step booking drawer berbasis Framer Motion physics (`damping: 26, stiffness: 240`).
-   - Format pesan terstruktur otomatis terkirim langsung ke WhatsApp Concierge `+62 822-7709-4277` atau `+62 821-6222-1468`.
+6. **Standar Copywriting Anti-Slop & Humanized (No AI Slop)**:
+   - 100% bebas dari karakter *em dash* (`—`).
+   - Dilarang keras memakai buzzword AI generik (*seamless, bespoke, paripurna, tanpa kompromi, elevate, delve*).
+   - Menampilkan data operasional nyata (14+ kru berseragam, menu tradisi Sie Reboh & Kuah Beulangong, 0% markup vendor).
 
 ---
 
@@ -164,4 +184,4 @@ npm run build
 
 ## 📜 Lisensi & Atribusi
 © 2026 ByDaisy Planner. Hak Cipta Dilindungi Undang-Undang.  
-Bespoke Matrimonial Artistry dikurasi untuk pengalaman pernikahan mewah di Indonesia.
+Karya Matrimonial Pilihan dikurasi untuk pengalaman pernikahan mewah di Indonesia.

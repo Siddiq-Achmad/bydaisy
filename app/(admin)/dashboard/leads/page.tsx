@@ -226,7 +226,7 @@ export default function AdminLeadsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-taupe/30">
         <div>
           <div className="inline-flex items-center gap-2 mb-1.5">
-            <span className="w-2 h-2 rounded-full bg-forest-green animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-forest-green"></span>
             <span className="text-[10px] uppercase font-bold tracking-widest text-brown">
               CRUD Database • Real-Time Pipeline Konsultasi
             </span>

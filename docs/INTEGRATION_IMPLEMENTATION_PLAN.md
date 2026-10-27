@@ -81,13 +81,15 @@ Sesuai arahan arsitektur enterprise holding, ByDaisy tidak mengakses database SQ
 
 1. **Penerapan SDK Klien Resmi ([lib/luxima-api.ts](file:///Users/siddiq/Desktop/WEB%20Project/bydaisy/lib/luxima-api.ts)):**
    - Menghubungkan seluruh modul ByDaisy ke `https://api.luxima.id` dengan header `X-Tenant-ID: bydaisy`, `X-Organization-ID: luxima-awedz-ent-01`, dan token otorisasi Bearer.
-   - Mengenkapsulasi operasi CRUD untuk Real Weddings, Leads, Vendors, Calendar, Consultations, Reviews, Journal, Settings, dan Packages.
+   - Mengenkapsulasi operasi CRUD untuk Real Weddings, Leads, Vendors, Calendar, Consultations, Reviews, Journal, Settings, Packages, dan Gallery.
 2. **Autentikasi & Single Sign-On (SSO):**
-   - Rute login `/api/auth/login`, sesi aktif `/api/auth/me`, dan logout `/api/auth/logout` telah aktif dan terhubung ke LUXIMA ID SSO.
-   - Token disimpan secara aman pada cookie HTTP-only (`luxima_auth_token`).
+   - **Halaman Login Enterprise ([app/login/page.tsx](file:///Users/siddiq/Desktop/WEB%20Project/bydaisy/app/login/page.tsx)):** Antarmuka login bertaraf luxury dengan tipografi *The Seasons*, lencana resmi *LUXIMA - AWEDZ Enterprise SSO*, tombol quick-fill kredensial concierge demo, dan alur redirect mulus ke dashboard.
+   - **Rute Autentikasi:** Rute login `/api/auth/login`, sesi aktif `/api/auth/me`, dan logout `/api/auth/logout` telah aktif dan terhubung ke LUXIMA ID SSO. Token disimpan secara aman pada cookie HTTP-only (`luxima_auth_token`).
+   - **Integrasi Sesi di Admin Layout ([app/(admin)/layout.tsx](file:///Users/siddiq/Desktop/WEB%20Project/bydaisy/app/%28admin%29/layout.tsx)):** Header admin otomatis memvalidasi sesi via `/api/auth/me`, menampilkan inisial dan nama pengguna terautentikasi (*Daisy Iskandar*), status aktif *LUXIMA SSO Active*, dan dropdown aksi dengan tombol *Keluar (Logout)* fungsional.
+   - **Interactive Developer Hub Tester ([app/(admin)/dashboard/developer/page.tsx](file:///Users/siddiq/Desktop/WEB%20Project/bydaisy/app/%28admin%29/dashboard/developer/page.tsx)):** Kartu pengujian sesi SSO langsung dengan simulasi handshake live ke `/api/auth/login` dan `/api/auth/me`.
 3. **Peniadaan Akses Database Langsung (Zero Direct DB Coupling):**
+   - Seluruh 10 route handlers API serta 2 receiver sinkronisasi (`luxima-sync`, `awedz-sync`) telah dimigrasikan 100% menggunakan `luximaApi.*`. Tidak ada modul aplikasi yang mengakses langsung ke SQL.
    - Seluruh kueri SQL, connection pooling (PgBouncer), dan proteksi Row-Level Security (RLS) dikelola sepenuhnya di sisi server LUXIMA-API.
-   - ByDaisy bebas dari risiko kebocoran kredensial database langsung atau konflik migrasi tabel.
 4. **Resilience & Zero Downtime Fallback:**
    - Jika koneksi ke `https://api.luxima.id` mengalami timeout atau server sedang maintenance, SDK [lib/luxima-api.ts](file:///Users/siddiq/Desktop/WEB%20Project/bydaisy/lib/luxima-api.ts) secara otomatis menyajikan data dari snapshot lokal terverifikasi di folder `data/*.json`. Website publik ByDaisy tetap menyala 100%.
 

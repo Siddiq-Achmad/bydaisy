@@ -84,10 +84,10 @@ export default function ReviewsPage() {
 
             <div className="p-3">
               <div className="font-serif text-3xl sm:text-4xl text-black font-normal">
-                0%
+                14+
               </div>
               <div className="text-[11px] uppercase tracking-wider text-warm-taupe mt-1 font-medium">
-                Krisis Tak Teratasi
+                Kru On-Site Resmi
               </div>
             </div>
           </div>

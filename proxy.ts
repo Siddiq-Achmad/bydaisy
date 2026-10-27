@@ -5,6 +5,20 @@ import { resolveEnterpriseDomain } from "@/lib/enterprise";
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host");
   const { tenantId, domain, isCustomDomain } = resolveEnterpriseDomain(host);
+  const pathname = request.nextUrl.pathname;
+
+  // Enterprise session guard: protect /dashboard routes
+  const token = request.cookies.get("luxima_auth_token")?.value;
+  if (pathname.startsWith("/dashboard") && !token) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("from", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  // Redirect already authenticated user from /login to /dashboard
+  if (pathname === "/login" && token) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 
   // Clone headers and inject enterprise multi-tenant context
   const requestHeaders = new Headers(request.headers);
@@ -22,6 +36,21 @@ export function proxy(request: NextRequest) {
   // Inject response headers for edge caching & proxy verification
   response.headers.set("x-tenant-id", tenantId);
   response.headers.set("x-enterprise-powered-by", "LUXIMA-AWEDZ-ENTERPRISE");
+
+  // Security & Best Practice headers
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("X-Frame-Options", "SAMEORIGIN");
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+
+  // Strict noindex for private internal routes
+  if (
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/api")
+  ) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  }
 
   return response;
 }

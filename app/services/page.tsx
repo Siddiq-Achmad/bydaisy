@@ -19,7 +19,7 @@ export default function ServicesPage() {
       subhead: "Comprehensive 3-9 Months Full Journey",
       icon: Clock,
       description:
-        "Pendampingan paripurna dari titik awal konsepsi hingga hari H usai. Kami menyusun estimasi anggaran, mengkurasi vendor terbaik yang selaras dengan selera Anda, membuat moodboard tematik, hingga technical meeting akbar.",
+        "Pendampingan menyeluruh dari konsepsi awal hingga acara selesai. Kami menyusun estimasi anggaran, mengkurasi vendor terbaik sesuai selera Anda, merancang moodboard tematik, hingga technical meeting akbar.",
       image:
         "/assets/images/service-briefing.jpg",
       deliverables: [
@@ -37,7 +37,7 @@ export default function ServicesPage() {
       subhead: "D-Day Execution & Minute-by-Minute Timekeeping",
       icon: Layers,
       description:
-        "Bagi pasangan yang telah memilih vendor secara mandiri namun menginginkan orkestrasi panggung dan operasional yang sempurna di hari bahagia. Kami memastikan seluruh pihak keluarga dan vendor bekerja serasi tanpa hambatan.",
+        "Bagi pasangan yang telah memilih vendor secara mandiri namun menginginkan orkestrasi panggung dan operasional yang rapi di hari bahagia. Kami memastikan seluruh pihak keluarga dan vendor bekerja serasi tanpa hambatan.",
       image:
         "/assets/images/img41.jpg",
       deliverables: [
@@ -52,7 +52,7 @@ export default function ServicesPage() {
     {
       id: "decoration-styling",
       title: "Decoration & Styling",
-      subhead: "Bespoke Spatial Art & Floristry",
+      subhead: "Tata Artistik Ruang & Seni Bunga",
       icon: Palette,
       description:
         "Mewujudkan atmosfer visual yang memukau dan bercerita. Dari keagungan ornamen songket dan ukiran adat khas Nusantara hingga modern botanical chandelier ballroom bertaraf internasional.",
@@ -94,7 +94,7 @@ export default function ServicesPage() {
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-8 h-px bg-warm-taupe" />
               <span className="text-xs uppercase tracking-widest text-brown font-semibold">
-                ByDaisy Matrimonial Solutions
+                Perencanaan & Pengorganisasian Pernikahan ByDaisy
               </span>
             </div>
 

@@ -35,37 +35,50 @@ export function HorizontalPortfolio({
     const track = trackRef.current;
     if (!section || !track) return;
 
-    // Pinning & Horizontal translation scrub via GSAP ScrollTrigger
-    const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
+    const mm = gsap.matchMedia();
 
-    const tween = gsap.to(track, {
-      x: getScrollAmount,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        pin: true,
-        scrub: 1,
-        start: "top top",
-        end: () => `+=${track.scrollWidth - window.innerWidth}`,
-        invalidateOnRefresh: true,
+    mm.add(
+      {
+        isDesktop: "(min-width: 768px)",
+        prefersReduced: "(prefers-reduced-motion: reduce)",
       },
-    });
+      (context) => {
+        const { isDesktop, prefersReduced } = context.conditions as {
+          isDesktop: boolean;
+          prefersReduced: boolean;
+        };
 
-    return () => {
-      tween.kill();
-      if (tween.scrollTrigger) tween.scrollTrigger.kill();
-    };
+        if (isDesktop && !prefersReduced) {
+          const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
+
+          gsap.to(track, {
+            x: getScrollAmount,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              pin: true,
+              scrub: 1,
+              start: "top top",
+              end: () => `+=${track.scrollWidth - window.innerWidth}`,
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+      }
+    );
+
+    return () => mm.revert();
   }, []);
 
   return (
     <div
       ref={sectionRef}
       id="portfolio"
-      className="relative overflow-hidden bg-canvas min-h-screen flex items-center border-t border-taupe/30"
+      className="relative overflow-x-auto md:overflow-hidden bg-canvas min-h-screen flex items-center border-t border-taupe/30"
     >
       <div
         ref={trackRef}
-        className="flex flex-nowrap items-center h-screen px-8 md:px-16 gap-8 md:gap-14 will-change-transform"
+        className="flex flex-nowrap items-center h-auto py-12 md:py-0 md:h-screen px-6 sm:px-8 md:px-16 gap-6 md:gap-14 will-change-transform"
       >
         {/* Intro Card */}
         <div className="w-[320px] md:w-[420px] shrink-0 flex flex-col justify-center pr-6">
@@ -96,7 +109,7 @@ export function HorizontalPortfolio({
 
           <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-warm-taupe">
             <span>Scroll Horisontal</span>
-            <span className="animate-pulse">→</span>
+            <span className="font-sans text-forest-green">→</span>
           </div>
         </div>
 

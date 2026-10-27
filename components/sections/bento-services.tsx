@@ -35,17 +35,18 @@ function BentoCard({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
     setCoords({ x, y });
 
-    // Subtle 3D Tilt calculation (clamped to +/- 7 degrees)
+    // Subtle 3D Tilt calculation (clamped to comfortable +/- 4 degrees)
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateY = ((x - centerX) / centerX) * 5.5;
-    const rotateX = -((y - centerY) / centerY) * 5.5;
+    const rotateY = ((x - centerX) / centerX) * 4;
+    const rotateX = -((y - centerY) / centerY) * 4;
 
     setTilt({ x: rotateX, y: rotateY });
   };
@@ -71,7 +72,7 @@ function BentoCard({
           : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
         transition: isHovered
           ? "transform 0.1s ease-out"
-          : "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)",
+          : "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
       }}
       className="group relative flex flex-col rounded-3xl overflow-hidden bg-canvas border border-taupe/40 shadow-lg will-change-transform"
     >
@@ -173,7 +174,7 @@ export function BentoServices({ onOpenConsultation }: BentoServicesProps) {
     },
     {
       title: "Wedding Organizer",
-      badge: "D-Day Seamless Flow",
+      badge: "Eksekusi Hari-H Presisi",
       badgeColor: "text-brown",
       href: "/services/wedding-organizer",
       description:

@@ -371,12 +371,12 @@ export default function PortfolioPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-7 space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest-green/10 text-forest-green text-[10px] uppercase font-bold tracking-widest">
-                  <span className="w-2 h-2 rounded-full bg-forest-green animate-pulse"></span>
+                  <span className="w-2 h-2 rounded-full bg-forest-green"></span>
                   Status Reservasi Terkini
                 </div>
 
                 <h2 className="font-serif text-3xl sm:text-4xl text-black font-editorial font-light leading-snug">
-                  Kalender Reservasi Musim Pernikahan 2025 / 2026 Dibuka
+                  Kalender Reservasi Musim Pernikahan 2026 / 2027 Dibuka
                 </h2>
 
                 <p className="text-sm text-black/75 font-light leading-relaxed max-w-xl">

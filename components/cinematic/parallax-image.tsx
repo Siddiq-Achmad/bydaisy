@@ -33,7 +33,11 @@ export function ParallaxImage({
     const image = imageRef.current;
     if (!container || !image) return;
 
-    // Smooth scrub parallax as required: yPercent: -20, ease: 'none'
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    // Smooth scrub parallax
     const anim = gsap.to(image, {
       yPercent: -20,
       ease: "none",

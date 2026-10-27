@@ -586,4 +586,58 @@ export const luximaApi = {
       return { success: true, data: updates, source: "luxima-api-cached" };
     },
   },
+
+  // 11. Public Gallery Items
+  gallery: {
+    async getAll(): Promise<LuximaApiResponse<any[]>> {
+      const apiRes = await luximaFetch<any[]>(`/v1/enterprise/${TENANT_ID}/gallery`);
+      if (apiRes.success && apiRes.data) return apiRes;
+
+      const fallback = await db.gallery.getAll();
+      return { success: true, count: fallback.length, data: fallback, source: "luxima-api-cached" };
+    },
+
+    async create(item: any): Promise<LuximaApiResponse<any>> {
+      const apiRes = await luximaFetch(`/v1/enterprise/${TENANT_ID}/gallery`, {
+        method: "POST",
+        body: JSON.stringify(item),
+      });
+      if (apiRes.success && apiRes.data) return apiRes;
+
+      const items = await db.gallery.getAll();
+      const newItem = { ...item, id: item.id || `gal-${Date.now()}` };
+      items.unshift(newItem);
+      await db.gallery.saveAll(items);
+      return { success: true, data: newItem, source: "luxima-api-cached" };
+    },
+
+    async update(id: string, updates: any): Promise<LuximaApiResponse<any>> {
+      const apiRes = await luximaFetch(`/v1/enterprise/${TENANT_ID}/gallery/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(updates),
+      });
+      if (apiRes.success && apiRes.data) return apiRes;
+
+      const items = await db.gallery.getAll();
+      const idx = items.findIndex((g: any) => g.id === id);
+      if (idx !== -1) {
+        items[idx] = { ...items[idx], ...updates };
+        await db.gallery.saveAll(items);
+        return { success: true, data: items[idx], source: "luxima-api-cached" };
+      }
+      return { success: false, data: null, error: "Not found", source: "luxima-api-cached" };
+    },
+
+    async delete(id: string): Promise<LuximaApiResponse<any>> {
+      const apiRes = await luximaFetch(`/v1/enterprise/${TENANT_ID}/gallery/${id}`, {
+        method: "DELETE",
+      });
+      if (apiRes.success) return apiRes;
+
+      const items = await db.gallery.getAll();
+      const filtered = items.filter((g: any) => g.id !== id);
+      await db.gallery.saveAll(filtered);
+      return { success: true, data: { id }, source: "luxima-api-cached" };
+    },
+  },
 };

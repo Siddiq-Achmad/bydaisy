@@ -25,15 +25,27 @@ export function SmoothScrollProvider({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
+    // Check if user prefers reduced motion (vestibular accessibility)
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      // Keep standard native scroll behavior without wheel hijacking
+      ScrollTrigger.update();
+      return;
+    }
+
+    // Initialize Lenis smooth scroll with optimized frame pacing
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+      syncTouch: false,
     });
 
     lenisRef.current = lenis;
@@ -50,7 +62,7 @@ export function SmoothScrollProvider({
     };
     gsap.ticker.add(tickerCallback);
 
-    // 3. Disable lag smoothing as per specification
+    // 3. Disable lag smoothing for instant responsiveness
     gsap.ticker.lagSmoothing(0);
 
     return () => {

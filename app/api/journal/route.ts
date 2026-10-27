@@ -1,21 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "journal.json");
-
-async function readData() {
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(raw);
-  } catch (err) {
-    return { categories: [], articles: [] };
-  }
-}
-
-async function writeData(data: any) {
-  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
-}
+import { luximaApi } from "@/lib/luxima-api";
 
 // GET /api/journal
 export async function GET(request: NextRequest) {
@@ -24,31 +8,35 @@ export async function GET(request: NextRequest) {
   const slug = searchParams.get("slug");
   const id = searchParams.get("id");
 
-  const data = await readData();
+  const result = await luximaApi.journal.getAll();
+  const data = result.data || { categories: [], articles: [] };
+  const articles = data.articles || [];
 
   if (id || slug) {
-    const item = data.articles.find((a: any) => a.id === id || a.slug === slug);
+    const item = articles.find((a: any) => a.id === id || a.slug === slug);
     if (!item) {
       return NextResponse.json({ success: false, error: "Artikel tidak ditemukan" }, { status: 404 });
     }
-    return NextResponse.json({ success: true, data: item });
+    return NextResponse.json({ success: true, data: item, source: result.source });
   }
 
   if (category && category !== "all") {
-    const filtered = data.articles.filter((a: any) => a.category === category);
+    const filtered = articles.filter((a: any) => a.category === category);
     return NextResponse.json({
       success: true,
-      categories: data.categories,
+      categories: data.categories || [],
       count: filtered.length,
       data: filtered,
+      source: result.source,
     });
   }
 
   return NextResponse.json({
     success: true,
-    categories: data.categories,
-    count: data.articles.length,
-    data: data.articles,
+    categories: data.categories || [],
+    count: articles.length,
+    data: data,
+    source: result.source,
   });
 }
 
@@ -57,41 +45,41 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    if (!body.title || !body.excerpt) {
+    if (!body.title || !body.category) {
       return NextResponse.json(
-        { success: false, error: "Judul dan ringkasan artikel wajib diisi" },
+        { success: false, error: "Judul dan kategori artikel wajib diisi" },
         { status: 400 }
       );
     }
 
-    const data = await readData();
     const newId = body.id || `art-${Date.now()}`;
-    const slug = body.slug || body.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    const slug =
+      body.slug ||
+      body.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)+/g, "");
 
     const newArticle = {
       id: newId,
-      title: body.title,
       slug,
-      category: body.category || "rundown",
-      categoryLabel: body.categoryLabel || "Checklist & Rundown",
-      readTime: body.readTime || "5 menit baca",
+      title: body.title,
+      category: body.category,
+      author: body.author || "ByDaisy Editorial Team",
       date: body.date || new Date().toLocaleDateString("id-ID", { day: "2-digit", month: "long", year: "numeric" }),
-      excerpt: body.excerpt,
+      readTime: body.readTime || "5 Menit Baca",
       image: body.image || "/assets/images/journal-checklist.jpg",
-      author: body.author || "Daisy & Tim Kreatif ByDaisy",
-      authorRole: body.authorRole || "Executive Matrimonial Directors",
-      views: 0,
+      summary: body.summary || body.excerpt || "",
+      views: body.views || "100 pembaca",
       status: body.status || "Published",
-      sections: body.sections || [],
       keyTakeaways: body.keyTakeaways || [],
       createdAt: new Date().toISOString(),
     };
 
-    data.articles.unshift(newArticle);
-    await writeData(data);
+    const result = await luximaApi.journal.create(newArticle);
 
     return NextResponse.json(
-      { success: true, message: "Artikel jurnal berhasil diterbitkan", data: newArticle },
+      { success: true, message: "Artikel editorial berhasil ditambahkan via LUXIMA-API", data: result.data, source: result.source },
       { status: 201 }
     );
   } catch (error: any) {
@@ -107,23 +95,16 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ success: false, error: "ID artikel wajib disertakan" }, { status: 400 });
     }
 
-    const data = await readData();
-    const index = data.articles.findIndex((a: any) => a.id === body.id);
-    if (index === -1) {
+    const result = await luximaApi.journal.update(body.id, body);
+    if (!result.success) {
       return NextResponse.json({ success: false, error: "Artikel tidak ditemukan" }, { status: 404 });
     }
 
-    data.articles[index] = {
-      ...data.articles[index],
-      ...body,
-      updatedAt: new Date().toISOString(),
-    };
-
-    await writeData(data);
     return NextResponse.json({
       success: true,
-      message: "Artikel jurnal berhasil diperbarui",
-      data: data.articles[index],
+      message: "Artikel editorial berhasil diperbarui via LUXIMA-API",
+      data: result.data,
+      source: result.source,
     });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
@@ -140,16 +121,8 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ success: false, error: "ID parameter wajib disertakan" }, { status: 400 });
     }
 
-    const data = await readData();
-    const filtered = data.articles.filter((a: any) => a.id !== id);
-
-    if (filtered.length === data.articles.length) {
-      return NextResponse.json({ success: false, error: "Artikel tidak ditemukan" }, { status: 404 });
-    }
-
-    data.articles = filtered;
-    await writeData(data);
-    return NextResponse.json({ success: true, message: "Artikel jurnal berhasil dihapus" });
+    const result = await luximaApi.journal.delete(id);
+    return NextResponse.json({ success: true, message: "Artikel berhasil dihapus via LUXIMA-API", source: result.source });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }

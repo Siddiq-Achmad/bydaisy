@@ -129,7 +129,7 @@ export default function DecorationStylingDetailPage() {
               <div className="inline-flex items-center gap-2 mb-4">
                 <span className="w-8 h-px bg-warm-taupe" />
                 <span className="text-xs uppercase tracking-widest text-brown font-semibold">
-                  Bespoke Spatial Art & Floristry Architecture
+                  Tata Ruang & Seni Bunga Pelaminan
                 </span>
               </div>
 

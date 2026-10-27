@@ -51,9 +51,9 @@ export function GallerySection({ onOpenConsultation }: GallerySectionProps) {
         {/* Action Button & Social Proof Calendar Bar */}
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-canvas border border-taupe/35 shadow-sm">
           <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-forest-green animate-pulse"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-forest-green"></span>
             <span className="text-xs uppercase tracking-wider text-black font-medium">
-              Kalender Reservasi 2025/2026 Sedang Dibuka (Slot Terbatas)
+              Kalender Reservasi 2026/2027 Sedang Dibuka (Slot Terbatas)
             </span>
           </div>
 

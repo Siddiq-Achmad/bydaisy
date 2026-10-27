@@ -64,7 +64,7 @@ export default function WeddingOrganizerDetailPage() {
       role: "VIP Protocol Escort (2 Orang)",
       tag: "Pengawalan Pejabat",
       desc: "Menyambut kedatangan tamu kehormatan, pejabat pemerintahan, tokoh adat, dan mengarahkan langsung ke meja jamuan VIP.",
-      icon: Sparkles,
+      icon: Users,
     },
     {
       role: "Runner & Handover Logistik (2 Orang)",
@@ -196,7 +196,7 @@ export default function WeddingOrganizerDetailPage() {
                   className="px-6 py-3.5 rounded-full border border-taupe/60 text-black text-xs uppercase tracking-widest font-semibold hover:bg-sand transition-colors flex items-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 text-forest-green" />
-                  <span>Chat WhatsApp Hotlline</span>
+                  <span>Chat WhatsApp Hotline</span>
                 </a>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function WeddingOrganizerDetailPage() {
             <div className="lg:col-span-5 space-y-4">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl bg-sand border border-taupe/40 group">
                 <Image
-                  src="/assets/images/service-outdoor-ensemble.jpg"
+                  src="/assets/images/img41.jpg"
                   alt="Tim profesional Wedding Organizer ByDaisy berseragam rapi"
                   fill
                   priority
@@ -217,7 +217,7 @@ export default function WeddingOrganizerDetailPage() {
                     Formasi Kru Lapangan
                   </span>
                   <strong className="font-serif text-lg font-light block">
-                    Eksekusi Tanpa Kompromi
+                    Eksekusi Rapi & Tepat Waktu
                   </strong>
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function WeddingOrganizerDetailPage() {
                 </div>
                 <div className="relative h-40 rounded-2xl overflow-hidden shadow-sm border border-taupe/30 bg-sand">
                   <Image
-                    src="/assets/images/journal-coordination.jpg"
+                    src="/assets/images/img78.jpg"
                     alt="Koordinasi walkie-talkie tim WO di balik panggung"
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"

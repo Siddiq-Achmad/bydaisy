@@ -183,6 +183,8 @@ Seluruh status konektor dan strategi database dapat dipantau langsung oleh tim m
 
 Fitur yang tersedia pada Developer Hub:
 1. **Interactive Database Architecture Selector**: Panel visual perbandingan antara Shared Database, Schema Isolation, dan Dedicated Database.
-2. **API Endpoint Health Check**: Pengujian otomatis status 10 endpoint RESTful platform.
-3. **Webhook Payload Simulator**: Generator payload pengujian format LUXIMA dan AWEDZ dengan verifikasi signature.
-4. **Cache Invalidation**: Tombol flush cache Next.js App Router secara instan.
+2. **LUXIMA Enterprise Single Sign-On (SSO) Tester**: Pengujian langsung alur autentikasi `/api/auth/login` dan verifikasi sesi token `/api/auth/me` tanpa database lokal.
+3. **Portal Login Enterprise Langsung**: Akses cepat menuju `/login` untuk simulasi sesi login enterprise owner dan lead planner.
+4. **API Endpoint Health Check**: Pengujian otomatis status seluruh 13 endpoint RESTful platform.
+5. **Webhook Payload Simulator**: Generator payload pengujian format LUXIMA CRM dan AWEDZ Event Platform dengan verifikasi signature.
+6. **Cache Invalidation**: Tombol flush cache Next.js App Router secara instan.

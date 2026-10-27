@@ -23,16 +23,30 @@ export function HeroSection({ onOpenConsultation }: HeroSectionProps) {
   const bgImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     const ctx = gsap.context(() => {
-      // 1. Text Line & Character Reveal (Split Animation)
       const letters = headlineRef.current?.querySelectorAll(".split-char");
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+      if (prefersReducedMotion) {
+        if (badgeRef.current) gsap.set(badgeRef.current, { opacity: 1, y: 0 });
+        if (letters && letters.length > 0) gsap.set(letters, { yPercent: 0, opacity: 1 });
+        if (subtitleRef.current) gsap.set(subtitleRef.current, { opacity: 1, y: 0 });
+        if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 1, y: 0 });
+        if (cardRef.current) gsap.set(cardRef.current, { opacity: 1, y: 0, scale: 1 });
+        return;
+      }
+
+      // 1. Text Line & Character Reveal (Snappy & Purposeful)
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       if (badgeRef.current) {
         tl.fromTo(
           badgeRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.9, delay: 0.2 }
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.6, delay: 0.1 }
         );
       }
 
@@ -43,38 +57,38 @@ export function HeroSection({ onOpenConsultation }: HeroSectionProps) {
           {
             yPercent: 0,
             opacity: 1,
-            duration: 1.1,
-            stagger: 0.02,
+            duration: 0.75,
+            stagger: 0.015,
             ease: "power3.out",
           },
-          "-=0.6"
+          "-=0.4"
         );
       }
 
       if (subtitleRef.current) {
         tl.fromTo(
           subtitleRef.current,
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" },
-          "-=0.7"
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          "-=0.5"
         );
       }
 
       if (ctaRef.current) {
         tl.fromTo(
           ctaRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          "-=0.6"
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" },
+          "-=0.45"
         );
       }
 
       if (cardRef.current) {
         tl.fromTo(
           cardRef.current,
-          { opacity: 0, y: 30, scale: 0.95 },
-          { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" },
-          "-=0.5"
+          { opacity: 0, y: 20, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" },
+          "-=0.4"
         );
       }
 
@@ -82,16 +96,16 @@ export function HeroSection({ onOpenConsultation }: HeroSectionProps) {
       if (bgImageRef.current && sectionRef.current) {
         gsap.fromTo(
           bgImageRef.current,
-          { yPercent: -8, scale: 1.08 },
+          { yPercent: -6, scale: 1.05 },
           {
-            yPercent: 10,
+            yPercent: 8,
             scale: 1.0,
             ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top top",
               end: "bottom top",
-              scrub: 1.2,
+              scrub: 1.0,
             },
           }
         );
@@ -160,7 +174,7 @@ export function HeroSection({ onOpenConsultation }: HeroSectionProps) {
             >
               <span className="w-8 h-px bg-warm-taupe"></span>
               <p className="font-serif italic text-base md:text-lg text-brown tracking-wide flex items-center gap-2 font-light">
-                <span>You Dream It, We Creat It!</span>
+                <span>You Dream It, We Create It!</span>
                 <Sparkles className="w-3.5 h-3.5 text-warm-taupe" />
               </p>
             </div>
@@ -181,14 +195,14 @@ export function HeroSection({ onOpenConsultation }: HeroSectionProps) {
               </div>
             </h1>
 
-            {/* Indonesian Luxury Narrative */}
+            {/* Grounded & Authentic Matrimonial Narrative */}
             <p
               ref={subtitleRef}
               className="text-black/80 text-base md:text-lg max-w-xl font-light leading-relaxed mb-10 opacity-0"
             >
-              Kami hadir untuk mewujudkan hari istimewa Anda dengan perencanaan
-              yang matang, detail yang sempurna, dan tim kurasi wedding yang
-              berpengalaman sejak 2019.
+              Sejak 2019, ByDaisy mengawal pernikahan di Aceh dan Sumatra, merajut
+              kehangatan tradisi keluarga dengan eksekusi panggung detik-ke-detik yang
+              tenang dan teratur.
             </p>
 
             {/* CTA Group */}
@@ -238,7 +252,7 @@ export function HeroSection({ onOpenConsultation }: HeroSectionProps) {
               className="bg-canvas/92 backdrop-blur-md border border-taupe/45 p-6 rounded-2xl shadow-xl max-w-sm transition-transform duration-300 hover:-translate-y-1 opacity-0 block group cursor-pointer"
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 rounded-full bg-forest-green animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-forest-green"></span>
                 <span className="font-serif text-xs tracking-wider text-brown font-light">
                   Curated Romance
                 </span>

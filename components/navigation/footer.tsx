@@ -198,7 +198,7 @@ export function Footer() {
           <p>© 2026 ByDaisy Planner. All rights reserved.</p>
           <div className="flex items-center gap-3">
             <span className="uppercase tracking-widest text-[10px]">
-              Bespoke Matrimonial Artistry by <a href="https://luxima.id" target="_blank" rel="noopener noreferrer" className="hover:text-forest-green underline underline-offset-2">Luxima.id</a>
+              Curated Matrimonial Artistry by <a href="https://luxima.id" target="_blank" rel="noopener noreferrer" className="hover:text-forest-green underline underline-offset-2">Luxima.id</a>
             </span>
           </div>
         </div>

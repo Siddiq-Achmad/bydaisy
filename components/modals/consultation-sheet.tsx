@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { X, Check, ArrowRight, ArrowLeft, Send } from "lucide-react";
 
 interface ConsultationSheetProps {
@@ -15,6 +15,7 @@ export function ConsultationSheet({
   onClose,
   defaultService = "Wedding Planner",
 }: ConsultationSheetProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     coupleNames: "",
@@ -91,22 +92,26 @@ ${formData.notes ? `• Catatan: ${formData.notes}` : ""}`;
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: shouldReduceMotion ? 0.1 : 0.3 }}
             onClick={onClose}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
           />
 
           {/* Sheet Drawer with Spring Physics */}
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{
-              type: "spring",
-              damping: 26,
-              stiffness: 240,
-              mass: 0.9,
-            }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { x: "100%" }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { x: 0 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { x: "100%" }}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0.15 }
+                : {
+                    type: "spring",
+                    damping: 26,
+                    stiffness: 240,
+                    mass: 0.9,
+                  }
+            }
             className="relative z-10 w-full max-w-md bg-canvas border-l border-taupe/40 h-full p-6 sm:p-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
           >
             {/* Header */}

@@ -12,22 +12,26 @@ export function BrandMarquee() {
   const tickerTrackRef = useRef<HTMLDivElement>(null);
 
   const items = [
-    "Bespoke Wedding Planning",
+    "Perencanaan Pernikahan Personal",
     "Minute-By-Minute Coordination",
     "Luxury Floral & Scenic Decor",
     "Curated Vendor Network",
     "Banda Aceh & Beyond",
-    "Haute Couture Matrimonial Staging",
+    "Tata Artistik Pelaminan Tradisi & Modern",
   ];
 
   // Repeat items 4 times to ensure an unbroken horizontal strip across all screen widths
   const marqueeItems = [...items, ...items, ...items, ...items];
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
       if (!containerRef.current || !scrollTrackRef.current || !tickerTrackRef.current) return;
 
-      // 1. Continuous luxury ambient glide (runs indefinitely without pause)
+      // 1. Continuous luxury ambient glide
       const loopTween = gsap.to(tickerTrackRef.current, {
         xPercent: -50,
         ease: "none",
@@ -36,7 +40,6 @@ export function BrandMarquee() {
       });
 
       // 2. Scroll-motion scrub via GSAP ScrollTrigger
-      // Directly scrubs the outer track horizontally as the user scrolls through the page
       gsap.fromTo(
         scrollTrackRef.current,
         { x: 100 },

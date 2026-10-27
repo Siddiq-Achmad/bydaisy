@@ -9,37 +9,40 @@ export function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isPointerDevice, setIsPointerDevice] = useState(false);
   const [hoverLabel, setHoverLabel] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only activate custom cursor on fine pointer devices (desktop/mouse)
-    const mediaQuery = window.matchMedia("(pointer: fine)");
-    if (!mediaQuery.matches) return;
+    // Only activate custom cursor on fine pointer devices and when reduced motion is not requested
+    const pointerQuery = window.matchMedia("(pointer: fine)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (!pointerQuery.matches || motionQuery.matches) return;
     setIsPointerDevice(true);
 
     const cursor = cursorRef.current;
     const follower = followerRef.current;
     if (!cursor || !follower) return;
 
-    let mouseX = -100;
-    let mouseY = -100;
+    // High performance quickTo setters to prevent tween recreation on every mousemove
+    const quickCursorX = gsap.quickTo(cursor, "x", { duration: 0.08, ease: "power2.out" });
+    const quickCursorY = gsap.quickTo(cursor, "y", { duration: 0.08, ease: "power2.out" });
+    const quickFollowerX = gsap.quickTo(follower, "x", { duration: 0.35, ease: "power3.out" });
+    const quickFollowerY = gsap.quickTo(follower, "y", { duration: 0.35, ease: "power3.out" });
 
     const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      if (!isVisible) setIsVisible(true);
+      quickCursorX(e.clientX);
+      quickCursorY(e.clientY);
+      quickFollowerX(e.clientX);
+      quickFollowerY(e.clientY);
+    };
 
-      gsap.to(cursor, {
-        x: mouseX,
-        y: mouseY,
-        duration: 0.1,
-        ease: "power2.out",
-      });
+    const onDocumentMouseLeave = () => {
+      setIsVisible(false);
+    };
 
-      gsap.to(follower, {
-        x: mouseX,
-        y: mouseY,
-        duration: 0.45,
-        ease: "power3.out",
-      });
+    const onDocumentMouseEnter = () => {
+      setIsVisible(true);
     };
 
     const onMouseEnterInteractive = (e: MouseEvent) => {
@@ -47,11 +50,7 @@ export function CustomCursor() {
       if (target) {
         setIsHovered(true);
         const customText = target.getAttribute("data-cursor");
-        if (customText) {
-          setHoverLabel(customText);
-        } else {
-          setHoverLabel(null);
-        }
+        setHoverLabel(customText || null);
       }
     };
 
@@ -64,15 +63,19 @@ export function CustomCursor() {
     };
 
     window.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseleave", onDocumentMouseLeave);
+    document.addEventListener("mouseenter", onDocumentMouseEnter);
     document.addEventListener("mouseover", onMouseEnterInteractive);
     document.addEventListener("mouseout", onMouseLeaveInteractive);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseleave", onDocumentMouseLeave);
+      document.removeEventListener("mouseenter", onDocumentMouseEnter);
       document.removeEventListener("mouseover", onMouseEnterInteractive);
       document.removeEventListener("mouseout", onMouseLeaveInteractive);
     };
-  }, []);
+  }, [isVisible]);
 
   if (!isPointerDevice) return null;
 
@@ -83,7 +86,7 @@ export function CustomCursor() {
         ref={cursorRef}
         className="pointer-events-none fixed top-0 left-0 z-[9999] -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-forest-green transition-opacity duration-200"
         style={{
-          opacity: isHovered ? 0 : 0.85,
+          opacity: !isVisible ? 0 : isHovered ? 0 : 0.85,
         }}
       />
 
@@ -91,9 +94,11 @@ export function CustomCursor() {
       <div
         ref={followerRef}
         className={`pointer-events-none fixed top-0 left-0 z-[9998] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full border transition-all duration-300 ease-out ${
-          isHovered
-            ? "w-14 h-14 bg-warm-taupe/20 border-warm-taupe scale-100 backdrop-blur-[2px]"
-            : "w-8 h-8 bg-transparent border-forest-green/40 scale-100"
+          !isVisible
+            ? "opacity-0"
+            : isHovered
+            ? "opacity-100 w-14 h-14 bg-warm-taupe/20 border-warm-taupe scale-100 backdrop-blur-[2px]"
+            : "opacity-100 w-8 h-8 bg-transparent border-forest-green/40 scale-100"
         }`}
       >
         {hoverLabel && (

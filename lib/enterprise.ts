@@ -1,5 +1,5 @@
 /**
- * ByDaisy Luxury Matrimonial Platform — Enterprise Multi-Tenant Architecture
+ * ByDaisy Luxury Matrimonial Platform: Enterprise Multi-Tenant Architecture
  * Powering ByDaisy as an Autonomous Enterprise Business Unit within the LUXIMA & AWEDZ Ecosystem.
  */
 

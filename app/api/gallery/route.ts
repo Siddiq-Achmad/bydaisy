@@ -1,33 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "gallery.json");
-
-async function readData() {
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(raw);
-  } catch (err) {
-    return [];
-  }
-}
-
-async function writeData(data: any) {
-  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
-}
+import { luximaApi } from "@/lib/luxima-api";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const category = searchParams.get("category");
 
-  const items = await readData();
+  const result = await luximaApi.gallery.getAll();
+  const items = result.data || [];
+
   if (category && category !== "all") {
     const filtered = items.filter((i: any) => i.category === category);
-    return NextResponse.json({ success: true, count: filtered.length, data: filtered });
+    return NextResponse.json({ success: true, count: filtered.length, data: filtered, source: result.source });
   }
 
-  return NextResponse.json({ success: true, count: items.length, data: items });
+  return NextResponse.json({ success: true, count: items.length, data: items, source: result.source });
 }
 
 export async function POST(request: NextRequest) {
@@ -40,7 +26,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const items = await readData();
     const newItem = {
       id: body.id || `gal-${Date.now().toString().slice(-4)}`,
       title: body.title,
@@ -52,11 +37,10 @@ export async function POST(request: NextRequest) {
       createdAt: new Date().toISOString(),
     };
 
-    items.unshift(newItem);
-    await writeData(items);
+    const result = await luximaApi.gallery.create(newItem);
 
     return NextResponse.json(
-      { success: true, message: "Foto galeri berhasil ditambahkan", data: newItem },
+      { success: true, message: "Foto galeri berhasil ditambahkan via LUXIMA-API", data: result.data, source: result.source },
       { status: 201 }
     );
   } catch (err: any) {
@@ -71,23 +55,16 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ success: false, error: "ID foto wajib disertakan" }, { status: 400 });
     }
 
-    const items = await readData();
-    const index = items.findIndex((i: any) => i.id === body.id);
-    if (index === -1) {
+    const result = await luximaApi.gallery.update(body.id, body);
+    if (!result.success) {
       return NextResponse.json({ success: false, error: "Foto tidak ditemukan" }, { status: 404 });
     }
 
-    items[index] = {
-      ...items[index],
-      ...body,
-      updatedAt: new Date().toISOString(),
-    };
-
-    await writeData(items);
     return NextResponse.json({
       success: true,
-      message: "Data galeri berhasil diperbarui",
-      data: items[index],
+      message: "Data galeri berhasil diperbarui via LUXIMA-API",
+      data: result.data,
+      source: result.source,
     });
   } catch (err: any) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
@@ -102,14 +79,8 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ success: false, error: "ID wajib disertakan" }, { status: 400 });
     }
 
-    const items = await readData();
-    const filtered = items.filter((i: any) => i.id !== id);
-    if (filtered.length === items.length) {
-      return NextResponse.json({ success: false, error: "Foto tidak ditemukan" }, { status: 404 });
-    }
-
-    await writeData(filtered);
-    return NextResponse.json({ success: true, message: "Foto galeri berhasil dihapus" });
+    const result = await luximaApi.gallery.delete(id);
+    return NextResponse.json({ success: true, message: "Foto galeri berhasil dihapus via LUXIMA-API", source: result.source });
   } catch (err: any) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }

@@ -50,6 +50,36 @@ export default function AdminDeveloperPage() {
   const [apiKey, setApiKey] = useState("bd_live_sec_994a821e902b");
   const [simulationOutput, setSimulationOutput] = useState<string | null>(null);
 
+  // LUXIMA SSO Live Testing State
+  const [ssoTesting, setSsoTesting] = useState(false);
+  const [ssoResult, setSsoResult] = useState<any>(null);
+
+  const handleTestSSO = async () => {
+    setSsoTesting(true);
+    try {
+      const loginRes = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "concierge@bydaisy.com", password: "daisy2026luxury" }),
+      });
+      const loginData = await loginRes.json();
+
+      const meRes = await fetch("/api/auth/me");
+      const meData = await meRes.json();
+
+      setSsoResult({
+        timestamp: new Date().toISOString(),
+        gateway: "https://api.luxima.id/v1/auth/enterprise/login",
+        loginResponse: loginData,
+        sessionVerification: meData,
+      });
+    } catch (err: any) {
+      setSsoResult({ error: err.message });
+    } finally {
+      setSsoTesting(false);
+    }
+  };
+
   const endpoints = [
     { name: "Real Weddings", path: "/api/weddings", method: "GET / POST / PUT / DELETE" },
     { name: "Journal & Tradisi", path: "/api/journal", method: "GET / POST / PUT / DELETE" },
@@ -64,7 +94,55 @@ export default function AdminDeveloperPage() {
     { name: "LUXIMA SSO Session", path: "/api/auth/me", method: "GET" },
     { name: "LUXIMA 2-Way Sync Receiver", path: "/api/integrations/luxima-sync", method: "POST / GET" },
     { name: "AWEDZ 2-Way Sync Receiver", path: "/api/integrations/awedz-sync", method: "POST / GET" },
+    { name: "Dead Letter Queue (DLQ)", path: "/api/integrations/dlq", method: "GET / POST" },
   ];
+
+  // Dead Letter Queue (DLQ) State
+  const [dlqItems, setDlqItems] = useState<any[]>([]);
+  const [dlqLoading, setDlqLoading] = useState(false);
+
+  const fetchDlq = async () => {
+    setDlqLoading(true);
+    try {
+      const res = await fetch("/api/integrations/dlq");
+      const data = await res.json();
+      if (data.success) {
+        setDlqItems(data.data || []);
+      }
+    } catch (err) {
+      // Continue
+    } finally {
+      setDlqLoading(false);
+    }
+  };
+
+  const handleRetryDlq = async (id: string) => {
+    try {
+      const res = await fetch("/api/integrations/dlq", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "retry", id }),
+      });
+      const data = await res.json();
+      alert(data.message || "Percobaan ulang selesai");
+      fetchDlq();
+    } catch (err) {
+      alert("Gagal memicu retry");
+    }
+  };
+
+  const handleClearDlq = async () => {
+    try {
+      await fetch("/api/integrations/dlq", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "clear" }),
+      });
+      fetchDlq();
+    } catch (err) {
+      // Continue
+    }
+  };
 
   const envInfo = [
     { label: "Framework", val: "Next.js 16.4.3 (App Router)" },
@@ -267,7 +345,7 @@ export default function AdminDeveloperPage() {
 
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-forest-green/10 text-forest-green border border-forest-green/30 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-forest-green animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-forest-green"></span>
               <span>Enterprise Tenant Active</span>
             </span>
           </div>
@@ -316,12 +394,74 @@ export default function AdminDeveloperPage() {
               Domain Routing Engine
             </span>
             <span className="text-xs font-bold text-black block">
-              Next.js Middleware Enabled
+              Next.js Edge Proxy Enabled
             </span>
             <span className="text-[10px] text-black/60 mt-1 block">
               Headers: x-tenant-id, x-enterprise-domain
             </span>
           </div>
+        </div>
+
+        {/* LUXIMA Enterprise Single Sign-On (SSO) Card */}
+        <div className="p-5 rounded-xl bg-forest-green/5 border border-forest-green/20 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <ShieldCheck className="w-4 h-4 text-forest-green" />
+                <span className="text-xs font-bold uppercase tracking-wider text-forest-green">
+                  LUXIMA Single Sign-On (SSO) Gateway & Session Tester
+                </span>
+              </div>
+              <p className="text-xs text-black/70 font-light">
+                Autentikasi Enterprise tanpa database lokal: memvalidasi kredensial via LUXIMA-API dan menyimpan sesi HTTP-only cookie.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Link
+                href="/login"
+                target="_blank"
+                className="px-3.5 py-1.5 rounded-xl border border-taupe/40 bg-white hover:bg-sand text-xs font-medium text-black transition-colors flex items-center gap-1.5"
+              >
+                <span>Buka /login</span>
+                <ExternalLink className="w-3.5 h-3.5 text-warm-taupe" />
+              </Link>
+
+              <button
+                type="button"
+                onClick={handleTestSSO}
+                disabled={ssoTesting}
+                className="px-3.5 py-1.5 rounded-xl bg-forest-green text-white hover:bg-forest-hover text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
+              >
+                {ssoTesting ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Play className="w-3.5 h-3.5" />
+                )}
+                <span>{ssoTesting ? "Menguji..." : "Test Login & Verifikasi SSO"}</span>
+              </button>
+            </div>
+          </div>
+
+          {ssoResult && (
+            <div className="p-3.5 rounded-xl bg-[#1A1A1A] text-white">
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-xs">
+                <span className="font-mono text-emerald-400">
+                  SSO Verification Result (Live Session)
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setSsoResult(null)}
+                  className="text-white/60 hover:text-white text-[11px]"
+                >
+                  Tutup
+                </button>
+              </div>
+              <pre className="text-[11px] font-mono text-gray-300 overflow-x-auto leading-relaxed">
+                {JSON.stringify(ssoResult, null, 2)}
+              </pre>
+            </div>
+          )}
         </div>
 
         {/* Interactive Database Architecture Selector */}
@@ -610,6 +750,106 @@ export default function AdminDeveloperPage() {
             <pre className="text-[11px] font-mono text-gray-300 overflow-x-auto leading-relaxed">
               {simulationOutput}
             </pre>
+          </div>
+        )}
+      </div>
+
+      {/* Dead Letter Queue (DLQ) Resilience Monitor */}
+      <div className="p-6 rounded-2xl bg-white border border-taupe/30 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-taupe/20">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <Activity className="w-4 h-4 text-forest-green" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brown">
+                Webhook Resilience & Fault Tolerance
+              </span>
+            </div>
+            <h3 className="font-serif text-xl text-black font-semibold">
+              Dead Letter Queue (DLQ) & Retry Policy
+            </h3>
+            <p className="text-xs text-black/70 font-light mt-0.5">
+              Setiap pengiriman webhook ke LUXIMA CRM atau AWEDZ Platform otomatis diulang 3x dengan jeda backoff. Payload yang gagal disimpan di DLQ untuk inspeksi.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={fetchDlq}
+              disabled={dlqLoading}
+              className="px-3.5 py-1.5 rounded-xl border border-taupe/40 bg-white hover:bg-sand text-xs font-medium text-black transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${dlqLoading ? "animate-spin" : ""}`} />
+              <span>{dlqLoading ? "Memeriksa..." : "Periksa Antrean"}</span>
+            </button>
+
+            {dlqItems.length > 0 && (
+              <button
+                onClick={handleClearDlq}
+                className="px-3 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-medium border border-red-200 transition-colors cursor-pointer"
+              >
+                Bersihkan Antrean
+              </button>
+            )}
+          </div>
+        </div>
+
+        {dlqItems.length === 0 ? (
+          <div className="p-6 rounded-xl bg-[#F8F6F1] border border-taupe/20 text-center">
+            <div className="w-9 h-9 rounded-full bg-forest-green/10 text-forest-green flex items-center justify-center mx-auto mb-2">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <p className="text-xs font-semibold text-black">
+              Antrean DLQ Bersih (0 Gagal)
+            </p>
+            <p className="text-[11px] text-warm-taupe max-w-md mx-auto mt-0.5">
+              Tidak ada kegagalan pengiriman webhook yang tertahan. Seluruh transaksi lead dan event terkirim sukses atau siap dalam antrean standby.
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-taupe/20 bg-[#FBF9F5] text-[11px] font-semibold uppercase tracking-wider text-black">
+                  <th className="py-2.5 px-3">ID Item</th>
+                  <th className="py-2.5 px-3">Target</th>
+                  <th className="py-2.5 px-3">Percobaan</th>
+                  <th className="py-2.5 px-3">Error Terakhir</th>
+                  <th className="py-2.5 px-3">Waktu</th>
+                  <th className="py-2.5 px-3 text-right">Aksi</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-taupe/15">
+                {dlqItems.map((item) => (
+                  <tr key={item.id} className="hover:bg-sand/30 transition-colors">
+                    <td className="py-2.5 px-3 font-mono text-[11px] font-medium text-black">
+                      {item.id}
+                    </td>
+                    <td className="py-2.5 px-3">
+                      <span className="capitalize font-semibold text-forest-green">
+                        {item.target}
+                      </span>
+                    </td>
+                    <td className="py-2.5 px-3 font-mono text-[11px] text-red-600 font-semibold">
+                      {item.attempts}x gagal
+                    </td>
+                    <td className="py-2.5 px-3 text-[11px] text-black/70 max-w-xs truncate">
+                      {item.error}
+                    </td>
+                    <td className="py-2.5 px-3 text-[10px] text-warm-taupe">
+                      {new Date(item.lastAttemptAt).toLocaleTimeString("id-ID")}
+                    </td>
+                    <td className="py-2.5 px-3 text-right">
+                      <button
+                        onClick={() => handleRetryDlq(item.id)}
+                        className="px-2.5 py-1 rounded-lg bg-forest-green text-white hover:bg-forest-hover text-[11px] font-medium cursor-pointer"
+                      >
+                        Kirim Ulang
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </div>

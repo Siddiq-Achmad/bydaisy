@@ -1,40 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
-
-const DATA_FILE = path.join(process.cwd(), "data", "wedding-prices.json");
-
-async function readData() {
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(raw);
-  } catch (err) {
-    return { categories: [] };
-  }
-}
-
-async function writeData(data: any) {
-  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
-}
+import { luximaApi } from "@/lib/luxima-api";
 
 // GET /api/packages
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const categoryId = searchParams.get("category");
 
-  const data = await readData();
+  const result = await luximaApi.packages.get();
+  const data = result.data || { categories: [] };
+  const categories = data.categories || [];
 
   if (categoryId) {
-    const category = data.categories.find((c: any) => c.id === categoryId);
+    const category = categories.find((c: any) => c.id === categoryId);
     if (!category) {
       return NextResponse.json({ success: false, error: "Kategori paket tidak ditemukan" }, { status: 404 });
     }
-    return NextResponse.json({ success: true, data: category });
+    return NextResponse.json({ success: true, data: category, source: result.source });
   }
 
   return NextResponse.json({
     success: true,
-    data: data.categories,
+    data: categories,
+    source: result.source,
   });
 }
 
@@ -51,28 +38,32 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const data = await readData();
-    const category = data.categories.find((c: any) => c.id === categoryId);
+    const currentResult = await luximaApi.packages.get();
+    const data = currentResult.data || { categories: [] };
+    const category = (data.categories || []).find((c: any) => c.id === categoryId);
+
     if (!category) {
       return NextResponse.json({ success: false, error: "Kategori tidak ditemukan" }, { status: 404 });
     }
 
-    const pkg = category.packages.find((p: any) => p.id === packageId);
+    const pkg = (category.packages || []).find((p: any) => p.id === packageId);
     if (!pkg) {
       return NextResponse.json({ success: false, error: "Paket tidak ditemukan" }, { status: 404 });
     }
 
-    if (newPrice !== undefined) pkg.price = newPrice;
-    if (newName) pkg.name = newName;
+    if (newPrice !== undefined) pkg.price = Number(newPrice);
+    if (newName !== undefined) pkg.name = newName;
     if (newPax !== undefined) pkg.pax = newPax;
 
-    await writeData(data);
+    const saveResult = await luximaApi.packages.update(data);
+
     return NextResponse.json({
       success: true,
-      message: "Data paket berhasil diperbarui",
+      message: "Harga paket berhasil diperbarui via LUXIMA-API",
       data: pkg,
+      source: saveResult.source,
     });
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { luximaApi } from "@/lib/luxima-api";
 import { BYDAISY_ENTERPRISE_CONFIG } from "@/lib/enterprise";
 
 export async function POST(request: NextRequest) {
@@ -12,18 +12,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: "eventId or title required" }, { status: 400 });
     }
 
-    const events = await db.calendar.getAll();
-    const index = events.findIndex((e: any) => e.id === payload.eventId || e.title === payload.title);
+    const result = await luximaApi.calendar.getAll();
+    const events = result.data || [];
+    const existing = events.find((e: any) => e.id === payload.eventId || e.title === payload.title);
 
     let resultAction = "created";
-    if (index !== -1) {
-      events[index] = {
-        ...events[index],
+    if (existing) {
+      await luximaApi.calendar.update(existing.id, {
+        ...existing,
         ...payload,
         awedzSynced: true,
         lastAwedzUpdate: new Date().toISOString(),
-      };
-      await db.calendar.saveAll(events);
+      });
       resultAction = "updated";
     } else {
       const newEvent = {
@@ -40,8 +40,7 @@ export async function POST(request: NextRequest) {
         awedzSynced: true,
         createdAt: new Date().toISOString(),
       };
-      events.unshift(newEvent);
-      await db.calendar.saveAll(events);
+      await luximaApi.calendar.create(newEvent);
     }
 
     return NextResponse.json({

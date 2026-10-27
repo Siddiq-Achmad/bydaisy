@@ -69,14 +69,14 @@ export default function WeddingPlannerDetailPage() {
                 <div className="flex items-center gap-2.5 mb-5">
                   <span className="w-2 h-2 rounded-full bg-forest-green"></span>
                   <span className="text-xs uppercase tracking-[0.2em] font-semibold text-forest-green">
-                    Layanan Utama • Bespoke Experience
+                    Layanan Terpadu • Pendampingan Penuh
                   </span>
                 </div>
                 <h1 className="font-serif font-light text-3xl sm:text-5xl lg:text-6xl text-black leading-[1.12] tracking-tight mb-6 font-editorial">
-                  Wedding Planner <span className="italic font-light block text-warm-taupe mt-1">& Organizer Paripurna</span>
+                  Wedding Planner <span className="italic font-light block text-warm-taupe mt-1">& Organizer Terpadu</span>
                 </h1>
                 <p className="text-base sm:text-lg text-brown font-light leading-relaxed mb-8">
-                  Perjalanan menuju pernikahan impian tanpa beban pikiran. Pendampingan menyeluruh dari gagasan visual pertama, kurasi puluhan vendor berkaliber tinggi, simulasi teknis gladi resik, hingga pengawalan hari H secara mutlak oleh 12 kru berseragam.
+                  Perjalanan menuju pernikahan impian tanpa beban pikiran. Pendampingan menyeluruh dari gagasan visual pertama, kurasi vendor bereputasi tinggi, simulasi teknis gladi resik, hingga pengawalan hari H secara tertib oleh 12 kru berseragam.
                 </p>
 
                 {/* Quick Navigation Pills */}
@@ -117,7 +117,7 @@ export default function WeddingPlannerDetailPage() {
             <div className="lg:col-span-7 grid grid-cols-12 gap-4">
               <div className="col-span-8 overflow-hidden rounded-2xl relative shadow-md group">
                 <Image
-                  src="/assets/images/service-outdoor-ensemble.jpg"
+                  src="/assets/images/img41.jpg"
                   alt="ByDaisy wedding planner crew team posing gracefully in front of an Acehnese dome courtyard"
                   width={900}
                   height={600}
@@ -152,7 +152,7 @@ export default function WeddingPlannerDetailPage() {
               </div>
               <div className="col-span-8 overflow-hidden rounded-2xl relative shadow-md group">
                 <Image
-                  src="/assets/images/journal-coordination.jpg"
+                  src="/assets/images/img34.jpg"
                   alt="Full ensemble portrait of ByDaisy wedding team in coordinated uniforms"
                   width={900}
                   height={500}
@@ -627,7 +627,7 @@ export default function WeddingPlannerDetailPage() {
                 <div>
                   <span className="text-xs uppercase tracking-wider text-forest-green block mb-2 mt-2 font-semibold">Bulan 1 s/d Hari-H</span>
                   <h3 className="font-serif text-2xl text-black mb-1">Full Wedding Planner</h3>
-                  <p className="text-sm text-brown mb-6 font-light">Pendampingan hulu-ke-hilir: perancangan konsep, kurasi vendor, negosiasi, dan pengawalan paripurna.</p>
+                  <p className="text-sm text-brown mb-6 font-light">Pendampingan hulu-ke-hilir: perancangan konsep, kurasi vendor, negosiasi kontrak, dan pengawalan hari-H.</p>
                   <div className="mb-6 pb-6 border-b border-taupe/20">
                     <span className="text-[10px] uppercase text-warm-taupe tracking-wider block">Mulai Dari</span>
                     <span className="font-serif text-3xl text-forest-green">IDR 24.500.000</span>
@@ -667,7 +667,7 @@ export default function WeddingPlannerDetailPage() {
               <div className="p-8 rounded-3xl bg-white border border-taupe/30 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                   <span className="text-xs uppercase tracking-wider text-warm-taupe block mb-2 font-medium">Multiday / Royal</span>
-                  <h3 className="font-serif text-2xl text-black mb-1">Bespoke Grand Royal</h3>
+                  <h3 className="font-serif text-2xl text-black mb-1">Custom Grand Royal</h3>
                   <p className="text-sm text-brown mb-6 font-light">Dirancang khusus untuk pernikahan bertingkat adat, multi-day celebrations, atau berskala &gt;1.500 tamu.</p>
                   <div className="mb-6 pb-6 border-b border-taupe/20">
                     <span className="text-[10px] uppercase text-warm-taupe tracking-wider block">Investasi Fleksibel</span>
@@ -680,7 +680,7 @@ export default function WeddingPlannerDetailPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-forest-green" />
-                      <span>14–18 Kru Senior Berseragam</span>
+                      <span>14-18 Kru Senior Berseragam</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-forest-green" />
@@ -693,7 +693,7 @@ export default function WeddingPlannerDetailPage() {
                   </ul>
                 </div>
                 <a
-                  href="https://wa.me/6282277094277?text=Halo%20ByDaisy,%20saya%20ingin%20request%20Custom%20Proposal%20Bespoke%20Royal"
+                  href="https://wa.me/6282277094277?text=Halo%20ByDaisy,%20saya%20ingin%20request%20Custom%20Proposal%20Grand%20Royal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-full text-center border border-black text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
