@@ -119,7 +119,7 @@ export default function PricelistPage() {
               </div>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.08] mb-6 font-editorial">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black tracking-tight leading-[1.12] mb-6 font-editorial font-light">
               Investasi & Paket Resmi ByDaisy 2026
             </h1>
 

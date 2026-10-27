@@ -72,7 +72,7 @@ export default function AdminLayout({
           label: "Pages Architecture",
           href: "/dashboard/pages",
           icon: FileText,
-          badge: "17 Rute",
+          badge: "20 Rute",
         },
         {
           label: "Pricelist & Paket 2026",

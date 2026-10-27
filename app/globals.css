@@ -1,5 +1,68 @@
 @import "tailwindcss";
 
+/* -------------------------------------------------------------
+   The Seasons Official Webfonts (Public Assets & Fallback Chain)
+   ------------------------------------------------------------- */
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Light_Italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Regular.woff2") format("woff2"),
+       url("/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff2") format("woff2"),
+       url("/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Bold.woff2") format("woff2"),
+       url("/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff2") format("woff2"),
+       url("/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/assets/fonts/The_Seasons_Bold_Italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --color-black: #1A1A1A;
   --color-forest: #2E4A3B;
@@ -16,15 +79,14 @@
   --color-sand: #F4EFEA;
   --color-gold: #C5A059;
 
-  --font-serif: var(--font-the-seasons), "The Seasons", Georgia, serif;
+  --font-serif: "The Seasons", var(--font-the-seasons), theSeasons, Georgia, serif;
   --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
 
 :root {
   --background: #FBF9F5;
   --foreground: #1A1A1A;
-  --font-the-seasons: "The Seasons", Georgia, serif;
-  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-the-seasons: "The Seasons", theSeasons, Georgia, serif;
 }
 
 /* Base resets & typography */
@@ -139,12 +201,20 @@ html.lenis body {
 .font-serif {
   font-family: var(--font-serif);
   font-weight: 300;
+  letter-spacing: -0.015em;
 }
 
 .font-editorial {
   font-feature-settings: "liga" 1, "dlig" 1;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   font-weight: 300;
+  text-wrap: balance;
+}
+
+h1.font-serif,
+h2.font-serif,
+h3.font-serif {
+  text-wrap: balance;
 }
 
 /* Explicit weight modifiers for .font-serif (e.g. Logo regular/semibold) */
@@ -154,6 +224,7 @@ html.lenis body {
 
 .font-serif.font-normal {
   font-weight: 400;
+  letter-spacing: normal;
 }
 
 .font-serif.font-medium {
@@ -162,6 +233,7 @@ html.lenis body {
 
 .font-serif.font-semibold {
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .font-serif.font-bold {

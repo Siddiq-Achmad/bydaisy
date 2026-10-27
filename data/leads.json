@@ -1,0 +1,54 @@
+[
+  {
+    "id": "lead-1",
+    "coupleNames": "Cut Sarah & Zulfikar",
+    "hotline": "Hotline 1 (+62 822-7709-4277)",
+    "waNumber": "+62 812-6900-1122",
+    "service": "Sribudaya Platinum Best Deal (1.000 Pax)",
+    "guestCount": "1.000 Tamu",
+    "eventDate": "14 Februari 2027",
+    "venueLocation": "Sribudaya Resort, Lampeuneurut",
+    "status": "Baru Masuk",
+    "notes": "Ingin konsep adat Aceh modern dengan tarian Ranup Lampuan & Peusijeuk lengkap",
+    "createdAt": "2026-10-27T08:30:00Z"
+  },
+  {
+    "id": "lead-2",
+    "coupleNames": "dr. Amanda & Reza, S.T.",
+    "hotline": "Hotline 2 (+62 821-6222-1468)",
+    "waNumber": "+62 821-8899-7733",
+    "service": "All-In Daisy Gold Intimate (500 Pax)",
+    "guestCount": "500 Tamu",
+    "eventDate": "20 Maret 2027",
+    "venueLocation": "Hermes Palace Hotel",
+    "status": "Jadwal Konsultasi",
+    "notes": "Sudah booking ballroom, butuh planner untuk alur medis VIP dan gladi resik",
+    "createdAt": "2026-10-26T14:15:00Z"
+  },
+  {
+    "id": "lead-3",
+    "coupleNames": "Nabila & Fikri",
+    "hotline": "Hotline 1 (+62 822-7709-4277)",
+    "waNumber": "+62 852-7711-2244",
+    "service": "Paket Garden Vandys 500 Pax (Rp 85 Juta)",
+    "guestCount": "500 Tamu",
+    "eventDate": "18 April 2027",
+    "venueLocation": "@vandysgarden, Banda Aceh",
+    "status": "Kirim Penawaran",
+    "notes": "Menanyakan ketersediaan fotografer Le Ciel dan penambahan stall sate matang",
+    "createdAt": "2026-10-25T11:45:00Z"
+  },
+  {
+    "id": "lead-4",
+    "coupleNames": "Rizka & Teuku Ilham",
+    "hotline": "Hotline 1 (+62 822-7709-4277)",
+    "waNumber": "+62 813-4455-6677",
+    "service": "Wedding Organizer Only (14 Kru)",
+    "guestCount": "1.200 Tamu",
+    "eventDate": "02 Mei 2027",
+    "venueLocation": "Bale Meuseuraya Aceh (BMA)",
+    "status": "Baru Masuk",
+    "notes": "Vendor katering dan pelaminan sudah ada dari keluarga, butuh 14 kru panggung",
+    "createdAt": "2026-10-27T06:20:00Z"
+  }
+]

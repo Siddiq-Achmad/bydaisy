@@ -29,8 +29,28 @@ export default function ContactPage() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientName: formData.coupleNames || "Klien Reservasi Kontak",
+          phone: formData.waNumber || "-",
+          weddingDate: formData.eventDate || "-",
+          guestCount: formData.guestCount,
+          packageInterest: formData.services.join(", ") || "Wedding Planner",
+          venue: formData.venueLocation || "TBD",
+          budgetRange: "-",
+          notes: formData.notes || "",
+          source: "Contact Page",
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to record lead", err);
+    }
+
     const text = `Halo ByDaisy Planner, saya ingin booking konsultasi pernikahan melalui website:
 • Pasangan: ${formData.coupleNames || "-"}
 • Perkiraan Tanggal: ${formData.eventDate || "-"}
@@ -68,9 +88,9 @@ ${formData.notes ? `• Catatan: ${formData.notes}` : ""}`;
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.08] mb-6 font-editorial">
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.12] mb-6 font-editorial font-light">
               Hubungi ByDaisy & <br />
-              <span className="italic font-normal text-forest-green">
+              <span className="italic font-light text-forest-green">
                 Jadwalkan Konsultasi
               </span>
             </h1>

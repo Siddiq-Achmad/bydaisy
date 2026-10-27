@@ -8,90 +8,13 @@ import Footer from "@/components/navigation/footer";
 import ConsultationSheet from "@/components/modals/consultation-sheet";
 import { Sparkles, ArrowRight, BookOpen, ShieldCheck, Heart } from "lucide-react";
 
+import traditionsData from "@/data/tradisi.json";
+
 export default function TradisiPage() {
   const [activeTab, setActiveTab] = useState("aceh");
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
-  const traditions = {
-    aceh: {
-      name: "Adat Aceh Darussalam",
-      subtitle: "Tanah Rencong Heritage",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuAd0UonsKIK4GfW15TLghzmCZum-RKwcMbDtk3VUp_uNn3arEmERRzLRH2YC5KKVfUpaaJm9kvHa6pPFrM04SaEtEPwWZNr9tT0BQfaNMB55s-9UZWIXBUgGwITzL9RLiQaw_KLHrLpKOWiOttgOflGZ74-rPgE8FkY63uuEGYCrlbYg7c95c0Qr8N3_r000qDp8iznSf4vm14OkehR6i0g4ARRSeIgP-QRFjDR0nJJTdiHWw_nsnHPcA",
-      philosophy:
-        "Adat perkawinan Aceh menggabungkan hukum syariat Islam dengan kearifan lokal Reusam Adat. Setiap simpul upacara—dari ketukan sirih hingga butiran beras kuning peusijeuk—adalah perwujudan doa keselamatan batin, martabat keluarga, dan pengukuhan ikatan persaudaraan dua kubu besar.",
-      rituals: [
-        {
-          name: "Peusijeuk (Tepung Tawar)",
-          desc: "Ritual sakral percikan air sejuk berdaun dingin dan beras kuning sebagai permohonan keselamatan batin dan tolak bala.",
-        },
-        {
-          name: "Ba Ranub (Hantaran Sirih)",
-          desc: "Pemberian sirih tersusun rapi berbalut sulaman kasab benang emas sebagai perintis tali silaturahmi dua keluarga.",
-        },
-        {
-          name: "Seumano Pucok",
-          desc: "Penyucian lahir batin calon dara baro (pengantin wanita) diiringi lantunan zikir dan munajat doa restu orang tua.",
-        },
-        {
-          name: "Tueng Linto (Penyambutan Mempelai Pria)",
-          desc: "Perarakan resmi mempelai pria ke pelaminan adat dengan naungan payung kuning kebesaran dan taburan beras kunyit.",
-        },
-      ],
-    },
-    melayu: {
-      name: "Adat Melayu Deli & Riau",
-      subtitle: "Kesultanan Melayu Bertuah",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCDHreFUqke_cfkeHmVpPzp4ZDB2KI9pnZPscOjBaL9obZxDm6_PYtWLOIpYS4bxqDvXFf8xGftIZWGS0cg2mEa8qlZtIcGb0unDA7P-uvb01FnCrLot5tSu69ZyOjRwUAu40mQmYXOk2MqCkyAeOjAkSdXhQZE6tcAg7kD1W6CV3VrQjImZQCMoUSUcYGSLmCkvhFxnKH7XD0iNO2CqqUrhVjaNCvtFX0uHUbxIFHkLXE-mzfNb1xrbg",
-      philosophy:
-        "Masyarakat Melayu memuliakan adab dalam setiap tutur kata dan langkah. ByDaisy mengorganisir kehadiran penari tepak sirih, sastrawan pembalas pantun berbobot, hingga piranti Tepuk Tepung Tawar yang tersusun rapi sesuai urutan kekerabatan keluarga istana.",
-      rituals: [
-        {
-          name: "Tepuk Tepung Tawar",
-          desc: "Menepuk telapak tangan mempelai dengan air mawar dan dedaunan dingin sebagai simbol doa berkah kebahagiaan.",
-        },
-        {
-          name: "Malam Berinai Lebat",
-          desc: "Pewarnaan daun inai merah pekat pada kuku pengantin sebagai simbol mahligai rumah tangga yang bersinar terang.",
-        },
-        {
-          name: "Mandi Taman",
-          desc: "Pembersihan raga dan aura calon permaisuri di bawah rimbun dedaunan harum dan wewangian melati alami.",
-        },
-        {
-          name: "Buka Pintu & Balas Pantun",
-          desc: "Dialog puitis sastra Melayu berbalut canda santun antara rombongan pengantin pria dan penjaga pintu pengantin wanita.",
-        },
-      ],
-    },
-    minang: {
-      name: "Adat Minangkabau",
-      subtitle: "Gadang Basasok Matrilineal",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCzxUgKi6Q5xQVkwW7jPIpz6qyC9rBNHmXWqc1KHkIDiTomoMO8XkhcNWesdzbqaXqdNl9v1jf2-9nTdTVpgQhKZtlLoVabeIoGJ_rImOS8ifCQ3sc33YKjgDCS9SRd5UdD51P58T2cTfFW-S8stgb7Hl8qn2RCVpQNpVhZfG6afI35G2iz3rGuP1rZPHudFwyFPJRsaO-ULEcHzLMJ_81NGvFti88drFkj1Bh0mFKYwlLkZLamedv1LhtJCthhi9OJOoM",
-      philosophy:
-        "Garis keturunan ibu (matrilineal) yang luhur melahirkan upacara adat yang kaya akan simbol penghormatan dan kemandirian. Dari sunting emas bertingkat sebelas hingga jamba lauk pauk adat, ByDaisy memastikan seluruh urutan tetua adat terpenuhi.",
-      rituals: [
-        {
-          name: "Maresek & Batimbang Tando",
-          desc: "Penjajakan resmi pihak keluarga wanita diikuti pertukaran tanda pusaka keris atau kain songket berharga.",
-        },
-        {
-          name: "Malam Bainai",
-          desc: "Malam terakhir masa lajang sang anak daro, diwarnai tumpahan kasih sayang air perasan inai oleh para sesepuh.",
-        },
-        {
-          name: "Manjapuik Marapulai",
-          desc: "Penjemputan terhormat mempelai pria oleh mamak keluarga wanita dengan arak-arakan payung kuning kebesaran.",
-        },
-        {
-          name: "Suntiang & Kirab Bansi",
-          desc: "Pemasangan hiasan kepala mahkota suntiang megah berpadu iringan tiupan bansi dan talempong sakral.",
-        },
-      ],
-    },
-  };
+  const traditions = traditionsData;
 
   const current = traditions[activeTab as keyof typeof traditions];
 
@@ -145,11 +68,10 @@ export default function TradisiPage() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold transition-all shadow-sm ${
-                  activeTab === tab.id
+                className={`px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold transition-all shadow-sm ${activeTab === tab.id
                     ? "bg-forest-green text-canvas"
                     : "bg-sand text-black/80 hover:bg-taupe/40"
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>

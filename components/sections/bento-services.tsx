@@ -2,12 +2,14 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Check, Sparkles, ArrowRight } from "lucide-react";
 
 interface BentoCardProps {
   title: string;
   badge: string;
   badgeColor?: string;
+  href: string;
   description: string;
   imageSrc: string;
   imageAlt: string;
@@ -19,6 +21,7 @@ function BentoCard({
   title,
   badge,
   badgeColor = "text-forest-green",
+  href,
   description,
   imageSrc,
   imageAlt,
@@ -104,7 +107,7 @@ function BentoCard({
       {/* Content Area */}
       <div className="p-8 flex-1 flex flex-col justify-between bg-gradient-to-b from-canvas to-sand/60 relative z-20">
         <div>
-          <h3 className="font-serif text-2xl md:text-3xl text-black mb-3">
+          <h3 className="font-serif text-2xl md:text-3xl text-black mb-3 font-light leading-snug">
             {title}
           </h3>
           <p className="text-sm text-black/75 font-light leading-relaxed mb-6">
@@ -123,15 +126,24 @@ function BentoCard({
           </ul>
         </div>
 
-        <button
-          type="button"
-          onClick={() => onSelectService && onSelectService(title)}
-          data-cursor="Detail"
-          className="w-full py-3.5 rounded-full border border-taupe/60 text-xs uppercase tracking-widest font-semibold text-black hover:bg-forest-green hover:border-forest-green hover:text-canvas transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
-        >
-          <span>Lihat Detail Paket</span>
-          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-        </button>
+        <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-2">
+          <Link
+            href={href}
+            data-cursor="Detail"
+            className="flex-1 w-full py-3 px-4 rounded-full bg-forest-green text-canvas hover:bg-black text-[11px] uppercase tracking-widest font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm text-center group/btn"
+          >
+            <span>Detail Layanan</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => onSelectService && onSelectService(title)}
+            className="w-full sm:w-auto px-4 py-3 rounded-full border border-taupe/60 text-[11px] uppercase tracking-widest font-semibold text-black hover:bg-sand transition-all text-center shrink-0"
+          >
+            <span>Konsultasi</span>
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -145,12 +157,13 @@ export function BentoServices({ onOpenConsultation }: BentoServicesProps) {
   const services = [
     {
       title: "Wedding Planner",
-      badge: "3–9 Months Full Journey",
+      badge: "3-9 Months Full Journey",
       badgeColor: "text-forest-green",
+      href: "/services/wedding-planner",
       description:
         "Realisasikan konsep pernikahan impian Anda bersama kami. Pendampingan menyeluruh dari konsep awal, budgeting, moodboard tema, kurasi vendor, hingga simulasi teknis.",
       imageSrc:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBTMpHvVFbmAYj3iCImbvSgCOGbpydMAbl87rIvWmkplWNW0g1-S_0efMJhIXMsQF3fYJ28B0o1-_1v5bpMY3lg4Eje99qP4rN7gAyJ4UreiSYo2T9zSoQH2n4WOrtLn4bpIxNFpavcHsT-5b-1uHLLSBrf1oP1W2_3Za-rqDC-VDyAyalWwXm-K5k8g_6OVGTIZ692xAtvWT8t_uaC9z8tK0-5kM2NygzECvxO1LrI0BZS4UF1cJ5StmF67Bea2DPkMp8",
+        "/assets/images/img41.jpg",
       imageAlt: "ByDaisy Wedding Planner & Organizer Team in Blue Uniforms",
       features: [
         "Budget Optimization & Timeline Roadmap",
@@ -162,13 +175,14 @@ export function BentoServices({ onOpenConsultation }: BentoServicesProps) {
       title: "Wedding Organizer",
       badge: "D-Day Seamless Flow",
       badgeColor: "text-brown",
+      href: "/services/wedding-organizer",
       description:
         "Memastikan setiap detail hari-H tersusun rapi dari gladi resik, rundown ketat menit per menit, hingga koordinasi tim keluarga dan seluruh vendor on-site.",
       imageSrc:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBW7Qa7rYhNXqPS-rMSZK4tatUhdYASv0focjP-Uaae3kN4yvJVPFDpqqBnwpvkh4P0PswkaiKAUGyJNLk-sZ_W-RbwvILhqnuihsEFpwD_EnW2HnmDI25Wb_Ad3UjvHzo-52RfUuLvrKpT54fOtx6McsYKcWU26B2CCYjdyagpLMZbHn-jrV7EVDmFxODt3XMt4Gcc1Y400U3OxMCj7w8BtM1c2t5TQHcAzKoG49JCYV8MWbMgHZrilA1S2tLKnyiSHaY",
+        "/assets/images/img42.jpg",
       imageAlt: "ByDaisy Event Organizer Team Ready in Formal Attire",
       features: [
-        "8 – 14 Certified On-Site Crew with HTs",
+        "8 - 14 Certified On-Site Crew with HTs",
         "Minute-by-minute Production Rundown",
         "VIP & Family Hospitality Protocol",
       ],
@@ -177,10 +191,11 @@ export function BentoServices({ onOpenConsultation }: BentoServicesProps) {
       title: "Decoration & Styling",
       badge: "Visual & Spatial Art",
       badgeColor: "text-forest-green",
+      href: "/services/decoration-styling",
       description:
         "Dekorasi yang merefleksikan cerita cinta dan karakter Anda. Dari pelaminan songket adat berukir emas megah hingga modern botanical ballroom lighting.",
       imageSrc:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBlnGOGodgrVczDXpzM8nYkAzhsldxcRn-FmggBi2HBqKPimzDgUO_z8nuhIho6tjQAQyOJNbqLx-Vd9A8TU7cznk_cAb00LRPLHOyqn6s8Dp-lrMh5kYqnYzZq-FU-EgKceOZAwWfgBNXr9mShC9gG2azbYGnJuJ3Ijn1cJhhX77-vVQvu1h_-m3Fyen21bD-tnwNak-xjY8r4rW7xFojiiDitrE7kt92w9MiZulPcS_blnQXZsYBdKZT03On0LlpnDIo",
+        "/assets/images/img43.jpg",
       imageAlt: "ByDaisy Luxury Wedding Stage and Lighting Decoration",
       features: [
         "3D Conceptual Spatial Rendering",
@@ -200,11 +215,11 @@ export function BentoServices({ onOpenConsultation }: BentoServicesProps) {
         <div className="max-w-2xl mb-16">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-6 h-px bg-warm-taupe" />
-            <p className="font-serif italic text-base md:text-lg text-brown">
+            <p className="font-serif italic text-base md:text-lg text-brown font-light">
               What We Offer
             </p>
           </div>
-          <h2 className="font-serif text-4xl md:text-6xl text-black tracking-tight mb-4 font-editorial">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black tracking-tight leading-[1.12] mb-4 font-editorial font-light">
             Our Services
           </h2>
           <p className="text-black/75 text-base md:text-lg font-light leading-relaxed">
@@ -222,6 +237,17 @@ export function BentoServices({ onOpenConsultation }: BentoServicesProps) {
               onSelectService={onOpenConsultation}
             />
           ))}
+        </div>
+
+        {/* Section Action Button to All Services */}
+        <div className="mt-14 text-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-black bg-black text-canvas text-xs uppercase tracking-widest font-semibold hover:bg-forest-green hover:border-forest-green transition-all shadow-md group"
+          >
+            <span>Eksplorasi Seluruh Layanan & Perbandingan Paket</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

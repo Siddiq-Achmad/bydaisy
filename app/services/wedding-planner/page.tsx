@@ -3,18 +3,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Check, 
-  CheckCircle2, 
-  ArrowRight, 
-  ArrowUpRight, 
-  Clock, 
-  Users, 
-  Calendar, 
-  ShieldCheck, 
-  Sparkles, 
-  MessageCircle, 
-  Radio, 
+import {
+  Check,
+  CheckCircle2,
+  ArrowRight,
+  ArrowUpRight,
+  Clock,
+  Users,
+  Calendar,
+  ShieldCheck,
+  Sparkles,
+  MessageCircle,
+  Radio,
   HeartHandshake,
   Layers,
   FileSpreadsheet
@@ -72,8 +72,8 @@ export default function WeddingPlannerDetailPage() {
                     Layanan Utama • Bespoke Experience
                   </span>
                 </div>
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-black leading-[1.08] tracking-tight mb-6">
-                  Wedding Planner <span className="italic font-normal block text-warm-taupe mt-1">& Organizer Paripurna</span>
+                <h1 className="font-serif font-light text-3xl sm:text-5xl lg:text-6xl text-black leading-[1.12] tracking-tight mb-6 font-editorial">
+                  Wedding Planner <span className="italic font-light block text-warm-taupe mt-1">& Organizer Paripurna</span>
                 </h1>
                 <p className="text-base sm:text-lg text-brown font-light leading-relaxed mb-8">
                   Perjalanan menuju pernikahan impian tanpa beban pikiran. Pendampingan menyeluruh dari gagasan visual pertama, kurasi puluhan vendor berkaliber tinggi, simulasi teknis gladi resik, hingga pengawalan hari H secara mutlak oleh 12 kru berseragam.
@@ -117,8 +117,8 @@ export default function WeddingPlannerDetailPage() {
             <div className="lg:col-span-7 grid grid-cols-12 gap-4">
               <div className="col-span-8 overflow-hidden rounded-2xl relative shadow-md group">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnCX-EXj6RAvno62fXR8oJB9CY9pUuJyUuWeBlCUsVz8u0H6KU2I-LeL6YzS6CeuxXc8gqUio3yFNrwcZLZNmELkWdZqRQufBxyhquRSqbUYBtE5Z_NpLQmtFEk5SujlD6TIPsPTOZdVGYm1gcX74gqajKU6a4h5b5yM34GOibuhIkL4iN_PXtDU4X57ZKI_UOb9DT6Uvin3k8THGnAWe5lB9MIeyi27TSzrooP6klV_sT1s3H9KumrA"
-                  alt="ByDaisy wedding planner crew team posing gracefully in front of a luxurious modern stage backdrop"
+                  src="/assets/images/service-outdoor-ensemble.jpg"
+                  alt="ByDaisy wedding planner crew team posing gracefully in front of an Acehnese dome courtyard"
                   width={900}
                   height={600}
                   className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
@@ -129,8 +129,8 @@ export default function WeddingPlannerDetailPage() {
               </div>
               <div className="col-span-4 overflow-hidden rounded-2xl relative shadow-md group">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCspIhqFEzY2TBOh1ND5TObGn-iWGhYl9E8pZkzO_0qX8Y-kC6dJI7qrRlzjalKf0dy3OBEdCXDEWdcu1ZnS9vI1Pzh55EydSQS2t-jdfjfHExtyA_j5fFlqkDZYqjMyTYhLHwA_6-tyyTFEC2S5K65FuHulPQWBAtHZzL1sTXy0VjsTTHC_uWjP1zW9Bk1zRvn23HiU4rmJOloVTgNNT426hadkorULx1c0mJQm23jfmSRPxHPesT-jA"
-                  alt="Professional female wedding organizer gently briefing an elegant bride"
+                  src="/assets/images/portfolio-coordinator-bride.jpg"
+                  alt="Professional Indonesian female wedding organizer in navy blazer and hijab briefing an elegant bride"
                   width={500}
                   height={600}
                   className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700"
@@ -143,7 +143,7 @@ export default function WeddingPlannerDetailPage() {
               </div>
               <div className="col-span-4 overflow-hidden rounded-2xl relative shadow-md group">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwwAoTNUUsHzWFAZIYlcyNHdrkVryUn5s4fWx9wtDqVOxVVQhH8p8rjuZqyeLsk828mUibaqyTwjG7DBgRzFSQxkbEVEKEYabfWz6mtUge6SisuGsNBFQLMy0U8ybC0XWLD1BZDFO-0tPymqsDEp_nbKTcFXQGGbhlJMd9JVrtry8XdaMaxG_f14Wy7gm5NrP1elS3o2p0UiuqdlFxcH9xd1JMygSHp8NH2bOQd12QmYbZHSgHe6B4Jw"
+                  src="/assets/images/gallery-navy-crew.jpg"
                   alt="ByDaisy female coordinator attentively monitoring guest entrance and aisle decor"
                   width={500}
                   height={500}
@@ -152,7 +152,7 @@ export default function WeddingPlannerDetailPage() {
               </div>
               <div className="col-span-8 overflow-hidden rounded-2xl relative shadow-md group">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmFrKECH9ZPHc7oWm_A7EX1XYaaD9OSKut7f8zYM369EForz6OJs9auOUveJqEm9bwZmZeGDMu5ND6XiJGY3cy08jLtsqZy8le2QwvVWQWM7plQO95EO8ALzJDAbqXy1gKNlrY1oI1LxVAJIHz-6aDYI94kjLc-QyVC7LYGaqintrEhTk5M6WzgMI06xIA_Cj4u5YD0jZsZag1vX3YZKO2zF69IFjNy0MaxybgnozdDdwV8Za8e-LvMA"
+                  src="/assets/images/journal-coordination.jpg"
                   alt="Full ensemble portrait of ByDaisy wedding team in coordinated uniforms"
                   width={900}
                   height={500}
@@ -490,8 +490,8 @@ export default function WeddingPlannerDetailPage() {
                 Kisah Nyata Pasangan ByDaisy
               </h2>
             </div>
-            <Link 
-              href="/gallery" 
+            <Link
+              href="/gallery"
               className="inline-flex items-center gap-2 text-sm font-medium text-black hover:text-forest-green transition-colors"
             >
               <span>Lihat Seluruh Galeri Pernikahan</span>
@@ -504,7 +504,7 @@ export default function WeddingPlannerDetailPage() {
             <div className="group overflow-hidden rounded-3xl bg-sand/30 border border-taupe/30 hover:shadow-xl transition-all duration-500">
               <div className="relative h-96 overflow-hidden">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG--T40H_WcsEPOJI7PRAoJ_m69K14FCVcCbxt2GcPXyQp6zXJ3ZjHvoeeVlHY0oa_8RUNg7jcw6qH3Yt5IiAtdd3Cya64bOjkAexm_gPS26tUxWpoiGSz0dtCCdjmRg2LDetqOejbUyVMj22nLvb_heMPRlShQaCQksJ1YPg0jStAu97mw86AjxpxAiVbxjvMKhNM6j9qdwf5JzTcaXhGrucBDp5aUy7jZYOfeCyGqZKm7UTZOz53IQ"
+                  src="/assets/images/tradisi-aceh.jpg"
                   alt="Indonesian bride and groom in majestic traditional Acehnese and modern attire"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -535,7 +535,7 @@ export default function WeddingPlannerDetailPage() {
             <div className="group overflow-hidden rounded-3xl bg-sand/30 border border-taupe/30 hover:shadow-xl transition-all duration-500">
               <div className="relative h-96 overflow-hidden">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4B456Hrd9cNUzL2SyK7sJz4r8c6q2W5aggTtBHeLEAVBB4gY04rO_L8c8rAyBn5VFBmv2GSyZ2X0oCpX_B_cuyj3suI9op8p9jqXuwz_nHm4hy4g4AJqVU3SZ6dgetoM4Y-qyf7a3UAOXAEsSiRw6HpsoHT4bxUjPRDEpSeN7heAoM7U9ieDgDaMjmpseNjedhywp90VyF43hiT7NK8c9w9RFb4Vdmn4akzir-uOepwfuX7WsvGLrbw"
+                  src="/assets/images/service-glasshouse.jpg"
                   alt="Intimate outdoor glasshouse wedding couple holding hands during golden hour sunset"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -609,10 +609,10 @@ export default function WeddingPlannerDetailPage() {
                     </li>
                   </ul>
                 </div>
-                <a 
-                  href="https://wa.me/6282277094277?text=Halo%20ByDaisy,%20saya%20tertarik%20dengan%20Paket%20Wedding%20Organizer%20(Day-Of)" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://wa.me/6282277094277?text=Halo%20ByDaisy,%20saya%20tertarik%20dengan%20Paket%20Wedding%20Organizer%20(Day-Of)"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-3 rounded-full text-center border border-black text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
                 >
                   Pilih Paket WO
@@ -655,7 +655,7 @@ export default function WeddingPlannerDetailPage() {
                     </li>
                   </ul>
                 </div>
-                <button 
+                <button
                   onClick={() => setIsConsultationOpen(true)}
                   className="w-full py-3.5 rounded-full text-center bg-forest-green text-white text-sm font-medium hover:bg-black transition-colors shadow-sm"
                 >
@@ -692,10 +692,10 @@ export default function WeddingPlannerDetailPage() {
                     </li>
                   </ul>
                 </div>
-                <a 
-                  href="https://wa.me/6282277094277?text=Halo%20ByDaisy,%20saya%20ingin%20request%20Custom%20Proposal%20Bespoke%20Royal" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://wa.me/6282277094277?text=Halo%20ByDaisy,%20saya%20ingin%20request%20Custom%20Proposal%20Bespoke%20Royal"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-3 rounded-full text-center border border-black text-sm font-medium text-black hover:bg-black hover:text-white transition-colors"
                 >
                   Request Proposal
@@ -722,7 +722,7 @@ export default function WeddingPlannerDetailPage() {
                   Konsultasikan tanggal, konsep adat atau modern, serta estimasi kuota tamu Anda. Kami menyambut kehadiran Anda secara tatap muka di Banda Aceh maupun melalui panggilan Zoom interaktif untuk luar kota.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
-                  <a 
+                  <a
                     href="https://wa.me/6282277094277?text=Halo%20ByDaisy%20Planner,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20Wedding%20Planner%20&%20Organizer"
                     target="_blank"
                     rel="noopener noreferrer"

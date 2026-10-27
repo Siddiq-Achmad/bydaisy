@@ -18,7 +18,8 @@ import {
   ArrowRight,
   MessageCircle,
   FileText,
-  Clock
+  Clock,
+  Palette
 } from "lucide-react";
 
 interface NavbarProps {
@@ -182,6 +183,18 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
               badge: "Unggulan",
               icon: Sparkles,
             },
+            {
+              title: "Wedding Organizer (Hari H)",
+              href: "/services/wedding-organizer",
+              description: "Orkestrasi panggung & rundown menit per menit dengan formasi 14 kru.",
+              icon: Clock,
+            },
+            {
+              title: "Dekorasi & Spatial Art",
+              href: "/services/decoration-styling",
+              description: "Instalasi pelaminan adat & modern dari 10m s/d Royal 19m Tiffani set.",
+              icon: Palette,
+            },
           ],
         },
         {
@@ -220,20 +233,20 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
     },
     {
       label: "Portfolio",
-      href: "/gallery",
+      href: "/portfolio",
       subItems: [
+        {
+          title: "Kisah Nyata Pasangan",
+          href: "/portfolio",
+          description: "Arsip pernikahan megah: Jihad & Nanda, Jacky & Valerie, Nazhira & Naufal.",
+          badge: "Featured",
+          icon: Heart,
+        },
         {
           title: "Galeri Dokumentasi",
           href: "/gallery",
           description: "Kurasi visual pelaminan adat, dekorasi modern, dan detail hantaran.",
           icon: Sparkles,
-        },
-        {
-          title: "Kisah Nyata Pasangan",
-          href: "/#portfolio",
-          description: "Arsip pernikahan megah: Jihad & Nanda, Jacky & Valerie, Nazhira & Naufal.",
-          badge: "Featured",
-          icon: Heart,
         },
       ],
     },
@@ -265,8 +278,8 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
-          ? "bg-canvas/90 backdrop-blur-md border-b border-taupe/30 py-3.5 shadow-sm"
-          : "bg-transparent py-5"
+        ? "bg-canvas/90 backdrop-blur-md border-b border-taupe/30 py-3.5 shadow-sm"
+        : "bg-transparent py-5"
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
@@ -291,7 +304,7 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
               <span className="w-1.5 h-1.5 rounded-full bg-taupe inline-block"></span>
             </div>
           </div>
-          <span className="font-serif italic text-[10px] tracking-widest text-warm-taupe -mt-0.5 uppercase">
+          <span className="font-serif text-[10px] tracking-widest text-warm-taupe -mt-0.5 uppercase">
             Wedding & Event Planner
           </span>
         </Link>
@@ -321,8 +334,8 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
                   <Link
                     href={item.href}
                     className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full transition-colors text-xs uppercase tracking-widest font-medium ${isActive
-                        ? "text-forest-green font-semibold"
-                        : "text-black/85 hover:text-forest-green hover:bg-taupe/15"
+                      ? "text-forest-green font-semibold"
+                      : "text-black/85 hover:text-forest-green hover:bg-taupe/15"
                       }`}
                     aria-expanded={isOpen}
                     aria-haspopup={hasChildren ? "true" : undefined}
@@ -341,8 +354,8 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
                 {item.subItems && (
                   <div
                     className={`absolute top-full left-0 pt-2 w-80 transition-all duration-200 z-50 ${isOpen
-                        ? "opacity-100 translate-y-0 pointer-events-auto visible"
-                        : "opacity-0 -translate-y-2 pointer-events-none invisible"
+                      ? "opacity-100 translate-y-0 pointer-events-auto visible"
+                      : "opacity-0 -translate-y-2 pointer-events-none invisible"
                       }`}
                   >
                     <div className="p-3 bg-white/95 backdrop-blur-xl border border-taupe/30 rounded-2xl shadow-xl ring-1 ring-black/5 space-y-1">
@@ -355,8 +368,8 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
                             href={sub.href}
                             onClick={() => setActiveDropdown(null)}
                             className={`flex items-start gap-3 p-3 rounded-xl transition-all group ${isSubActive
-                                ? "bg-forest-green/10 text-forest-green"
-                                : "hover:bg-canvas text-black"
+                              ? "bg-forest-green/10 text-forest-green"
+                              : "hover:bg-canvas text-black"
                               }`}
                           >
                             <div className="w-8 h-8 rounded-lg bg-canvas border border-taupe/20 flex items-center justify-center shrink-0 mt-0.5 text-forest-green group-hover:bg-forest-green group-hover:text-white transition-colors">
@@ -388,8 +401,8 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
                 {item.isMegaMenu && item.megaColumns && (
                   <div
                     className={`absolute top-full -left-20 xl:-left-12 pt-2 w-[720px] transition-all duration-200 z-50 ${isOpen
-                        ? "opacity-100 translate-y-0 pointer-events-auto visible"
-                        : "opacity-0 -translate-y-2 pointer-events-none invisible"
+                      ? "opacity-100 translate-y-0 pointer-events-auto visible"
+                      : "opacity-0 -translate-y-2 pointer-events-none invisible"
                       }`}
                   >
                     <div className="p-6 bg-white/95 backdrop-blur-xl border border-taupe/30 rounded-3xl shadow-2xl ring-1 ring-black/5 grid grid-cols-12 gap-6">
@@ -410,8 +423,8 @@ export function Navbar({ onOpenConsultation }: NavbarProps) {
                                     href={sub.href}
                                     onClick={() => setActiveDropdown(null)}
                                     className={`flex items-start gap-2.5 p-2.5 rounded-xl transition-all group ${isSubActive
-                                        ? "bg-forest-green/10 text-forest-green"
-                                        : "hover:bg-canvas text-black"
+                                      ? "bg-forest-green/10 text-forest-green"
+                                      : "hover:bg-canvas text-black"
                                       }`}
                                   >
                                     <div className="w-7 h-7 rounded-lg bg-canvas border border-taupe/20 flex items-center justify-center shrink-0 mt-0.5 text-forest-green group-hover:bg-forest-green group-hover:text-white transition-colors">

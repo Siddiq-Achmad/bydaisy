@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import SmoothScrollProvider from "@/components/providers/smooth-scroll";
 import CustomCursor from "@/components/cinematic/custom-cursor";
 import GrainOverlay from "@/components/cinematic/grain-overlay";
@@ -43,16 +43,24 @@ const theSeasons = localFont({
       weight: "700",
       style: "italic",
     },
+    {
+      path: "../public/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/9366bd460113d8bf675fd2bdfe1ce764.woff",
+      weight: "700",
+      style: "normal",
+    },
   ],
   variable: "--font-the-seasons",
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-cormorant",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  declarations: [
+    {
+      prop: "font-family",
+      value: "'The Seasons'",
+    },
+  ],
   display: "swap",
 });
 
@@ -66,7 +74,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://bydaisy.com"),
   title: {
-    default: "ByDaisy Planner — Luxury Wedding Planner & Organizer",
+    default: "ByDaisy Planner - Luxury Wedding Planner & Organizer",
     template: "%s | ByDaisy Planner",
   },
   description:
@@ -94,12 +102,12 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://bydaisy.com",
     siteName: "ByDaisy Planner",
-    title: "ByDaisy Planner — Luxury Wedding Planner & Organizer",
+    title: "ByDaisy Planner - Luxury Wedding Planner & Organizer",
     description:
       "Curated luxury wedding planning, minute-by-minute coordination, and bespoke event styling across Indonesia. You Dream It, We Creat It!",
     images: [
       {
-        url: "https://lh3.googleusercontent.com/aida-public/AB6AXuB4B456Hrd9cNUzL2SyK7sJz4r8c6q2W5aggTtBHeLEAVBB4gY04rO_L8c8rAyBn5VFBmv2GSyZ2X0oCpX_B_cuyj3suI9op8p9jqXuwz_nHm4hy4g4AJqVU3SZ6dgetoM4Y-qyf7a3UAOXAEsSiRw6HpsoHT4bxUjPRDEpSeN7heAoM7U9ieDgDaMjmpseNjedhywp90VyF43hiT7NK8c9w9RFb4Vdmn4akzir-uOepwfuX7WsvGLrbw",
+        url: "/assets/images/img28.jpg",
         width: 1200,
         height: 630,
         alt: "ByDaisy Luxury Wedding Experience",
@@ -108,11 +116,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ByDaisy Planner — Luxury Wedding Planner & Organizer",
+    title: "ByDaisy Planner - Luxury Wedding Planner & Organizer",
     description:
       "Curated luxury wedding planning, minute-by-minute coordination, and bespoke event styling across Indonesia.",
     images: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB4B456Hrd9cNUzL2SyK7sJz4r8c6q2W5aggTtBHeLEAVBB4gY04rO_L8c8rAyBn5VFBmv2GSyZ2X0oCpX_B_cuyj3suI9op8p9jqXuwz_nHm4hy4g4AJqVU3SZ6dgetoM4Y-qyf7a3UAOXAEsSiRw6HpsoHT4bxUjPRDEpSeN7heAoM7U9ieDgDaMjmpseNjedhywp90VyF43hiT7NK8c9w9RFb4Vdmn4akzir-uOepwfuX7WsvGLrbw",
+      "/assets/images/img28.jpg",
     ],
   },
   icons: {
@@ -169,7 +177,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${theSeasons.variable} ${cormorant.variable} ${jakarta.variable} scroll-smooth`}
+      className={`${theSeasons.variable} ${jakarta.variable} scroll-smooth`}
     >
       <head>
         <script

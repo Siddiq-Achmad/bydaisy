@@ -47,7 +47,27 @@ export function ConsultationSheet({
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientName: formData.coupleNames || "Klien Konsultasi",
+          phone: formData.waNumber || "-",
+          weddingDate: formData.eventDate || "-",
+          guestCount: formData.guestCount,
+          packageInterest: formData.services.join(", ") || defaultService,
+          venue: formData.venueLocation || "TBD",
+          budgetRange: "-",
+          notes: formData.notes || "",
+          source: "Consultation Sheet",
+        }),
+      });
+    } catch (e) {
+      console.error("Failed to record lead", e);
+    }
+
     const text = `Halo ByDaisy Planner, saya ingin booking konsultasi pernikahan:
 • Pasangan: ${formData.coupleNames || "-"}
 • Perkiraan Tanggal: ${formData.eventDate || "-"}

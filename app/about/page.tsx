@@ -58,10 +58,10 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.08] mb-6 font-editorial">
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.12] mb-6 font-editorial font-light">
               You Dream It, <br />
-              <span className="italic font-normal text-forest-green">
-                We Creat It!
+              <span className="italic font-light text-forest-green">
+                We Create It!
               </span>
             </h1>
 
@@ -75,7 +75,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7">
               <div className="relative rounded-3xl overflow-hidden aspect-[16/10] shadow-2xl bg-sand border border-taupe/40">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsQv3i5MtgyYEnPAqCac0AXFtJJlDDIEhkOflDlbG3LF5x_ghU6IzieSymSgS31C5uj9Y4PnqMTyYz85uY1KdIC2oYp6FDnK-agZtdv4P3CuYRvKzXLL0WoJtMMwC1_wqU7XF_yWokXEhUQMqKamBKv408oRPS0QlAbbEtean0WCVLdV06atwN_sdJhYHYPjAMI1nZJQI3R4avfpfw34StMshW6LzUzMNluIkj56dXpDdjh3ZPF-eqPZZ7mW-O-J14HTA"
+                  src="/assets/images/service-outdoor-ensemble.jpg"
                   alt="ByDaisy certified wedding crew on stage"
                   fill
                   priority

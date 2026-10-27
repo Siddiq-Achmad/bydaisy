@@ -1,0 +1,74 @@
+[
+  {
+    "id": "rev-1",
+    "couple": "Jihad & Nanda",
+    "date": "04 Oktober 2026",
+    "venue": "Asrama Haji Ballroom, Banda Aceh",
+    "theme": "Royal Acehnese Heritage",
+    "rating": 5,
+    "image": "/assets/images/tradisi-aceh.jpg",
+    "quote": "Dari awal konsultasi sampai hari H selesai, ByDaisy bener-bener jadi penenang kami. Acara adat Aceh yang biasanya ribet dan penuh prosesi sakral bisa berjalan begitu tertib, megah, dan tepat waktu. Seluruh keluarga besar sangat terharu dan bangga.",
+    "service": "All-In Royal Planner & WO",
+    "status": "Featured"
+  },
+  {
+    "id": "rev-2",
+    "couple": "Nazhira & Naufal",
+    "date": "08 November 2025",
+    "venue": "Sribudaya Convention Center",
+    "theme": "Cultural Traditional Wedding",
+    "rating": 5,
+    "image": "/assets/images/review-peusijeuk.jpg",
+    "quote": "Tim ByDaisy punya sensitivitas tinggi pada protokol orang tua dan sesepuh adat. Nggak ada drama telat ataupun miskomunikasi antar vendor. Rundown per menitnya luar biasa presisi. Highly recommended!",
+    "service": "Wedding Planner & Organizer",
+    "status": "Featured"
+  },
+  {
+    "id": "rev-3",
+    "couple": "Jacky & Valerie",
+    "date": "03 Oktober 2025",
+    "venue": "Hermes Grand Ballroom",
+    "theme": "Modern Ballroom & Chandelier",
+    "rating": 5,
+    "image": "/assets/images/review-ballroom-fog.jpg",
+    "quote": "Lighting, kabut panggung, dan musik sinkron sempurna saat first dance kami. Kru on-site standby menjaga gaun dan kebutuhan kami tanpa diminta. ByDaisy membuat pernikahan impian kami benar-benar hidup.",
+    "service": "Executive On-Day WO",
+    "status": "Featured"
+  },
+  {
+    "id": "rev-4",
+    "couple": "Fajar & Alisha",
+    "date": "24 Agustus 2025",
+    "venue": "Grand City Hall Ballroom",
+    "theme": "Modern Botanical Reception",
+    "rating": 5,
+    "image": "/assets/images/service-glasshouse.jpg",
+    "quote": "Yang paling kami apresiasi adalah transparansi anggarannya. ByDaisy membantu kami menghemat pengeluaran vendor tanpa menurunkan kualitas visual sedikit pun. Terima kasih banyak ByDaisy team!",
+    "service": "The Signature Planner",
+    "status": "Published"
+  },
+  {
+    "id": "rev-5",
+    "couple": "Rizky & Dinda",
+    "date": "12 Juli 2025",
+    "venue": "Tiara Convention Center",
+    "theme": "Melayu Deli & Nasional",
+    "rating": 5,
+    "image": "/assets/images/tradisi-melayu.jpg",
+    "quote": "Prosesi Tepuk Tepung Tawar dan balas pantunnya berlangsung syahdu dan megah. Semua kru ByDaisy sangat ramah, santun, dan cekatan. 10/10 service!",
+    "service": "Full Planner & Decor Styling",
+    "status": "Published"
+  },
+  {
+    "id": "rev-6",
+    "couple": "Bagas & Meutia",
+    "date": "18 Mei 2025",
+    "venue": "The Glass House",
+    "theme": "Intimate Outdoor Wedding",
+    "rating": 5,
+    "image": "/assets/images/review-lounge-relax.jpg",
+    "quote": "Pernikahan intimate 200 tamu kami terasa hangat, elegan, dan sangat personal. Pengantin bisa makan dengan tenang dan menikmati setiap momen bersama para sahabat berkat kawalan tim ByDaisy.",
+    "service": "Intimate Wedding Package",
+    "status": "Published"
+  }
+]

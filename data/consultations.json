@@ -1,0 +1,41 @@
+[
+  {
+    "id": "CS-101",
+    "coupleNames": "Cut Sarah & Zulfikar",
+    "scheduledDate": "Selasa, 28 Oktober 2026",
+    "time": "14.00 - 15.30 WIB",
+    "type": "Tatap Muka di Studio Lambhuk",
+    "venueInterest": "Sribudaya Resort (1.000 Pax)",
+    "leadPlanner": "Daisy Iskandar",
+    "status": "Terkonfirmasi",
+    "statusColor": "bg-forest-green/10 text-forest-green border-forest-green/30",
+    "hotline": "+62 822-7709-4277",
+    "notes": "Membahas konsep pelaminan kasab Aceh modern dan alur tamu adat."
+  },
+  {
+    "id": "CS-102",
+    "coupleNames": "dr. Amanda & Reza, S.T.",
+    "scheduledDate": "Rabu, 29 Oktober 2026",
+    "time": "16.00 - 17.30 WIB",
+    "type": "Tatap Muka di Studio Lambhuk",
+    "venueInterest": "Hermes Palace Hotel (500 Pax)",
+    "leadPlanner": "Sarah Amelia",
+    "status": "Terkonfirmasi",
+    "statusColor": "bg-forest-green/10 text-forest-green border-forest-green/30",
+    "hotline": "+62 821-6222-1468",
+    "notes": "Review penawaran vendor katering dan paket sinematografi."
+  },
+  {
+    "id": "CS-103",
+    "coupleNames": "Farhan & Shania",
+    "scheduledDate": "Jumat, 31 Oktober 2026",
+    "time": "19.30 - 21.00 WIB",
+    "type": "Google Meet / Virtual Sesi",
+    "venueInterest": "Lhoknga Riverside (800 Pax)",
+    "leadPlanner": "Rizki Pratama",
+    "status": "Menunggu Konfirmasi Link",
+    "statusColor": "bg-amber-100 text-amber-900 border-amber-300",
+    "hotline": "+62 821-6222-1468",
+    "notes": "Calon pengantin domisili di Jakarta, ingin sesi online dengan orang tua di Banda Aceh."
+  }
+]

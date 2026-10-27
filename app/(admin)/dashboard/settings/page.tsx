@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import initialSettings from "@/data/settings.json";
 import {
   Settings,
   Phone,
@@ -12,25 +13,58 @@ import {
   Globe,
   Clock,
   ShieldCheck,
+  Loader2,
+  X,
 } from "lucide-react";
 
 export default function AdminSettingsPage() {
-  const [saved, setSaved] = useState(false);
+  const [settings, setSettings] = useState(initialSettings);
+  const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
-  const [settings, setSettings] = useState({
-    studioName: "ByDaisy Planner",
-    address: "Jl. Batee Suasa, Lambhuk, Banda Aceh, Aceh",
-    hotline1: "+62 822-7709-4277",
-    hotline2: "+62 821-6222-1468",
-    instagram: "@bydaisyplanner",
-    email: "concierge@bydaisy.com",
-    hours: "Senin – Minggu: 09.00 – 21.00 WIB",
-  });
+  const fetchSettings = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/settings");
+      const json = await res.json();
+      if (json.success && json.data) {
+        setSettings(json.data);
+      }
+    } catch (err) {
+      console.error("Failed to load settings:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const handleSave = (e: React.FormEvent) => {
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    setSaving(true);
+    setFeedback(null);
+
+    try {
+      const res = await fetch("/api/settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(settings),
+      });
+      const result = await res.json();
+      if (result.success) {
+        setFeedback({ type: "success", message: "Pengaturan studio berhasil disimpan ke data/settings.json." });
+      } else {
+        setFeedback({ type: "error", message: result.error || "Gagal menyimpan pengaturan." });
+      }
+    } catch (err: any) {
+      setFeedback({ type: "error", message: err.message || "Koneksi terputus." });
+    } finally {
+      setSaving(false);
+      setTimeout(() => setFeedback(null), 4000);
+    }
   };
 
   return (
@@ -52,16 +86,25 @@ export default function AdminSettingsPage() {
           </p>
         </div>
 
-        {saved && (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-forest-green text-white text-xs font-semibold">
+        {feedback && (
+          <span
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
+              feedback.type === "success"
+                ? "bg-forest-green text-white"
+                : "bg-red-600 text-white"
+            }`}
+          >
             <Check className="w-3.5 h-3.5" />
-            <span>Pengaturan Berhasil Disimpan</span>
+            <span>{feedback.message}</span>
           </span>
         )}
       </div>
 
       {/* Form Card */}
-      <form onSubmit={handleSave} className="p-6 sm:p-8 rounded-2xl bg-white border border-taupe/30 shadow-xs space-y-6">
+      <form
+        onSubmit={handleSave}
+        className="p-6 sm:p-8 rounded-2xl bg-white border border-taupe/30 shadow-xs space-y-6"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-xs uppercase tracking-wider font-semibold text-black mb-1.5">
@@ -77,12 +120,36 @@ export default function AdminSettingsPage() {
 
           <div>
             <label className="block text-xs uppercase tracking-wider font-semibold text-black mb-1.5">
+              Tagline Brand
+            </label>
+            <input
+              type="text"
+              value={settings.tagline || ""}
+              onChange={(e) => setSettings({ ...settings, tagline: e.target.value })}
+              className="w-full text-xs sm:text-sm rounded-xl border border-taupe/40 px-3.5 py-2.5 bg-[#F8F6F1] text-black focus:outline-none focus:border-forest-green"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs uppercase tracking-wider font-semibold text-black mb-1.5">
               Alamat Studio Resmi
             </label>
             <input
               type="text"
               value={settings.address}
               onChange={(e) => setSettings({ ...settings, address: e.target.value })}
+              className="w-full text-xs sm:text-sm rounded-xl border border-taupe/40 px-3.5 py-2.5 bg-[#F8F6F1] text-black focus:outline-none focus:border-forest-green"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs uppercase tracking-wider font-semibold text-black mb-1.5">
+              Jam Operasional Konsultasi
+            </label>
+            <input
+              type="text"
+              value={settings.hours}
+              onChange={(e) => setSettings({ ...settings, hours: e.target.value })}
               className="w-full text-xs sm:text-sm rounded-xl border border-taupe/40 px-3.5 py-2.5 bg-[#F8F6F1] text-black focus:outline-none focus:border-forest-green"
             />
           </div>
@@ -134,18 +201,43 @@ export default function AdminSettingsPage() {
               className="w-full text-xs sm:text-sm rounded-xl border border-taupe/40 px-3.5 py-2.5 bg-[#F8F6F1] text-black focus:outline-none focus:border-forest-green"
             />
           </div>
+
+          <div>
+            <label className="block text-xs uppercase tracking-wider font-semibold text-black mb-1.5">
+              Rekening Resmi Pembayaran DP
+            </label>
+            <input
+              type="text"
+              value={settings.bankAccount || ""}
+              onChange={(e) => setSettings({ ...settings, bankAccount: e.target.value })}
+              className="w-full text-xs sm:text-sm rounded-xl border border-taupe/40 px-3.5 py-2.5 bg-[#F8F6F1] text-black focus:outline-none focus:border-forest-green"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs uppercase tracking-wider font-semibold text-black mb-1.5">
+              Nomor Izin Legalitas Usaha
+            </label>
+            <input
+              type="text"
+              value={settings.licenseNumber || ""}
+              onChange={(e) => setSettings({ ...settings, licenseNumber: e.target.value })}
+              className="w-full text-xs sm:text-sm rounded-xl border border-taupe/40 px-3.5 py-2.5 bg-[#F8F6F1] text-black focus:outline-none focus:border-forest-green"
+            />
+          </div>
         </div>
 
-        <div className="pt-4 border-t border-taupe/20 flex items-center justify-between">
+        <div className="pt-4 border-t border-taupe/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <span className="text-xs text-warm-taupe">
-            Tersinkronisasi otomatis dengan Schema.org JSON-LD dan metadata layout
+            Tersinkronisasi otomatis dengan REST API /api/settings dan data/settings.json
           </span>
           <button
             type="submit"
-            className="px-6 py-2.5 rounded-xl bg-forest-green text-white text-xs font-semibold hover:bg-forest-hover transition-colors flex items-center gap-2 shadow-xs"
+            disabled={saving}
+            className="px-6 py-2.5 rounded-xl bg-forest-green text-white text-xs font-semibold hover:bg-forest-hover transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer disabled:opacity-50"
           >
-            <Save className="w-3.5 h-3.5" />
-            <span>Simpan Perubahan</span>
+            {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
+            <span>{saving ? "Menyimpan..." : "Simpan Perubahan"}</span>
           </button>
         </div>
       </form>

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import weddingData from "@/data/wedding-prices.json";
+import weddingDataInitial from "@/data/wedding-prices.json";
 import {
   CreditCard,
   ExternalLink,
@@ -16,10 +16,21 @@ import {
   FileDown,
   Edit2,
   ArrowRight,
+  X,
+  Loader2,
 } from "lucide-react";
 
 export default function AdminPackagesManager() {
+  const [categories, setCategories] = useState(weddingDataInitial.categories);
   const [selectedCategory, setSelectedCategory] = useState<string>("all-in-daisy");
+  const [loading, setLoading] = useState(false);
+
+  // Edit Modal State
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingCategory, setEditingCategory] = useState("");
+  const [editingPackage, setEditingPackage] = useState<any>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
   const formatRupiah = (num: number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -35,6 +46,78 @@ export default function AdminPackagesManager() {
     "vandys-garden": MapPin,
     "planner-organizer-only": Layers,
     "decoration-only": Palette,
+  };
+
+  const fetchPackages = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/packages");
+      const json = await res.json();
+      if (json.success && Array.isArray(json.data)) {
+        setCategories(json.data);
+      }
+    } catch (err) {
+      console.error("Failed to load packages:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPackages();
+  }, []);
+
+  const openEditModal = (catId: string, pkg: any) => {
+    setEditingCategory(catId);
+    setEditingPackage({ ...pkg });
+    setIsEditModalOpen(true);
+  };
+
+  const handleSavePackage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingPackage) return;
+
+    setSubmitting(true);
+    setFeedback(null);
+
+    try {
+      const res = await fetch("/api/packages", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          categoryId: editingCategory,
+          packageId: editingPackage.id,
+          newPrice: Number(editingPackage.price),
+          newName: editingPackage.name,
+          newPax: editingPackage.capacity,
+        }),
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        // Update local state
+        setCategories((prev) =>
+          prev.map((cat) => {
+            if (cat.id !== editingCategory) return cat;
+            return {
+              ...cat,
+              packages: cat.packages.map((p) =>
+                p.id === editingPackage.id ? { ...p, ...editingPackage, price: Number(editingPackage.price) } : p
+              ),
+            };
+          })
+        );
+        setIsEditModalOpen(false);
+        setFeedback({ type: "success", message: `Paket "${editingPackage.name}" berhasil diperbarui!` });
+      } else {
+        setFeedback({ type: "error", message: result.error || "Gagal memperbarui paket." });
+      }
+    } catch (err: any) {
+      setFeedback({ type: "error", message: err.message || "Koneksi terputus." });
+    } finally {
+      setSubmitting(false);
+      setTimeout(() => setFeedback(null), 4000);
+    }
   };
 
   return (
@@ -60,13 +143,29 @@ export default function AdminPackagesManager() {
           <Link
             href="/pricelist"
             target="_blank"
-            className="px-4 py-2 rounded-xl border border-taupe/40 text-black text-xs font-medium hover:bg-sand transition-colors flex items-center gap-2"
+            className="px-4 py-2.5 rounded-xl border border-taupe/40 text-black text-xs font-medium hover:bg-sand transition-colors flex items-center gap-2"
           >
             <span>Lihat Halaman Pricelist</span>
             <ExternalLink className="w-3.5 h-3.5 text-forest-green" />
           </Link>
         </div>
       </div>
+
+      {/* Feedback Toast */}
+      {feedback && (
+        <div
+          className={`p-4 rounded-xl text-xs font-medium border flex items-center justify-between ${
+            feedback.type === "success"
+              ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+              : "bg-red-50 text-red-800 border-red-200"
+          }`}
+        >
+          <span>{feedback.message}</span>
+          <button onClick={() => setFeedback(null)} className="text-black/50 hover:text-black">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
       {/* 4 E-Catalog PDF Stats */}
       <div className="p-6 rounded-2xl bg-white border border-taupe/30 shadow-xs">
@@ -81,7 +180,7 @@ export default function AdminPackagesManager() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {weddingData.catalogs.map((cat) => (
+          {weddingDataInitial.catalogs.map((cat) => (
             <div
               key={cat.id}
               className="p-4 rounded-xl bg-[#F8F6F1] border border-taupe/20 flex flex-col justify-between"
@@ -115,14 +214,14 @@ export default function AdminPackagesManager() {
 
       {/* Category Filter Switcher */}
       <div className="flex flex-wrap items-center gap-2">
-        {weddingData.categories.map((cat) => {
+        {categories.map((cat) => {
           const IconC = categoryIcons[cat.id] || Sparkles;
           const isActive = selectedCategory === cat.id;
           return (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center gap-2 border ${
+              className={`px-4 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center gap-2 border cursor-pointer ${
                 isActive
                   ? "bg-forest-green text-white border-forest-green shadow-xs font-semibold"
                   : "bg-white text-black/75 border-taupe/30 hover:bg-sand"
@@ -143,7 +242,7 @@ export default function AdminPackagesManager() {
       </div>
 
       {/* Package Cards in Selected Category */}
-      {weddingData.categories
+      {categories
         .filter((c) => c.id === selectedCategory)
         .map((cat) => (
           <div key={cat.id} className="space-y-6">
@@ -158,7 +257,7 @@ export default function AdminPackagesManager() {
               {cat.packages.map((pkg, pIdx) => (
                 <div
                   key={pkg.id || pIdx}
-                  className="p-6 rounded-2xl bg-white border border-taupe/30 shadow-xs flex flex-col justify-between hover:border-forest-green/50 transition-all"
+                  className="p-6 rounded-2xl bg-white border border-taupe/30 shadow-xs flex flex-col justify-between hover:border-forest-green/50 transition-all group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -176,7 +275,7 @@ export default function AdminPackagesManager() {
 
                     <div className="p-3.5 rounded-xl bg-[#F8F6F1] mb-4">
                       <span className="text-[10px] uppercase tracking-wider text-warm-taupe block font-medium">
-                        Harga Publik
+                        Investasi Publik
                       </span>
                       <span className="font-serif text-2xl font-bold text-forest-green block mt-0.5">
                         {formatRupiah(pkg.price)}
@@ -202,21 +301,130 @@ export default function AdminPackagesManager() {
                   </div>
 
                   <div className="pt-3 border-t border-taupe/20 flex items-center justify-between text-xs">
-                    <span className="text-warm-taupe text-[11px]">Terhubung ke data/</span>
-                    <Link
-                      href="/pricelist"
-                      target="_blank"
-                      className="text-forest-green font-semibold hover:underline flex items-center gap-1"
+                    <span className="text-warm-taupe text-[10px] font-mono">ID: {pkg.id}</span>
+                    <button
+                      onClick={() => openEditModal(cat.id, pkg)}
+                      className="px-3 py-1.5 rounded-lg border border-forest-green/40 text-forest-green hover:bg-forest-green hover:text-white transition-colors flex items-center gap-1.5 text-xs font-medium cursor-pointer"
                     >
-                      <span>Lihat di Web</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                      <Edit2 className="w-3 h-3" />
+                      <span>Edit Harga</span>
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         ))}
+
+      {/* Edit Package Modal */}
+      {isEditModalOpen && editingPackage && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs cursor-pointer"
+            onClick={() => setIsEditModalOpen(false)}
+          />
+
+          <div className="relative z-10 w-full max-w-lg bg-canvas border border-taupe/40 rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            <div className="p-6 border-b border-taupe/30 flex items-center justify-between bg-white">
+              <div>
+                <h3 className="font-serif text-xl text-black font-semibold">
+                  Edit Investasi Paket
+                </h3>
+                <p className="text-xs text-black/60 font-light mt-0.5">
+                  Perubahan akan disimpan di data/wedding-prices.json dan API.
+                </p>
+              </div>
+              <button
+                onClick={() => setIsEditModalOpen(false)}
+                className="p-1.5 rounded-full hover:bg-sand text-black transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSavePackage} className="p-6 overflow-y-auto space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-black uppercase tracking-wider mb-1">
+                  Nama Paket
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={editingPackage.name || ""}
+                  onChange={(e) => setEditingPackage({ ...editingPackage, name: e.target.value })}
+                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-taupe/40 bg-white text-black focus:outline-none focus:border-forest-green"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-black uppercase tracking-wider mb-1">
+                    Harga / Investasi (Rp) *
+                  </label>
+                  <input
+                    type="number"
+                    required
+                    value={editingPackage.price || 0}
+                    onChange={(e) =>
+                      setEditingPackage({ ...editingPackage, price: Number(e.target.value) })
+                    }
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-taupe/40 bg-white text-black focus:outline-none focus:border-forest-green"
+                  />
+                  <span className="text-[11px] text-forest-green font-medium mt-1 block">
+                    {formatRupiah(editingPackage.price || 0)}
+                  </span>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-black uppercase tracking-wider mb-1">
+                    Kapasitas / Pax
+                  </label>
+                  <input
+                    type="text"
+                    value={editingPackage.capacity || ""}
+                    onChange={(e) =>
+                      setEditingPackage({ ...editingPackage, capacity: e.target.value })
+                    }
+                    placeholder="Contoh: 1.000 Pax"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl border border-taupe/40 bg-white text-black focus:outline-none focus:border-forest-green"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-black uppercase tracking-wider mb-1">
+                  Badge Tag
+                </label>
+                <input
+                  type="text"
+                  value={editingPackage.tag || ""}
+                  onChange={(e) => setEditingPackage({ ...editingPackage, tag: e.target.value })}
+                  placeholder="Best Deal / Signature / Intimate"
+                  className="w-full px-3.5 py-2 text-xs rounded-xl border border-taupe/40 bg-white text-black focus:outline-none focus:border-forest-green"
+                />
+              </div>
+
+              <div className="pt-4 border-t border-taupe/30 flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsEditModalOpen(false)}
+                  className="px-4 py-2 text-xs font-medium text-black hover:bg-sand rounded-xl transition-colors cursor-pointer"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="px-5 py-2 text-xs font-semibold text-canvas bg-forest-green hover:bg-forest-hover rounded-xl transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                >
+                  {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>Simpan Perubahan Harga</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

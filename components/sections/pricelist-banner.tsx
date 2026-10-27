@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { MessageCircle, FileText } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, FileText, ArrowRight } from "lucide-react";
 
 interface PricelistBannerProps {
   onOpenConsultation?: () => void;
@@ -18,11 +19,11 @@ export function PricelistBanner({ onOpenConsultation }: PricelistBannerProps) {
       <div className="absolute -left-20 -top-20 w-80 h-80 rounded-full border border-white/5 pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-        <span className="font-serif italic text-lg md:text-xl text-light-taupe block mb-3 font-normal">
+        <span className="font-serif italic text-base sm:text-lg md:text-xl text-light-taupe block mb-3 font-light">
           Transparan & Fleksibel
         </span>
 
-        <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight tracking-tight">
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-[1.12] tracking-tight font-editorial">
           Pricelist & Customized Investment Package
         </h2>
 
@@ -33,15 +34,24 @@ export function PricelistBanner({ onOpenConsultation }: PricelistBannerProps) {
           dengan venue dan jumlah tamu Anda.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-5">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+          <Link
+            href="/pricelist"
+            data-cursor="Pricelist"
+            className="px-8 py-3.5 rounded-full bg-canvas text-forest-green text-xs uppercase tracking-widest font-semibold hover:bg-sand transition-all shadow-md flex items-center gap-2 group"
+          >
+            <span>Lihat Rincian Paket & Harga</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+
           <button
             type="button"
             onClick={onOpenConsultation}
-            data-cursor="Pricelist"
-            className="px-8 py-3.5 rounded-full bg-canvas text-forest-green text-xs uppercase tracking-widest font-semibold hover:bg-sand transition-all shadow-md flex items-center gap-2"
+            data-cursor="Katalog"
+            className="px-8 py-3.5 rounded-full border border-white/50 text-canvas text-xs uppercase tracking-widest font-semibold hover:bg-white/10 transition-all flex items-center gap-2"
           >
             <FileText className="w-4 h-4" />
-            <span>Minta Katalog Pricelist PDF</span>
+            <span>Minta E-Katalog PDF</span>
           </button>
 
           <a
@@ -49,10 +59,10 @@ export function PricelistBanner({ onOpenConsultation }: PricelistBannerProps) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="WhatsApp"
-            className="px-8 py-3.5 rounded-full border border-white/40 text-canvas text-xs uppercase tracking-widest font-semibold hover:bg-white/10 transition-all flex items-center gap-2"
+            className="px-7 py-3.5 rounded-full border border-white/30 text-canvas/90 text-xs uppercase tracking-widest font-medium hover:bg-white/10 transition-all flex items-center gap-2"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Hubungi via WhatsApp</span>
+            <span>WhatsApp Hotline</span>
           </a>
         </div>
       </div>
@@ -61,3 +71,4 @@ export function PricelistBanner({ onOpenConsultation }: PricelistBannerProps) {
 }
 
 export default PricelistBanner;
+

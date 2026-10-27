@@ -22,7 +22,7 @@ export function Footer() {
                 <span className="w-1.5 h-1.5 rounded-full bg-forest-green inline-block"></span>
               </div>
             </div>
-            <p className="font-serif italic text-xs tracking-widest text-warm-taupe uppercase">
+            <p className="font-serif text-xs tracking-widest text-warm-taupe -mt-0.5 uppercase">
               Wedding & Event Planner
             </p>
             <p className="text-sm text-black/70 font-light leading-relaxed max-w-sm pt-2">

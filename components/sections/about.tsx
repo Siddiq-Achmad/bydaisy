@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { MapPin, ShieldCheck, Award, Users } from "lucide-react";
+import Link from "next/link";
+import { MapPin, ShieldCheck, Award, Users, ArrowRight, FileText } from "lucide-react";
 
 export function AboutSection() {
   const metrics = [
@@ -24,8 +25,8 @@ export function AboutSection() {
             </span>
             <span className="w-8 h-px bg-warm-taupe"></span>
           </div>
-          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-black tracking-tight font-editorial">
-            You Dream It, We Creat It!
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black tracking-tight font-editorial leading-[1.12] font-light">
+            You Dream It, We Create It!
           </h2>
         </div>
 
@@ -37,7 +38,7 @@ export function AboutSection() {
             <div className="rounded-3xl overflow-hidden shadow-xl border border-taupe/40 bg-sand">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsQv3i5MtgyYEnPAqCac0AXFtJJlDDIEhkOflDlbG3LF5x_ghU6IzieSymSgS31C5uj9Y4PnqMTyYz85uY1KdIC2oYp6FDnK-agZtdv4P3CuYRvKzXLL0WoJtMMwC1_wqU7XF_yWokXEhUQMqKamBKv408oRPS0QlAbbEtean0WCVLdV06atwN_sdJhYHYPjAMI1nZJQI3R4avfpfw34StMshW6LzUzMNluIkj56dXpDdjh3ZPF-eqPZZ7mW-O-J14HTA"
+                  src="/assets/images/img34.jpg"
                   alt="ByDaisy certified wedding organizer team with ceremonial backdrop"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -45,7 +46,7 @@ export function AboutSection() {
                 />
               </div>
               <div className="p-4 bg-canvas flex justify-between items-center text-xs text-warm-taupe border-t border-taupe/20">
-                <span className="font-serif italic font-medium text-black">
+                <span className="font-serif text-[11px]">
                   ByDaisy Certified On-Site Crew
                 </span>
                 <span className="tracking-widest uppercase text-[10px]">
@@ -58,7 +59,7 @@ export function AboutSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative h-44 rounded-2xl overflow-hidden shadow-sm border border-taupe/30 bg-sand">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW7Qa7rYhNXqPS-rMSZK4tatUhdYASv0focjP-Uaae3kN4yvJVPFDpqqBnwpvkh4P0PswkaiKAUGyJNLk-sZ_W-RbwvILhqnuihsEFpwD_EnW2HnmDI25Wb_Ad3UjvHzo-52RfUuLvrKpT54fOtx6McsYKcWU26B2CCYjdyagpLMZbHn-jrV7EVDmFxODt3XMt4Gcc1Y400U3OxMCj7w8BtM1c2t5TQHcAzKoG49JCYV8MWbMgHZrilA1S2tLKnyiSHaY"
+                  src="/assets/images/img35.jpg"
                   alt="ByDaisy wedding coordinators in formal suits"
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
@@ -67,7 +68,7 @@ export function AboutSection() {
               </div>
               <div className="relative h-44 rounded-2xl overflow-hidden shadow-sm border border-taupe/30 bg-sand">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlnGOGodgrVczDXpzM8nYkAzhsldxcRn-FmggBi2HBqKPimzDgUO_z8nuhIho6tjQAQyOJNbqLx-Vd9A8TU7cznk_cAb00LRPLHOyqn6s8Dp-lrMh5kYqnYzZq-FU-EgKceOZAwWfgBNXr9mShC9gG2azbYGnJuJ3Ijn1cJhhX77-vVQvu1h_-m3Fyen21bD-tnwNak-xjY8r4rW7xFojiiDitrE7kt92w9MiZulPcS_blnQXZsYBdKZT03On0LlpnDIo"
+                  src="/assets/images/img36.jpg"
                   alt="Ceremonial stage setup and luxury hall decoration styled by ByDaisy"
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
@@ -80,7 +81,7 @@ export function AboutSection() {
           {/* Right Column: Narrative Story & Key Pillars */}
           <div className="lg:col-span-6 flex flex-col justify-between pt-2">
             <div>
-              <h3 className="font-serif italic text-2xl md:text-3xl lg:text-4xl text-forest-green mb-6 font-normal leading-snug">
+              <h3 className="font-serif italic text-2xl md:text-3xl lg:text-4xl text-forest-green mb-6 font-light leading-snug">
                 Mewujudkan Pernikahan yang Terencana, Indah, dan Berkesan.
               </h3>
 
@@ -108,7 +109,7 @@ export function AboutSection() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-8 my-8 border-y border-taupe/30 text-center">
                 {metrics.map((m, idx) => (
                   <div key={idx} className="p-2">
-                    <div className="font-serif text-3xl md:text-4xl font-normal text-black">
+                    <div className="font-serif text-3xl md:text-4xl font-light text-black">
                       {m.value}
                     </div>
                     <div className="text-[11px] uppercase tracking-wider text-warm-taupe mt-1">
@@ -116,6 +117,27 @@ export function AboutSection() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Action Buttons to Detail Page */}
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-forest-green text-canvas text-xs uppercase tracking-widest font-semibold hover:bg-black transition-all shadow-md group"
+                >
+                  <span>Pelajari Profil & Kisah ByDaisy</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <a
+                  href="/assets/ByDaisy-Company-Profile.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-taupe/60 text-black text-xs uppercase tracking-widest font-semibold hover:bg-sand transition-all"
+                >
+                  <FileText className="w-3.5 h-3.5 text-forest-green" />
+                  <span>Company Profile (PDF)</span>
+                </a>
               </div>
 
               {/* Location Card */}
@@ -129,14 +151,13 @@ export function AboutSection() {
                     Jl. Batee Suasa, Lambhuk, Banda Aceh • Melayani Seluruh Aceh & Nusantara
                   </p>
                 </div>
-                <a
-                  href="/assets/ByDaisy-Company-Profile.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full bg-forest-green text-white text-[11px] uppercase tracking-wider font-semibold hover:bg-black transition-colors shrink-0 text-center"
+                <Link
+                  href="/contact"
+                  className="text-xs font-semibold text-forest-green hover:text-black uppercase tracking-wider inline-flex items-center gap-1.5 shrink-0"
                 >
-                  Company Profile (PDF)
-                </a>
+                  <span>Kunjungi Studio</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
           </div>

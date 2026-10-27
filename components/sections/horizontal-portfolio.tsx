@@ -2,9 +2,11 @@
 
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Calendar, MapPin, Sparkles, ArrowRight } from "lucide-react";
+import realWeddingsData from "@/data/real-weddings.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,41 +20,15 @@ export function HorizontalPortfolio({
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  const weddings = [
-    {
-      couple: "Jihad & Nanda",
-      theme: "Tradisi & Songket",
-      date: "04 Oktober 2026",
-      venue: "Asrama Haji, Medan",
-      description:
-        "Nuansa pelaminan tradisional dengan sentuhan floral pekat, tenunan songket berpadu ukiran emas nan megah.",
-      service: "Planner & WO All-In",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCzxUgKi6Q5xQVkwW7jPIpz6qyC9rBNHmXWqc1KHkIDiTomoMO8XkhcNWesdzbqaXqdNl9v1jf2-9nTdTVpgQhKZtlLoVabeIoGJ_rImOS8ifCQ3sc33YKjgDCS9SRd5UdD51P58T2cTfFW-S8stgb7Hl8qn2RCVpQNpVhZfG6afI35G2iz3rGuP1rZPHudFwyFPJRsaO-ULEcHzLMJ_81NGvFti88drFkj1Bh0mFKYwlLkZLamedv1LhtJCthhi9OJOoM",
-    },
-    {
-      couple: "Nazhira & Naufal",
-      theme: "Cultural Heritage",
-      date: "08 November 2025",
-      venue: "Sribudaya Convention",
-      description:
-        "Keanggunan busana adat dipadukan susunan tata upacara sakral dan perayaan hangat bersama ribuan kerabat keluarga.",
-      service: "Complete Royal Coordinator",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBsQv3i5MtgyYEnPAqCac0AXFtJJlDDIEhkOflDlbG3LF5x_ghU6IzieSymSgS31C5uj9Y4PnqMTyYz85uY1KdIC2oYp6FDnK-agZtdv4P3CuYRvKzXLL0WoJtMMwC1_wqU7XF_yWokXEhUQMqKamBKv408oRPS0QlAbbEtean0WCVLdV06atwN_sdJhYHYPjAMI1nZJQI3R4avfpfw34StMshW6LzUzMNluIkj56dXpDdjh3ZPF-eqPZZ7mW-O-J14HTA",
-    },
-    {
-      couple: "Jacky & Valerie",
-      theme: "Modern Ballroom",
-      date: "03 Oktober 2025",
-      venue: "Hermes Grand Ballroom",
-      description:
-        "Konsep international wedding megah berhias ribuan kristal chandelier, kabut atmosferik dan pencahayaan dramatis.",
-      service: "On-Day Production & WO",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBTMpHvVFbmAYj3iCImbvSgCOGbpydMAbl87rIvWmkplWNW0g1-S_0efMJhIXMsQF3fYJ28B0o1-_1v5bpMY3lg4Eje99qP4rN7gAyJ4UreiSYo2T9zSoQH2n4WOrtLn4bpIxNFpavcHsT-5b-1uHLLSBrf1oP1W2_3Za-rqDC-VDyAyalWwXm-K5k8g_6OVGTIZ692xAtvWT8t_uaC9z8tK0-5kM2NygzECvxO1LrI0BZS4UF1cJ5StmF67Bea2DPkMp8",
-    },
-  ];
+  const weddings = realWeddingsData.slice(0, 4).map((w) => ({
+    couple: w.couple,
+    theme: w.categoryLabel || w.category,
+    date: w.date,
+    venue: w.venue,
+    description: w.story,
+    service: w.service,
+    image: w.image,
+  }));
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -84,7 +60,7 @@ export function HorizontalPortfolio({
   return (
     <div
       ref={sectionRef}
-      id="events"
+      id="portfolio"
       className="relative overflow-hidden bg-canvas min-h-screen flex items-center border-t border-taupe/30"
     >
       <div
@@ -100,15 +76,23 @@ export function HorizontalPortfolio({
             </span>
           </div>
 
-          <h2 className="font-serif text-4xl md:text-6xl text-black tracking-tight font-editorial mb-6 leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black tracking-tight font-editorial mb-6 leading-[1.12] font-light">
             Recent Weddings <br />
-            <span className="italic font-normal text-forest-green">ByDaisy</span>
+            <span className="italic font-light text-forest-green">ByDaisy</span>
           </h2>
 
-          <p className="text-sm md:text-base text-black/75 font-light leading-relaxed mb-8">
+          <p className="text-sm md:text-base text-black/75 font-light leading-relaxed mb-6">
             Setiap perayaan memiliki jiwa dan keanggunan tersendiri. Telusuri
             arsip pernikahan nyata yang kami kurasi dengan dedikasi penuh.
           </p>
+
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 mb-8 text-xs uppercase tracking-widest font-semibold text-forest-green hover:text-black transition-colors"
+          >
+            <span>Buka Arsip Real Weddings</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
 
           <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-warm-taupe">
             <span>Scroll Horisontal</span>
@@ -144,7 +128,7 @@ export function HorizontalPortfolio({
             {/* Editorial Bottom Container */}
             <div className="p-7 md:p-8 bg-gradient-to-b from-brown to-[#593f2f] text-canvas flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="font-serif text-3xl md:text-4xl font-light tracking-wide text-canvas mb-3">
+                <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-canvas mb-3 leading-snug">
                   {item.couple}
                 </h3>
 
@@ -169,15 +153,14 @@ export function HorizontalPortfolio({
                 <span className="italic font-serif text-sm text-taupe">
                   {item.service}
                 </span>
-                <button
-                  type="button"
-                  onClick={onOpenConsultation}
+                <Link
+                  href="/portfolio"
                   data-cursor="View"
-                  className="inline-flex items-center gap-1.5 font-medium tracking-wider uppercase text-canvas hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 font-medium tracking-wider uppercase text-canvas hover:text-white transition-colors group/link"
                 >
-                  <span>Detail</span>
-                  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                  <span>Kisah Lengkap & Detail</span>
+                  <ArrowRight className="w-3.5 h-3.5 transform group-hover/link:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           </article>
@@ -192,7 +175,7 @@ export function HorizontalPortfolio({
             <span className="text-xs uppercase tracking-widest text-taupe font-medium block mb-2">
               Your Story Begins Here
             </span>
-            <h3 className="font-serif text-3xl md:text-4xl font-light mb-4 leading-snug">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light mb-4 leading-snug">
               Ingin Hari Bahagia Anda Terekam Sempurna?
             </h3>
             <p className="text-xs md:text-sm text-canvas/80 font-light leading-relaxed">
@@ -201,15 +184,24 @@ export function HorizontalPortfolio({
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={onOpenConsultation}
-            data-cursor="Connect"
-            className="w-full py-3.5 rounded-full bg-canvas text-forest-green text-xs uppercase tracking-widest font-semibold hover:bg-sand transition-all shadow-md flex items-center justify-center gap-2"
-          >
-            <span>Reservasi Tanggal</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={onOpenConsultation}
+              data-cursor="Connect"
+              className="w-full py-3.5 rounded-full bg-canvas text-forest-green text-xs uppercase tracking-widest font-semibold hover:bg-sand transition-all shadow-md flex items-center justify-center gap-2"
+            >
+              <span>Reservasi Tanggal</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <Link
+              href="/gallery"
+              className="w-full py-3 rounded-full border border-canvas/40 text-canvas text-xs uppercase tracking-widest font-semibold hover:bg-canvas/10 transition-all flex items-center justify-center gap-2 text-center"
+            >
+              <span>Jelajahi Seluruh Galeri</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

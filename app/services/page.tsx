@@ -16,12 +16,12 @@ export default function ServicesPage() {
     {
       id: "wedding-planner",
       title: "Wedding Planner",
-      subhead: "Comprehensive 3–9 Months Full Journey",
+      subhead: "Comprehensive 3-9 Months Full Journey",
       icon: Clock,
       description:
         "Pendampingan paripurna dari titik awal konsepsi hingga hari H usai. Kami menyusun estimasi anggaran, mengkurasi vendor terbaik yang selaras dengan selera Anda, membuat moodboard tematik, hingga technical meeting akbar.",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBTMpHvVFbmAYj3iCImbvSgCOGbpydMAbl87rIvWmkplWNW0g1-S_0efMJhIXMsQF3fYJ28B0o1-_1v5bpMY3lg4Eje99qP4rN7gAyJ4UreiSYo2T9zSoQH2n4WOrtLn4bpIxNFpavcHsT-5b-1uHLLSBrf1oP1W2_3Za-rqDC-VDyAyalWwXm-K5k8g_6OVGTIZ692xAtvWT8t_uaC9z8tK0-5kM2NygzECvxO1LrI0BZS4UF1cJ5StmF67Bea2DPkMp8",
+        "/assets/images/service-briefing.jpg",
       deliverables: [
         "Financial Planning & Budget Optimization Sheet",
         "Creative Direction: Palet Warna, Moodboard, & Guideline Busana",
@@ -39,7 +39,7 @@ export default function ServicesPage() {
       description:
         "Bagi pasangan yang telah memilih vendor secara mandiri namun menginginkan orkestrasi panggung dan operasional yang sempurna di hari bahagia. Kami memastikan seluruh pihak keluarga dan vendor bekerja serasi tanpa hambatan.",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBW7Qa7rYhNXqPS-rMSZK4tatUhdYASv0focjP-Uaae3kN4yvJVPFDpqqBnwpvkh4P0PswkaiKAUGyJNLk-sZ_W-RbwvILhqnuihsEFpwD_EnW2HnmDI25Wb_Ad3UjvHzo-52RfUuLvrKpT54fOtx6McsYKcWU26B2CCYjdyagpLMZbHn-jrV7EVDmFxODt3XMt4Gcc1Y400U3OxMCj7w8BtM1c2t5TQHcAzKoG49JCYV8MWbMgHZrilA1S2tLKnyiSHaY",
+        "/assets/images/img41.jpg",
       deliverables: [
         "8 hingga 16 Kru On-site Bersertifikasi & Berseragam Resmi",
         "Show Director berpengalaman untuk alur panggung, band, dan MC",
@@ -57,7 +57,7 @@ export default function ServicesPage() {
       description:
         "Mewujudkan atmosfer visual yang memukau dan bercerita. Dari keagungan ornamen songket dan ukiran adat khas Nusantara hingga modern botanical chandelier ballroom bertaraf internasional.",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBlnGOGodgrVczDXpzM8nYkAzhsldxcRn-FmggBi2HBqKPimzDgUO_z8nuhIho6tjQAQyOJNbqLx-Vd9A8TU7cznk_cAb00LRPLHOyqn6s8Dp-lrMh5kYqnYzZq-FU-EgKceOZAwWfgBNXr9mShC9gG2azbYGnJuJ3Ijn1cJhhX77-vVQvu1h_-m3Fyen21bD-tnwNak-xjY8r4rW7xFojiiDitrE7kt92w9MiZulPcS_blnQXZsYBdKZT03On0LlpnDIo",
+        "/assets/images/gallery-white-pavillion.jpg",
       deliverables: [
         "Visual 3D Spatial Rendering & Layout Floorplan",
         "Instalasi Pelaminan Kustom (Lebar 10M hingga 20M+)",
@@ -98,9 +98,9 @@ export default function ServicesPage() {
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.08] mb-6 font-editorial">
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.12] mb-6 font-editorial font-light">
               Tiga Pilar Layanan <br />
-              <span className="italic font-normal text-forest-green">
+              <span className="italic font-light text-forest-green">
                 Pernikahan Idaman
               </span>
             </h1>
@@ -118,15 +118,13 @@ export default function ServicesPage() {
               <div
                 key={srv.id}
                 id={srv.id}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${
-                  idx % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
               >
                 {/* Image Column */}
                 <div
-                  className={`lg:col-span-6 ${
-                    idx % 2 === 1 ? "lg:order-2" : "lg:order-1"
-                  }`}
+                  className={`lg:col-span-6 ${idx % 2 === 1 ? "lg:order-2" : "lg:order-1"
+                    }`}
                 >
                   <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl bg-sand border border-taupe/40 group">
                     <Image
@@ -146,9 +144,8 @@ export default function ServicesPage() {
 
                 {/* Content Column */}
                 <div
-                  className={`lg:col-span-6 flex flex-col justify-center ${
-                    idx % 2 === 1 ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`lg:col-span-6 flex flex-col justify-center ${idx % 2 === 1 ? "lg:order-1" : "lg:order-2"
+                    }`}
                 >
                   <div className="w-12 h-12 rounded-2xl bg-forest-green/10 text-forest-green flex items-center justify-center mb-6">
                     <srv.icon className="w-6 h-6" />
@@ -192,6 +189,24 @@ export default function ServicesPage() {
                         className="px-6 py-3.5 rounded-full bg-forest-green text-white text-xs uppercase tracking-widest font-semibold hover:bg-black transition-colors"
                       >
                         Detail Jobdesk & Kru 12
+                      </Link>
+                    )}
+
+                    {srv.id === "wedding-organizer" && (
+                      <Link
+                        href="/services/wedding-organizer"
+                        className="px-6 py-3.5 rounded-full bg-forest-green text-white text-xs uppercase tracking-widest font-semibold hover:bg-black transition-colors"
+                      >
+                        Detail Kru 14 & Hari H
+                      </Link>
+                    )}
+
+                    {srv.id === "decoration-styling" && (
+                      <Link
+                        href="/services/decoration-styling"
+                        className="px-6 py-3.5 rounded-full bg-forest-green text-white text-xs uppercase tracking-widest font-semibold hover:bg-black transition-colors"
+                      >
+                        Detail 4 Tier Pelaminan
                       </Link>
                     )}
 

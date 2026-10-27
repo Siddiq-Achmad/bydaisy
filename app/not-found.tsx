@@ -22,7 +22,7 @@ export default function NotFound() {
               <span className="w-1.5 h-1.5 rounded-full bg-taupe inline-block"></span>
             </div>
           </div>
-          <span className="font-serif italic text-[10px] tracking-widest text-warm-taupe -mt-0.5 uppercase">
+          <span className="font-serif text-[10px] tracking-widest text-warm-taupe -mt-0.5 uppercase">
             Wedding & Event Planner
           </span>
         </Link>
@@ -43,11 +43,11 @@ export default function NotFound() {
           <span>Error 404 • Lost in Romance</span>
         </div>
 
-        <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl text-black tracking-tight leading-none mb-6">
+        <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl text-black tracking-tight leading-none mb-6 font-light font-editorial">
           404
         </h1>
 
-        <h2 className="font-serif text-2xl sm:text-3xl text-brown font-normal mb-6">
+        <h2 className="font-serif text-2xl sm:text-3xl text-brown font-light mb-6">
           Halaman yang Anda Tuju Belum Terdaftar di Agenda
         </h2>
 

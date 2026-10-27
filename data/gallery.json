@@ -1,0 +1,110 @@
+[
+  {
+    "id": "gal-1",
+    "title": "Jihad & Nanda",
+    "category": "traditional",
+    "label": "Tradisi Aceh & Songket Emas",
+    "venue": "Asrama Haji, Banda Aceh",
+    "image": "/assets/images/tradisi-aceh.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-2",
+    "title": "The Royal White Pavillion",
+    "category": "decor",
+    "label": "Pelaminan Kustom 18M",
+    "venue": "Sribudaya Resort 2026",
+    "image": "/assets/images/gallery-white-pavillion.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-3",
+    "title": "Adat Megah Songket Marun",
+    "category": "traditional",
+    "label": "Heritage Royal Regalia",
+    "venue": "Bale Meuseuraya Aceh",
+    "image": "/assets/images/gallery-songket-maroon.jpg",
+    "aspect": "aspect-[4/5]"
+  },
+  {
+    "id": "gal-4",
+    "title": "Jacky & Valerie First Dance",
+    "category": "ballroom",
+    "label": "International Luxury Ballroom",
+    "venue": "Hermes Grand Ballroom",
+    "image": "/assets/images/review-ballroom-fog.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-5",
+    "title": "Executive Navy Crew",
+    "category": "team",
+    "label": "Gladi Resik & Timekeeping",
+    "venue": "On-Site Venue Coordination",
+    "image": "/assets/images/gallery-navy-crew.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-6",
+    "title": "Grand Kirab Entrance",
+    "category": "team",
+    "label": "VIP Escort & Protokoler",
+    "venue": "Banda Aceh Convention",
+    "image": "/assets/images/gallery-kirab-entrance.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-7",
+    "title": "Serenade White Rattan Arch",
+    "category": "decor",
+    "label": "Artistic Floral Installation",
+    "venue": "Vandys Garden 2026",
+    "image": "/assets/images/gallery-rattan-arch.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-8",
+    "title": "Botanical Velvet Sanctuary",
+    "category": "decor",
+    "label": "Stage Lighting & Ceiling Drapery",
+    "venue": "Hermes Grand Ballroom",
+    "image": "/assets/images/gallery-velvet-sanctuary.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-9",
+    "title": "The Intimate Garden Pergola",
+    "category": "ballroom",
+    "label": "Outdoor Romantic Gazebo",
+    "venue": "Vandys Garden Aceh",
+    "image": "/assets/images/gallery-garden-pergola.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-10",
+    "title": "Majestic Gold Tiered Pelaminan",
+    "category": "decor",
+    "label": "Pelaminan Tradisi Mahligai Emas",
+    "venue": "Amel Convention Hall",
+    "image": "/assets/images/gallery-gold-pelaminan.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-11",
+    "title": "Pendampingan Pengantin Adat",
+    "category": "team",
+    "label": "Bride Assistant Standby",
+    "venue": "Ballroom Banda Aceh",
+    "image": "/assets/images/portfolio-coordinator-bride.jpg",
+    "aspect": "aspect-[16/10]"
+  },
+  {
+    "id": "gal-12",
+    "title": "Glasshouse Pavilion Intimate",
+    "category": "ballroom",
+    "label": "Tropical Botanical Glow",
+    "venue": "Sribudaya Garden Pavilion",
+    "image": "/assets/images/service-glasshouse.jpg",
+    "aspect": "aspect-[16/10]"
+  }
+]

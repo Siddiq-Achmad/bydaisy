@@ -23,6 +23,12 @@ import {
   Eye,
 } from "lucide-react";
 
+import leadsData from "@/data/leads.json";
+import reviewsData from "@/data/reviews.json";
+import weddingsData from "@/data/real-weddings.json";
+import calendarData from "@/data/calendar.json";
+import weddingPrices from "@/data/wedding-prices.json";
+
 export default function AdminDashboardOverview() {
   const [isSyncing, setIsSyncing] = useState(false);
 
@@ -37,27 +43,27 @@ export default function AdminDashboardOverview() {
       bgColor: "bg-forest-green/10",
     },
     {
-      title: "Pernikahan Terjadwal",
-      value: "14 Pasangan",
-      change: "6 Bulan Depan",
-      subtext: "Banda Aceh, Lhoknga & Nagan",
+      title: "Agenda & Resepsi Terjadwal",
+      value: `${calendarData.length} Acara`,
+      change: "Kalender Kru 2026",
+      subtext: "Banda Aceh, Sribudaya & Hermes",
       icon: Calendar,
       color: "text-brown",
       bgColor: "bg-brown/10",
     },
     {
       title: "VIP Leads & Inquiries",
-      value: "42 Pasangan",
+      value: `${leadsData.length} Pasangan`,
       change: "+8 Minggu Ini",
-      subtext: "WhatsApp Hotline 1 & 2",
+      subtext: "Hotline WhatsApp & Web Sheet",
       icon: Mail,
       color: "text-forest-green",
       bgColor: "bg-forest-green/10",
     },
     {
       title: "Kepuasan Pasangan",
-      value: "4.98 / 5.0",
-      change: "140+ Ulasan",
+      value: "5.0 / 5.0",
+      change: `${reviewsData.length} Ulasan Terverifikasi`,
       subtext: "Bridestory & Google Reviews",
       icon: Star,
       color: "text-amber-700",
@@ -65,78 +71,26 @@ export default function AdminDashboardOverview() {
     },
   ];
 
-  const upcomingWeddings = [
-    {
-      couples: "Jihad & Nanda",
-      date: "14 November 2026",
-      package: "Royal Package Sribudaya (2.000 Pax)",
-      venue: "Sribudaya Resort, Lampeuneurut",
-      status: "Final TM H-14",
-      statusColor: "bg-amber-100 text-amber-900 border-amber-300",
-      leadPlanner: "Daisy Iskandar",
-      amount: "Rp 235.000.000",
-    },
-    {
-      couples: "Valerie & Jacky",
-      date: "28 November 2026",
-      package: "All-In Signature Platinum (300 Pax)",
-      venue: "Hermes Palace Hotel Ballroom",
-      status: "Vendor Briefing",
-      statusColor: "bg-blue-100 text-blue-900 border-blue-300",
-      leadPlanner: "Sarah Amelia",
-      amount: "Rp 110.000.000",
-    },
-    {
-      couples: "Naufal & Nazhira",
-      date: "12 Desember 2026",
-      package: "Intimate Garden Vandys (500 Pax)",
-      venue: "@vandysgarden, Banda Aceh",
-      status: "Fitting & Test Food",
-      statusColor: "bg-forest-green/10 text-forest-green border-forest-green/30",
-      leadPlanner: "Daisy Iskandar",
-      amount: "Rp 85.000.000",
-    },
-    {
-      couples: "Cut Farah & Teuku Rian",
-      date: "10 Januari 2027",
-      package: "Wedding Planner Platinum",
-      venue: "Auditorium UIN Ar-Raniry Banda Aceh",
-      status: "RAB & Moodboard",
-      statusColor: "bg-purple-100 text-purple-900 border-purple-300",
-      leadPlanner: "Rizki Pratama",
-      amount: "Rp 25.000.000",
-    },
-  ];
+  const upcomingWeddings = calendarData.map((ev) => ({
+    couples: ev.title,
+    date: ev.date,
+    package: ev.package,
+    venue: ev.venue,
+    status: ev.badge || ev.type,
+    statusColor: ev.badgeColor || "bg-forest-green/10 text-forest-green border-forest-green/30",
+    leadPlanner: ev.lead,
+    amount: "Rp 115.000.000 - Rp 235.000.000",
+  }));
 
-  const recentLeads = [
-    {
-      name: "Cut Sarah & Zulfikar",
-      hotline: "Hotline 1 (+62 822-7709-4277)",
-      interest: "Sribudaya Platinum Best Deal (1.000 Pax)",
-      estimatedGuests: "1.000 Tamu",
-      targetDate: "Februari 2027",
-      status: "Baru Masuk",
-      waHref: "https://wa.me/6282277094277",
-    },
-    {
-      name: "dr. Amanda & Reza, S.T.",
-      hotline: "Hotline 2 (+62 821-6222-1468)",
-      interest: "All-In Daisy Gold Intimate (500 Pax)",
-      estimatedGuests: "500 Tamu",
-      targetDate: "Maret 2027",
-      status: "Jadwal Konsultasi",
-      waHref: "https://wa.me/6282162221468",
-    },
-    {
-      name: "Nabila & Fikri",
-      hotline: "Hotline 1 (+62 822-7709-4277)",
-      interest: "Paket Garden Vandys 500 Pax",
-      estimatedGuests: "500 Tamu",
-      targetDate: "April 2027",
-      status: "Kirim Penawaran",
-      waHref: "https://wa.me/6282277094277",
-    },
-  ];
+  const recentLeads = leadsData.slice(0, 3).map((lead) => ({
+    name: lead.coupleNames,
+    hotline: lead.hotline,
+    interest: lead.service,
+    estimatedGuests: lead.guestCount,
+    targetDate: lead.eventDate,
+    status: lead.status,
+    waHref: `https://wa.me/${(lead.waNumber || "").replace(/[^0-9]/g, "")}`,
+  }));
 
   const quickActions = [
     {

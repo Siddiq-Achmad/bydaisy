@@ -7,6 +7,7 @@ import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
 import ConsultationSheet from "@/components/modals/consultation-sheet";
 import { Sparkles, ArrowRight, Heart } from "lucide-react";
+import galleryData from "@/data/gallery.json";
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -20,62 +21,7 @@ export default function GalleryPage() {
     { id: "team", label: "Tim & On-Site Crew" },
   ];
 
-  const galleryItems = [
-    {
-      title: "Jihad & Nanda",
-      category: "traditional",
-      label: "Tradisi & Songket Emas",
-      venue: "Asrama Haji, Medan",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCzxUgKi6Q5xQVkwW7jPIpz6qyC9rBNHmXWqc1KHkIDiTomoMO8XkhcNWesdzbqaXqdNl9v1jf2-9nTdTVpgQhKZtlLoVabeIoGJ_rImOS8ifCQ3sc33YKjgDCS9SRd5UdD51P58T2cTfFW-S8stgb7Hl8qn2RCVpQNpVhZfG6afI35G2iz3rGuP1rZPHudFwyFPJRsaO-ULEcHzLMJ_81NGvFti88drFkj1Bh0mFKYwlLkZLamedv1LhtJCthhi9OJOoM",
-      aspect: "aspect-[3/4]",
-    },
-    {
-      title: "Nazhira & Naufal",
-      category: "traditional",
-      label: "Cultural Heritage Ceremony",
-      venue: "Sribudaya Convention",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBsQv3i5MtgyYEnPAqCac0AXFtJJlDDIEhkOflDlbG3LF5x_ghU6IzieSymSgS31C5uj9Y4PnqMTyYz85uY1KdIC2oYp6FDnK-agZtdv4P3CuYRvKzXLL0WoJtMMwC1_wqU7XF_yWokXEhUQMqKamBKv408oRPS0QlAbbEtean0WCVLdV06atwN_sdJhYHYPjAMI1nZJQI3R4avfpfw34StMshW6LzUzMNluIkj56dXpDdjh3ZPF-eqPZZ7mW-O-J14HTA",
-      aspect: "aspect-[4/5]",
-    },
-    {
-      title: "Jacky & Valerie",
-      category: "ballroom",
-      label: "International Luxury Ballroom",
-      venue: "Hermes Grand Ballroom",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBTMpHvVFbmAYj3iCImbvSgCOGbpydMAbl87rIvWmkplWNW0g1-S_0efMJhIXMsQF3fYJ28B0o1-_1v5bpMY3lg4Eje99qP4rN7gAyJ4UreiSYo2T9zSoQH2n4WOrtLn4bpIxNFpavcHsT-5b-1uHLLSBrf1oP1W2_3Za-rqDC-VDyAyalWwXm-K5k8g_6OVGTIZ692xAtvWT8t_uaC9z8tK0-5kM2NygzECvxO1LrI0BZS4UF1cJ5StmF67Bea2DPkMp8",
-      aspect: "aspect-[3/4]",
-    },
-    {
-      title: "Botanical Stage & Gold Arch",
-      category: "decor",
-      label: "Pelaminan Kustom 18M",
-      venue: "Grand City Hall",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBlnGOGodgrVczDXpzM8nYkAzhsldxcRn-FmggBi2HBqKPimzDgUO_z8nuhIho6tjQAQyOJNbqLx-Vd9A8TU7cznk_cAb00LRPLHOyqn6s8Dp-lrMh5kYqnYzZq-FU-EgKceOZAwWfgBNXr9mShC9gG2azbYGnJuJ3Ijn1cJhhX77-vVQvu1h_-m3Fyen21bD-tnwNak-xjY8r4rW7xFojiiDitrE7kt92w9MiZulPcS_blnQXZsYBdKZT03On0LlpnDIo",
-      aspect: "aspect-[16/10]",
-    },
-    {
-      title: "ByDaisy Crew Briefing",
-      category: "team",
-      label: "Gladi Resik & Timekeeping",
-      venue: "On-Site Venue Inspection",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBW7Qa7rYhNXqPS-rMSZK4tatUhdYASv0focjP-Uaae3kN4yvJVPFDpqqBnwpvkh4P0PswkaiKAUGyJNLk-sZ_W-RbwvILhqnuihsEFpwD_EnW2HnmDI25Wb_Ad3UjvHzo-52RfUuLvrKpT54fOtx6McsYKcWU26B2CCYjdyagpLMZbHn-jrV7EVDmFxODt3XMt4Gcc1Y400U3OxMCj7w8BtM1c2t5TQHcAzKoG49JCYV8MWbMgHZrilA1S2tLKnyiSHaY",
-      aspect: "aspect-[4/3]",
-    },
-    {
-      title: "Sacred Ring Vows & Touch Up",
-      category: "ballroom",
-      label: "Romantic Editorial Hands",
-      venue: "The Glass House",
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDGR-_Yy3nyolLeAmN8IFk8U2z4kIWWCYIDW57MQV6lnuFWJKPvnw_Wsr_Apa99QZKpN5rqopIsj-zKkX4oHXz63oqT65pOHEgn35oRPSw7OVWaVIdPec18yzYJSIUr_bCwQ1F-GnK6gcsIhI7Sqc_QEIWAeGmBz7Ba1Ke_MFjlHz68pmjSHGdEmu2UpN9e20BmavYtFO1DpXiShH-zshS3_3P7H6hICALldAEE_h2hEJJiCEwCfoipKoi59hxY6ZVBq_A",
-      aspect: "aspect-[4/3]",
-    },
-  ];
+  const galleryItems = galleryData;
 
   const filteredItems =
     activeFilter === "all"
@@ -106,9 +52,9 @@ export default function GalleryPage() {
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.08] mb-6 font-editorial">
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.12] mb-6 font-editorial font-light">
               Galeri Dokumentasi & <br />
-              <span className="italic font-normal text-forest-green">
+              <span className="italic font-light text-forest-green">
                 Kisah Nyata Pengantin
               </span>
             </h1>

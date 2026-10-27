@@ -1,0 +1,276 @@
+{
+  "categories": [
+    { "id": "all", "label": "Semua Artikel" },
+    { "id": "adat", "label": "Panduan Adat" },
+    { "id": "budget", "label": "Budgeting & Finansial" },
+    { "id": "venue", "label": "Vendor & Venue" },
+    { "id": "rundown", "label": "Checklist & Rundown" },
+    { "id": "decor", "label": "Inspirasi Dekorasi" }
+  ],
+  "articles": [
+    {
+      "id": "editor-pick",
+      "title": "Menyulam Harmoni Tradisi Adat Aceh & Gaya Modern dalam Satu Panggung Megah",
+      "slug": "harmoni-tradisi-adat-aceh-dan-modern",
+      "category": "adat",
+      "categoryLabel": "Pilihan Editor • Adat & Modern Harmoni",
+      "readTime": "7 menit baca",
+      "date": "25 Oktober 2026",
+      "excerpt": "Bagaimana memadukan sakralnya prosesi Peusijeuk dan keagungan pelaminan songket marun dengan flow perjamuan internasional yang dinamis tanpa mengurangi kehormatan adat leluhur.",
+      "image": "/assets/images/tradisi-aceh.jpg",
+      "author": "Daisy Iskandar & Tim Kreatif ByDaisy",
+      "authorRole": "Executive Matrimonial Directors",
+      "views": 2890,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "1. Paradigma Dua Dimensi: Sakral di Pagi Hari, Selebratif di Siang Hari",
+          "body": [
+            "Banyak calon pengantin di Aceh menghadapi dilema antara keinginan orang tua yang mengharapkan adat penuh pakem, dengan preferensi pengantin muda yang mendambakan perayaan modern minimalis.",
+            "Solusi editorial yang selalu ByDaisy terapkan adalah segmentasi waktu yang tegas. Sesi pagi (Akad & Peusijeuk) didedikasikan 100% untuk kekhidmatan adat Aceh dengan busana tenun songket dan sulaman kasab benang emas. Sementara sesi siang beralih ke resepsi ramah tamah dinamis dengan alunan musik akustik dan jamuan gala buffet."
+          ]
+        },
+        {
+          "heading": "2. Harmonisasi Palet Dekorasi: Dari Merah Emas ke Warm Taupe",
+          "body": [
+            "Dekorasi pelaminan tidak harus bertabrakan. Kami memadukan latar ukiran motif Pinto Aceh bernuansa keemasan dengan rangkaian floristry kontemporer berpalet earthy (sage olive, dusty rose, dan warm taupe).",
+            "Hasilnya adalah panggung pelaminan yang tampak anggun di mata tetua adat, namun tetap menghasilkan visual sinematik bergaya editorial majalah pernikahan internasional."
+          ]
+        },
+        {
+          "heading": "3. Peran Show Director dalam Menjaga Ketenangan",
+          "body": [
+            "Kunci keberhasilan perkawinan campuran adat dan modern ada pada show director di lapangan. Tim ByDaisy memastikan tamu adat sepuh mendapat penghormatan utama di barisan depan, sementara antrean foto tamu sahabat diarahkan dengan alur teratur tanpa menumpuk di atas panggung."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Bagi acara menjadi 2 fase terpisah: sesi sakral adat di awal, sesi ramah tamah modern di akhir.",
+        "Gunakan palet warna earthy warm taupe untuk menjembatani kemewahan songket emas.",
+        "Sediakan pemandu acara (MC) dwi-bahasa yang menguasai adab sapaan adat dan kehangatan modern."
+      ]
+    },
+    {
+      "id": "art-1",
+      "title": "Master Checklist Pernikahan H-180: Menghindari Kepanikan di Menit Terakhir",
+      "slug": "master-checklist-pernikahan-h-180",
+      "category": "rundown",
+      "categoryLabel": "Checklist & Timeline",
+      "readTime": "5 menit baca",
+      "date": "14 Oktober 2026",
+      "excerpt": "Panduan kronologis langkah demi langkah dari penetapan tanggal, booking venue primadona, hingga gladi resik teknis tanpa stres.",
+      "image": "/assets/images/journal-checklist.jpg",
+      "author": "Sarah Amelia",
+      "authorRole": "Senior Wedding Planner",
+      "views": 1520,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "Fase 1: H-180 s/d H-120 (Kunci Pondasi Acara)",
+          "body": [
+            "Langkah paling krusial adalah mengunci tanggal pernikahan bersama keluarga besar kedua pihak, lalu segera melakukan reservasi venue utama di Banda Aceh (seperti Sribudaya Resort, Hermes Palace, atau Asrama Haji).",
+            "Tentukan kuota tamu awal dan tetapkan batas maksimal anggaran realistis sebelum menghubungi vendor lain."
+          ]
+        },
+        {
+          "heading": "Fase 2: H-90 s/d H-60 (Kurasi Vendor Inti)",
+          "body": [
+            "Pilih vendor dengan jam terbang teruji: MUA, busana akad/resepsi, sinematografi dokumentasi, dan katering. Di tahap ini, lakukan sesi fitting awal dan test food bersama orang tua."
+          ]
+        },
+        {
+          "heading": "Fase 3: H-30 s/d Hari H (Technical Meeting & Gladi Resik)",
+          "body": [
+            "Selenggarakan Technical Meeting (TM) resmi H-14 yang dipimpin oleh ByDaisy. Satukan frekuensi seluruh vendor dalam satu dokumen buku panduan rundown menit per menit."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Booking venue minimal 6 bulan sebelum hari H karena slot akhir pekan di Banda Aceh sangat terbatas.",
+        "Sediakan buffer waktu 45 menit antara sesi akad nikah dan jamuan makan siang.",
+        "Percayakan seluruh kendali hari H kepada Wedding Organizer agar mempelai dan keluarga bisa beristirahat penuh."
+      ]
+    },
+    {
+      "id": "art-2",
+      "title": "Strategi Alokasi Budget Pernikahan 500 Tamu: Mana yang Wajib, Mana yang Opsional",
+      "slug": "strategi-alokasi-budget-pernikahan-500-tamu",
+      "category": "budget",
+      "categoryLabel": "Budgeting & Finansial",
+      "readTime": "6 menit baca",
+      "date": "02 Oktober 2026",
+      "excerpt": "Bedah rasio alokasi biaya: katering, busana & MUA, dekorasi panggung, hingga dana darurat tak terduga agar keuangan pasca-menikah tetap sehat.",
+      "image": "/assets/images/journal-finance.jpg",
+      "author": "Daisy Iskandar",
+      "authorRole": "Founder & Lead Director",
+      "views": 1240,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "Rasio Ideal Alokasi Anggaran Pernikahan",
+          "body": [
+            "Berdasarkan rekam jejak ratusan pernikahan yang kami kelola, rasio paling sehat adalah: Katering (30-35%), Venue & Tenda (15-20%), Dekorasi & Lighting (15-20%), Attire & MUA (10-12%), Wedding Planner & WO (8-10%), Dokumentasi (8%), dan Dana Darurat Cadangan (10%)."
+          ]
+        },
+        {
+          "heading": "Mana Elemen yang Mutlak Wajib?",
+          "body": [
+            "Kualitas dan kecukupan makanan katering adalah kehormatan keluarga. Jangan pernah memangkas kuota porsi makanan demi dekorasi berlebih. Pastikan juga sistem pendingin ruangan (AC) di venue berfungsi optimal untuk kenyamanan ribuan tamu."
+          ]
+        },
+        {
+          "heading": "Elemen yang Bisa Dioptimasi Secara Bijak",
+          "body": [
+            "Penggunaan bunga segar impor bisa dikombinasikan dengan bunga lokal berkualitas tinggi pada area yang jauh dari pandangan dekat. Souvenir juga bisa beralih ke produk fungsional karya UMKM lokal yang lebih berkesan."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Selalu sisihkan 10% dari total anggaran sebagai dana tak terduga (contingency fund).",
+        "Katering dan kenyamanan suhu venue adalah prioritas utama yang dinilai oleh para tamu.",
+        "Gunakan paket All-In transparan untuk menghindari biaya tersembunyi antar vendor."
+      ]
+    },
+    {
+      "id": "art-3",
+      "title": "Memahami Sakralnya Upacara Tepung Tawar & Filosofi Daun Dingin",
+      "slug": "sakralnya-upacara-tepung-tawar-dan-daun-dingin",
+      "category": "adat",
+      "categoryLabel": "Panduan Adat",
+      "readTime": "4 menit baca",
+      "date": "19 September 2026",
+      "excerpt": "Makna mendalam di balik butiran beras kuning, air wangi mawar, dan urutan penghormatan kepada sesepuh istana adat Melayu.",
+      "image": "/assets/images/journal-headpiece.jpg",
+      "author": "Teuku Ryan",
+      "authorRole": "Master Protokoler Adat",
+      "views": 1820,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "Filosofi 4 Elemen Pokok Peusijeuk",
+          "body": [
+            "Beras padi dan beras kuning melambangkan doa kesuburan rezeki dan kemakmuran rumah tangga baru.",
+            "Dedaunan dingin (on sisumpu, on sitawar, on kedingin) adalah simbol pendingin kalbu saat menghadapi badai kehidupan rumah tangga kelak.",
+            "Percikan air mawar melambangkan kesucian lahir batin serta harumnya nama baik kedua keluarga besar."
+          ]
+        },
+        {
+          "heading": "Tata Urutan Penghormatan Sesepuh",
+          "body": [
+            "Prosesi dimulai dari kakek-nenek, orang tua kandung, tetua adat perwakilan desa, hingga alim ulama yang mendoakan berkah keselamatan. Tim ByDaisy bertindak sebagai LO khusus yang memandu para sesepuh naik ke pelaminan secara santun dan tertib."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Peusijeuk bukan sekadar simbolis, melainkan wujud permohonan doa restu keselamatan lahir dan batin.",
+        "Siapkan wadah sirih batee ranup yang bersih dan terbungkus kain kasab sulam emas rapi.",
+        "Pastikan ada pengatur waktu agar seluruh sesepuh dapat melakukan prosesi tanpa membuat acara molor."
+      ]
+    },
+    {
+      "id": "art-4",
+      "title": "Panduan Memilih Ballroom vs Glasshouse: Akustik, Cahaya & Sirkulasi Tamu",
+      "slug": "panduan-memilih-ballroom-vs-glasshouse",
+      "category": "venue",
+      "categoryLabel": "Vendor & Venue",
+      "readTime": "5 menit baca",
+      "date": "08 September 2026",
+      "excerpt": "Menimbang kelebihan grand ballroom hotel berbintang dengan venue semi-outdoor kaca transparan untuk konsep perayaan yang intim.",
+      "image": "/assets/images/journal-ballroom.jpg",
+      "author": "Sarah Amelia",
+      "authorRole": "Senior Wedding Planner",
+      "views": 980,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "Karakteristik Grand Ballroom Hotel",
+          "body": [
+            "Grand ballroom memberikan keunggulan mutlak pada stabilitas suhu ruangan (full AC), kedap suara akustik, serta kemampuan menampung 1.000 hingga 2.000 tamu tanpa terpengaruh cuaca hujan tropis.",
+            "Sangat ideal untuk perhelatan adat megah dengan gaun pengantin berekor panjang dan panggung pelaminan 15-18 meter."
+          ]
+        },
+        {
+          "heading": "Karakteristik Glasshouse & Taman Semi-Outdoor",
+          "body": [
+            "Venue kaca semi-outdoor (seperti Vandys Garden atau Sribudaya Gazebo) menawarkan pesona cahaya senja alami (golden hour) yang sangat romantis untuk konsep pernikahan intimate 300-500 tamu.",
+            "Namun, dibutuhkan rencana mitigasi cadangan (weather contingency plan) berupa kanopi tersembunyi dan kipas blower tambahan jika siang hari terik."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Pilih ballroom untuk tamu di atas 800 orang dan gaun adat yang berat/berlapis.",
+        "Pilih glasshouse untuk konsep intimate 300-500 pax dengan nuansa santai dan hangat.",
+        "Periksa daya cadangan generator listrik di venue sebelum menandatangani kontrak."
+      ]
+    },
+    {
+      "id": "art-5",
+      "title": "Tren Dekorasi 2026: Mengapa Sage Olive, Warm Taupe & Earth Brown Jadi Primadona",
+      "slug": "tren-dekorasi-2026-earth-tone-primadona",
+      "category": "decor",
+      "categoryLabel": "Inspirasi Dekorasi",
+      "readTime": "7 menit baca",
+      "date": "22 Agustus 2026",
+      "excerpt": "Evolusi estetika dari all-white steril beralih ke tekstur organik bernuansa earth-tone hangat yang abadi saat dilihat 20 tahun mendatang.",
+      "image": "/assets/images/journal-backdrop.jpg",
+      "author": "M. Farhan",
+      "authorRole": "Head of Spatial Design & Decor",
+      "views": 1640,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "Pergeseran Tren: Dari Steril ke Kehangatan Emosional",
+          "body": [
+            "Dekorasi serba putih terang kini mulai ditinggalkan karena seringkali terasa dingin dan menyilaukan dalam rekaman kamera sinematik. Tahun 2026 menandai era Quiet Luxury dengan palet earth-tone yang menenangkan: warm taupe, brown earthy, champagne, dan sage olive."
+          ]
+        },
+        {
+          "heading": "Material Alami & Tekstur Organik",
+          "body": [
+            "Penggunaan anyaman rotan halus, kayu poles bertekstur, kain linen jatuh, serta perpaduan mawar dusty pink dengan dedaunan eucalyptus menciptakan lapisan visual berdimensi tinggi yang terlihat elegan di mata tamu maupun lensa kamera."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Palet warna earth-tone hangat tahan lama dan tidak lekang oleh zaman saat dilihat kembali 20 tahun kemudian.",
+        "Kombinasikan pencahayaan warm white 2700K dengan aksen lilin amber untuk suasana syahdu.",
+        "Fokuskan detail dekorasi pada 3 titik utama: Pelaminan panggung, Lorong masuk (Foyer), dan Photobooth."
+      ]
+    },
+    {
+      "id": "art-6",
+      "title": "Etiket Menyusun Meja VIP & Penanganan Tamu Pejabat di Hari H",
+      "slug": "etiket-menyusun-meja-vip-dan-pejabat",
+      "category": "rundown",
+      "categoryLabel": "Checklist & Rundown",
+      "readTime": "5 menit baca",
+      "date": "11 Agustus 2026",
+      "excerpt": "SOP protokoler kepengawalan, escorting pejabat negara, hingga tata letak photobooth khusus keluarga inti agar tidak terjadi penumpukan antrean.",
+      "image": "/assets/images/journal-coordination.jpg",
+      "author": "Teuku Ryan",
+      "authorRole": "Master Protokoler Adat",
+      "views": 2100,
+      "status": "Published",
+      "sections": [
+        {
+          "heading": "Standar Operasional Meja VIP",
+          "body": [
+            "Tamu pejabat dan tokoh adat kehormatan membutuhkan penanganan khusus sejak tiba di gerbang venue. ByDaisy menugaskan minimal 2 Liaison Officer (LO VIP) berseragam rapi yang menyambut dan mengawal langsung menuju area meja bundar VIP.",
+            "Area VIP dilengkapi pramusaji terdedikasi (family-style service) sehingga para tokoh tidak perlu ikut antre di buffet umum."
+          ]
+        },
+        {
+          "heading": "Manajemen Sesi Foto Bersama di Pelaminan",
+          "body": [
+            "Agar antrean foto tidak menumpuk dan melelahkan pengantin, LO Stage Manager ByDaisy mengumumkan kelompok foto secara berkala melalui koordinasi HT, memprioritaskan sesepuh dan tamu VIP terlebih dahulu sebelum tamu umum."
+          ]
+        }
+      ],
+      "keyTakeaways": [
+        "Pisahkan jalur masuk dan area parkir khusus bagi tamu VIP pejabat.",
+        "Siapkan meja bundar dengan set Tiffani dan kartu nama (place card) jelas.",
+        "Tugaskan LO khusus yang mendampingi tamu VIP dari kedatangan hingga kepulangan."
+      ]
+    }
+  ]
+}

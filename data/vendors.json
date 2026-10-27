@@ -1,0 +1,204 @@
+{
+  "categories": [
+    { "id": "all", "label": "Semua Rekanan" },
+    { "id": "photo", "label": "Fotografi & Sinematografi" },
+    { "id": "mua", "label": "MUA & Busana Pengantin" },
+    { "id": "decor", "label": "Dekorasi & Lighting" },
+    { "id": "venue", "label": "Venue & Ballroom" },
+    { "id": "catering", "label": "Katering & Patisserie" },
+    { "id": "music", "label": "Music & Entertainment" },
+    { "id": "souvenir", "label": "Photobooth & Souvenir" }
+  ],
+  "vendors": [
+    {
+      "id": "v-1",
+      "name": "Le Ciel Imagery & Cinema",
+      "category": "photo",
+      "categoryLabel": "Fotografi & Sinematografi",
+      "rating": "5.0",
+      "priceRange": "Eksklusif & High-End",
+      "location": "Banda Aceh & Destination",
+      "instagram": "@leciel.imagery",
+      "description": "Spesialis sinematografi emosional bertaraf internasional dengan palet warna film klasik 35mm dan storytelling mendalam.",
+      "deliverables": [
+        "2 Lead Photographer",
+        "4K Drone Aerial",
+        "Teaser 1 Menit H+2",
+        "Leather Album Box"
+      ],
+      "image": "/assets/images/vendor-photography.jpg",
+      "status": "Official Partner"
+    },
+    {
+      "id": "v-2",
+      "name": "Ghea Royal Bridal & Songket",
+      "category": "mua",
+      "categoryLabel": "MUA & Busana Pengantin",
+      "rating": "4.9",
+      "priceRange": "Heritage Premium",
+      "location": "Banda Aceh Atelier",
+      "instagram": "@ghea_royalbridal",
+      "description": "Koleksi tenunan songket asli benang emas Aceh, suntiang Minang bertingkat, serta riasan flawless tahan 16 jam.",
+      "deliverables": [
+        "MUA Akad & Resepsi",
+        "Retouch On-Site",
+        "Busana Orang Tua",
+        "Aksesoris Adat Lengkap"
+      ],
+      "image": "/assets/images/vendor-mua.jpg",
+      "status": "Official Partner"
+    },
+    {
+      "id": "v-3",
+      "name": "ByDaisy Spatial Studio & Floristry",
+      "category": "decor",
+      "categoryLabel": "Dekorasi & Lighting",
+      "rating": "5.0",
+      "priceRange": "Signature In-House",
+      "location": "All Venues Banda Aceh",
+      "instagram": "@bydaisyplanner",
+      "description": "Instalasi pelaminan 3D kustom, lorong masuk berhias ribuan mawar segar, chandelier gantung, dan tata cahaya panggung dramatis.",
+      "deliverables": [
+        "Pelaminan 12-20 Meter",
+        "Lighting Par-LED & Beam",
+        "Photobooth 3D",
+        "Foyer Interaktif"
+      ],
+      "image": "/assets/images/gallery-white-pavillion.jpg",
+      "status": "In-House Studio"
+    },
+    {
+      "id": "v-4",
+      "name": "Hermes Palace Hotel Grand Ballroom",
+      "category": "venue",
+      "categoryLabel": "Venue & Ballroom",
+      "rating": "4.9",
+      "priceRange": "Luxury Ballroom",
+      "location": "Pusat Kota Banda Aceh",
+      "instagram": "@hermespalacehotel",
+      "description": "Ballroom megah berdaya tampung hingga 1.500 undangan dengan plafon tinggi, chandelier kristal gantung, dan area parkir VIP terdedikasi.",
+      "deliverables": [
+        "Kapasitas 1.500 Pax",
+        "Full Karpet Mewah",
+        "Ruang Rias Eksklusif",
+        "Generator Cadangan"
+      ],
+      "image": "/assets/images/journal-ballroom.jpg",
+      "status": "Official Partner"
+    },
+    {
+      "id": "v-5",
+      "name": "Sribudaya Resort & Convention",
+      "category": "venue",
+      "categoryLabel": "Venue & Resort",
+      "rating": "5.0",
+      "priceRange": "Paket All-In 2026",
+      "location": "Lampeuneurut, Aceh Besar",
+      "instagram": "@sribudaya_resort",
+      "description": "Kawasan resort asri dengan fasilitas ballroom modern, paviliun outdoor, dan akomodasi menginap gratis untuk keluarga besar mempelai.",
+      "deliverables": [
+        "Kapasitas 300 - 2.000 Pax",
+        "Free Menginap Resort",
+        "Area Parkir 500+ Mobil",
+        "Dapur Katering Luas"
+      ],
+      "image": "/assets/images/service-archway.jpg",
+      "status": "Official Partner 2026"
+    },
+    {
+      "id": "v-6",
+      "name": "Vandys Garden",
+      "category": "venue",
+      "categoryLabel": "Venue & Garden",
+      "rating": "4.9",
+      "priceRange": "Rp 85 Juta (All-In 500 Pax)",
+      "location": "Banda Aceh",
+      "instagram": "@vandysgarden",
+      "description": "Venue taman semi-outdoor asri untuk konsep pesta pernikahan intim bernuansa alam terbuka dengan instalasi lampu gantung romantis.",
+      "deliverables": [
+        "Kapasitas 500 Pax",
+        "Termasuk Photobooth & Bouquet",
+        "Gazebo Pernikahan Asri",
+        "Ruang VIP Ber-AC"
+      ],
+      "image": "/assets/images/gallery-rattan-arch.jpg",
+      "status": "Official Partner 2026"
+    },
+    {
+      "id": "v-7",
+      "name": "BP Projectbooth",
+      "category": "souvenir",
+      "categoryLabel": "Photobooth & Souvenir",
+      "rating": "5.0",
+      "priceRange": "Partner Resmi Vandys",
+      "location": "Banda Aceh",
+      "instagram": "@bp.projectbooth",
+      "description": "Layanan photobooth cetak instan berkualitas tinggi dengan template desain kustom, properti lucu elegan, dan lighting studio profesional.",
+      "deliverables": [
+        "Cetak Instan Unlimited/300 Lembar",
+        "Custom Template Desain",
+        "Softcopy via QR Code",
+        "Kru Siaga Standby"
+      ],
+      "image": "/assets/images/portfolio-table-setting.jpg",
+      "status": "Exclusive Partner"
+    },
+    {
+      "id": "v-8",
+      "name": "HS Floral Studio",
+      "category": "decor",
+      "categoryLabel": "Florist & Hand Bouquet",
+      "rating": "5.0",
+      "priceRange": "Partner Resmi Vandys",
+      "location": "Banda Aceh",
+      "instagram": "@hs_floralstudio",
+      "description": "Studio perangkai bunga spesialis hand bouquet pengantin impor, corsage jas keluarga inti, dan rangkaian bunga segar boutonniere.",
+      "deliverables": [
+        "Hand Bouquet Mawar & Peony",
+        "Corsage VIP Keluarga",
+        "Boutonniere Jas Pengantin",
+        "Pengiriman On-Time Pagi Hari"
+      ],
+      "image": "/assets/images/gallery-garden-pergola.jpg",
+      "status": "Verified Artisan"
+    },
+    {
+      "id": "v-9",
+      "name": "Heritage Palace Fine Catering",
+      "category": "catering",
+      "categoryLabel": "Katering & Patisserie",
+      "rating": "5.0",
+      "priceRange": "Premium Buffet & Gubukan",
+      "location": "Banda Aceh Kitchen",
+      "instagram": "@heritagepalace.catering",
+      "description": "Kuliner perjamuan istana dengan cita rasa autentik Nusantara, masakan khas Aceh rempah istimewa, dan dessert stall bergaya Eropa.",
+      "deliverables": [
+        "Buffet 12 Menu Utama",
+        "6 Stall Gubukan Favorit",
+        "Pramusaji Berseragam Rapi",
+        "Peralatan Makan Keramik Elegan"
+      ],
+      "image": "/assets/images/vendor-catering.jpg",
+      "status": "Official Partner"
+    },
+    {
+      "id": "v-10",
+      "name": "Serenade Acoustic Ensemble & MC",
+      "category": "music",
+      "categoryLabel": "Music & Entertainment",
+      "rating": "4.9",
+      "priceRange": "Bilingual MC & Live Band",
+      "location": "Banda Aceh & Medan",
+      "instagram": "@serenade.acoustic",
+      "description": "Alunan musik pop jazz romantis dengan formasi vokal, keyboard, biola, saxophone, dan MC dwi-bahasa yang memandu jalannya acara dengan santun.",
+      "deliverables": [
+        "MC Profesional Dwi-Bahasa",
+        "5 Piece Acoustic Live Band",
+        "Sound System 5.000 Watt",
+        "Songlist Kustom Pasangan"
+      ],
+      "image": "/assets/images/vendor-entertainment.jpg",
+      "status": "Official Partner"
+    }
+  ]
+}

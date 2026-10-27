@@ -8,65 +8,11 @@ import Footer from "@/components/navigation/footer";
 import ConsultationSheet from "@/components/modals/consultation-sheet";
 import { Star, Heart, ArrowRight, Quote, CheckCircle2 } from "lucide-react";
 
+import reviewsData from "@/data/reviews.json";
+
 export default function ReviewsPage() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
-
-  const reviews = [
-    {
-      couple: "Jihad & Nanda",
-      date: "04 Oktober 2026",
-      venue: "Asrama Haji Ballroom, Banda Aceh",
-      theme: "Royal Acehnese Heritage",
-      quote:
-        "Dari awal konsultasi sampai hari H selesai, ByDaisy bener-bener jadi penenang kami. Acara adat Aceh yang biasanya ribet dan penuh prosesi sakral bisa berjalan begitu tertib, megah, dan tepat waktu. Seluruh keluarga besar sangat terharu dan bangga.",
-      service: "All-In Royal Planner & WO",
-    },
-    {
-      couple: "Nazhira & Naufal",
-      date: "08 November 2025",
-      venue: "Sribudaya Convention Center",
-      theme: "Cultural Traditional Wedding",
-      quote:
-        "Tim ByDaisy punya sensitivitas tinggi pada protokol orang tua dan sesepuh adat. Nggak ada drama telat ataupun miskomunikasi antar vendor. Rundown per menitnya luar biasa presisi. Highly recommended!",
-      service: "Wedding Planner & Organizer",
-    },
-    {
-      couple: "Jacky & Valerie",
-      date: "03 Oktober 2025",
-      venue: "Hermes Grand Ballroom",
-      theme: "Modern Ballroom & Chandelier",
-      quote:
-        "Lighting, kabut panggung, dan musik sinkron sempurna saat first dance kami. Kru on-site standby menjaga gaun dan kebutuhan kami tanpa diminta. ByDaisy membuat pernikahan impian kami benar-benar hidup.",
-      service: "Executive On-Day WO",
-    },
-    {
-      couple: "Fajar & Alisha",
-      date: "24 Agustus 2025",
-      venue: "Grand City Hall Medan",
-      theme: "Modern Botanical Reception",
-      quote:
-        "Yang paling kami apresiasi adalah transparansi anggarannya. ByDaisy membantu kami menghemat pengeluaran vendor tanpa menurunkan kualitas visual sedikit pun. Terima kasih banyak ByDaisy team!",
-      service: "The Signature Planner",
-    },
-    {
-      couple: "Rizky & Dinda",
-      date: "12 Juli 2025",
-      venue: "Tiara Convention Center",
-      theme: "Melayu Deli & Nasional",
-      quote:
-        "Prosesi Tepuk Tepung Tawar dan balas pantunnya berlangsung syahdu dan megah. Semua kru ByDaisy sangat ramah, santun, dan cekatan. 10/10 service!",
-      service: "Full Planner & Decor Styling",
-    },
-    {
-      couple: "Bagas & Meutia",
-      date: "18 Mei 2025",
-      venue: "The Glass House",
-      theme: "Intimate Outdoor Wedding",
-      quote:
-        "Pernikahan intimate 200 tamu kami terasa hangat, elegan, dan sangat personal. Pengantin bisa makan dengan tenang dan menikmati setiap momen bersama para sahabat berkat kawalan tim ByDaisy.",
-      service: "Intimate Wedding Package",
-    },
-  ];
+  const reviews = reviewsData;
 
   return (
     <div className="relative min-h-screen bg-canvas text-black">
@@ -92,9 +38,9 @@ export default function ReviewsPage() {
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.08] mb-6 font-editorial">
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-black tracking-tight leading-[1.12] mb-6 font-editorial font-light">
               Kisah Cinta, Ketenangan Hati <br />
-              <span className="italic font-normal text-forest-green">
+              <span className="italic font-light text-forest-green">
                 & Pengalaman Nyata Mereka
               </span>
             </h1>
@@ -150,8 +96,8 @@ export default function ReviewsPage() {
           <div className="rounded-3xl overflow-hidden bg-sand border border-taupe/40 shadow-xl mb-20 grid grid-cols-1 lg:grid-cols-12">
             <div className="lg:col-span-5 relative min-h-[380px] lg:min-h-[500px]">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ_RLn6qQwrDH3qBrnIsV6ZLuWfKm43bQYZf5asGW0smagZwpR2axr55VPgBky02CYKHpMWNFGJtWrSaZ3UWp_3xDqa-aqYGumlA7mPF9fyh2Cu7c8LU7v9r6a0Caw9pUoIDSzHPPFDv0QCyvUWmOl8CZP_qtys1w41kzQUJzWta0Lic8F9Fdaypb4G9QPESt_mANzmAApkTBF24Dz8TspdCmrI-ET_VOcj-vwTxrsFSQKgkWGGOXXBQ"
-                alt="Jihad and Nanda wedding ceremony"
+                src="/assets/images/tradisi-aceh.jpg"
+                alt="Pernikahan adat Aceh Jihad & Nanda by ByDaisy Planner"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 45vw"
@@ -205,30 +151,48 @@ export default function ReviewsPage() {
             {reviews.slice(1).map((rev, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-sand/50 border border-taupe/35 shadow-sm flex flex-col justify-between hover:border-forest-green hover:shadow-md transition-all"
+                className="overflow-hidden rounded-3xl bg-sand/50 border border-taupe/35 shadow-sm flex flex-col justify-between hover:border-forest-green hover:shadow-md transition-all group"
               >
-                <div>
-                  <div className="flex gap-1 text-amber-600 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-500" />
-                    ))}
+                {rev.image && (
+                  <div className="relative h-48 w-full overflow-hidden bg-sand">
+                    <Image
+                      src={rev.image}
+                      alt={`Dokumentasi pernikahan ${rev.couple}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-4 text-[10px] uppercase tracking-wider text-canvas font-medium bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-full">
+                      {rev.theme}
+                    </span>
+                  </div>
+                )}
+
+                <div className="p-7 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex gap-1 text-amber-600 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-500" />
+                      ))}
+                    </div>
+
+                    <p className="font-serif text-base text-black/85 font-light leading-relaxed mb-6 italic">
+                      &ldquo;{rev.quote}&rdquo;
+                    </p>
                   </div>
 
-                  <p className="font-serif text-base text-black/85 font-light leading-relaxed mb-6 italic">
-                    &ldquo;{rev.quote}&rdquo;
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-taupe/25">
-                  <h4 className="font-serif text-lg font-medium text-black">
-                    {rev.couple}
-                  </h4>
-                  <p className="text-[11px] text-warm-taupe mt-0.5">
-                    {rev.date} • {rev.venue}
-                  </p>
-                  <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-canvas text-[10px] text-forest-green border border-taupe/30">
-                    {rev.service}
-                  </span>
+                  <div className="pt-4 border-t border-taupe/25">
+                    <h4 className="font-serif text-lg font-medium text-black">
+                      {rev.couple}
+                    </h4>
+                    <p className="text-[11px] text-warm-taupe mt-0.5">
+                      {rev.date} • {rev.venue}
+                    </p>
+                    <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-canvas text-[10px] text-forest-green border border-taupe/30">
+                      {rev.service}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
